@@ -15,6 +15,7 @@ namespace Dominio
         public string Nivel { get; set; } //(principiante, intermedio, avanzado)
         public string Descripcion { get; set; }
         public DateTime FechaCreacion { get; set; }
+        public int Duracion {  get; set; }
         public bool Activa { get; set; }
         public List<Ejercicio> Ejercicios { get; set; }
         //public List<Observacion> Observaciones { get; set; }

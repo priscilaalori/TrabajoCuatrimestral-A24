@@ -17,7 +17,8 @@ namespace Dominio
         public int Series { get; set; }
         public int Repeticiones { get; set; }
         public string Duracion { get; set; } // opcional
-        //public string Referencia { get; set; } a definir porque puede ser un video/ imagen y necesitamos una clase más.
+        
+        public string Referencia { get; set; } //a definir porque puede ser un video/ imagen y necesitamos una clase más.
 
     }
 }
