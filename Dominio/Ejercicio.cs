@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Dominio
 {
-    internal class Ejercicio
+    public class Ejercicio
     {
         public int IdEjercicio { get; set; }
         public int IdRutina { get; set; }

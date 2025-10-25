@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    internal class Historial
+    public class Historial
     {
 
         public int IdHistorial { get; set; }

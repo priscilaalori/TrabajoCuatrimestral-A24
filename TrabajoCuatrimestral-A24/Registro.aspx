@@ -46,13 +46,8 @@
     </div>
     <div class="row"></div>
         <div class="col-2"></div>
-        <div class="col">
+        <br class="col">
             
-        <div class="form-group">
-        <label for="txtDni">DNI</label>
-        <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" AutoPostBack="true" />
-        <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtDni" ValidationExpression="^[0-9]+$" runat="server" ForeColor="Red" Display="Dynamic"/>
-    </div>
 
     <div class="form-group">
         <label for="txtNombre">Nombre</label>
@@ -76,32 +71,27 @@ ForeColor="Red" Display="Dynamic" />
     </div>
 
     <div class="form-group">
-        <label for="txtDireccion">Dirección</label>
-        <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" />
-        <asp:Label ID="lblDireccionError" runat="server" CssClass="error" Text="Falta dirección." Visible="false"></asp:Label>
-        <asp:RegularExpressionValidator ErrorMessage="Formato incorrecto" ControlToValidate="txtDireccion" ValidationExpression="^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+ \d{1,5}$" runat="server" 
-    ForeColor="Red" Display="Dynamic"/>
-    </div>
-
-    <div class="form-group">
-        <label for="txtCiudad">Ciudad</label>
-        <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" />
-        <asp:RegularExpressionValidator ErrorMessage="Formato incorrecto" ControlToValidate="txtCiudad" ValidationExpression="^[A-Za-záéíóúÁÉÍÓÚñÑ0-9\s]+$" runat="server" 
-ForeColor="Red" Display="Dynamic"/>
-    </div>
-
-    <div class="form-group">
-        <label for="txtCP">CP</label>
-        <asp:TextBox ID="txtCP" runat="server" CssClass="form-control" />
-        <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtCP" ValidationExpression="^[0-9]+$" runat="server" ForeColor="Red" Display="Dynamic"/>
-    </div>
+    <label for="txtPassword">Contraseña</label>
+    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" />
+    <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
+        ControlToValidate="txtPassword"
+        ErrorMessage="La contraseña es obligatoria"
+        ForeColor="Red"
+        Display="Dynamic" />
+    <asp:RegularExpressionValidator ID="revPassword" runat="server"
+        ControlToValidate="txtPassword"
+        ErrorMessage="La contraseña debe tener al menos 6 caracteres"
+        ValidationExpression="^.{6,}$"
+        ForeColor="Red"
+        Display="Dynamic" />
+</div>
 
     <div class="form-group">
         <label for="ddlDeporte">Seleccioná tu deporte principal:</label>
         <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control">
             <asp:ListItem Text="--Seleccione un deporte--" Value="" />
-            <asp:ListItem Text="Gimnasio" Value="Gimnasio" />
-            <asp:ListItem Text="Atletismo" Value="Atletismo" />
+            <asp:ListItem Text="Natación" Value="Natación" />
+            <asp:ListItem Text="Running" Value="Running" />
             <asp:ListItem Text="Ciclismo" Value="Ciclismo" />
         </asp:DropDownList>
 
@@ -113,18 +103,22 @@ ForeColor="Red" Display="Dynamic"/>
             Display="Dynamic" />
      </div>
 
+    <br>
+
     <div class="form-group">
         <asp:CheckBox ID="chkAcepto" runat="server" Text="Acepto los términos y condiciones." />
     </div>
 
     <div class="form-group">
-    <asp:Button ID="btnAceptar" runat="server" Text="Registrarme" CssClass="btn btn-primary"/>
+
+    <br>
+    <asp:Button ID="btnAceptar" runat="server" Text="Registrarme" CssClass="btn btn-primary" OnClick="btnAceptar_Click"/>
     </div>
 
     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
 
 
-        </div>
+    
         <div class="col-2"></div>
 
 
