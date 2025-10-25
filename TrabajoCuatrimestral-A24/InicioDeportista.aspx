@@ -59,11 +59,12 @@
                 <asp:ListItem Text="Domingo" Value="Domingo"></asp:ListItem>
             </asp:CheckBoxList>
         </div>
-        <br />
+        <br
         
     <div>
-        <button type="button" class="btn btn-primary btn-lg"> Guardar</button>
+        <button type="button" class="btn btn-dark btn-lg"> Guardar</button>
     </div>
+
         <br />
     </div>
 

@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Historial.aspx" />
     <Content Include="InicioDeportista.aspx" />
     <Content Include="InicioEntrenador.aspx" />
     <Content Include="Registro.aspx" />
@@ -76,6 +77,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InicioDeportista.aspx.cs">
       <DependentUpon>InicioDeportista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
