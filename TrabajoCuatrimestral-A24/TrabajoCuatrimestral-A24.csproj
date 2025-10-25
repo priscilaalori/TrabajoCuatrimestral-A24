@@ -72,6 +72,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Rutina.aspx" />
+    <Content Include="SeleccionDeporte.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="Rutina.aspx.designer.cs">
       <DependentUpon>Rutina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionDeporte.aspx.cs">
+      <DependentUpon>SeleccionDeporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SeleccionDeporte.aspx.designer.cs">
+      <DependentUpon>SeleccionDeporte.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
