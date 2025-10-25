@@ -21,13 +21,13 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server =.\\SQLEXPRESS; database= PROMOS_DB; integrated security = true;");
-            comando = new SqlCommand(); 
+            conexion = new SqlConnection("server =.\\SQLEXPRESS; database= EntrenamientoDB; integrated security = true;");
+            comando = new SqlCommand();
 
         }
 
         //Recibe la consulta SQL
-        public void setearConsulta ( string consulta)
+        public void setearConsulta(string consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
@@ -65,9 +65,9 @@ namespace Negocio
                 throw ex;
             }
         }
-    
+
         //Darle variables a la consulta sql 
-        public void setearParametro(string nombre, object valor) 
+        public void setearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
         }
@@ -75,9 +75,31 @@ namespace Negocio
         {
             if (lector != null)
             {
-                lector.Close(); 
+                lector.Close();
             }
             conexion.Close();
+        }
+
+
+        //Ejecuta la consulta y devuelve un valor único (ej: SCOPE_IDENTITY())
+        public object ejecutarEscalar()
+        {
+            comando.Connection = conexion;
+            object resultado = null;
+            try
+            {
+                conexion.Open();
+                resultado = comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return resultado;
         }
     }
 }
