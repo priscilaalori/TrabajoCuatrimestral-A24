@@ -9,8 +9,16 @@
         </h1>
         <p>Acá va auna grilla con las rutinas: puede ver o modificar</p>
     </div>
-    <button type="button" class="btn btn-primary btn-lg">Agregar rutina</button>
+    <div class="table" border="1">
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    
     <div>
+        <button style="margin-top: 10px;" type="button" class="btn btn-primary btn-lg">Agregar rutina </button>
     </div>
 
 

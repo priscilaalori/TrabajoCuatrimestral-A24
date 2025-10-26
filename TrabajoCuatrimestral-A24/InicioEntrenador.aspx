@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="InicioEntrenador.aspx.cs" Inherits="tp_webform_equipo_24A.InicioEntrenador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+
+
 </asp:Content>
 
 
@@ -9,13 +12,13 @@
     <div>
 
         <h1>¡Hola Entrenador!</h1>
-        <p>Acá debería ver una lista de estudiantes</p>
+        <p>Mis estudiantes</p>
     </div>
 
 
     <div>
         <asp:GridView ID="listAlumnos" runat="server"></asp:GridView>
-        <table border="1">
+        <table class="table" border="1">
             <tr>
                 <th>Nombre y apellido</th>
                 <th>Perfil</th>
@@ -38,10 +41,9 @@
     <div>
 
         <button type="button" class="btn btn-primary btn-lg">Agregar Alumno</button>
-    </div>
-
+    </div> 
     <div>
-        <button type="button" class="btn btn-primary btn-lg">Ver Rutinas</button>
+        <button style="margin-top: 10px;" type="button" class="btn btn-primary btn-lg">Ver Rutinas </button>
     </div>
 
 
