@@ -5,18 +5,31 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div>
-        <h1>Rutinas
-        </h1>
-        <p>Acá va auna grilla con las rutinas: puede ver o modificar</p>
-    </div>
-    <div class="table" border="1">
-        <table>
+        <asp:GridView ID="listAlumnos" runat="server"></asp:GridView>
+        <table class="table" border="1">
             <tr>
-                <td></td>
+                <th>Nombre </th>
+                <th>Detalle</th>
+                <th>Modificar</th>
+            </tr>
+            <tr>
+                <td>Rutina 1</td>
+                <td>Ver detalle </td>
+                <td>Modificar</td> 
+            </tr>
+            <tr>
+                <td>Rutina 2</td>
+                <td>Ver detalle</td>
+                <td>Modificar</td> 
+            </tr>
+            <tr>
+                <td>Rutima 3</td>
+                <td>Ver detalle</td>
+                <td>Modificar</td> 
             </tr>
         </table>
     </div>
-    
+
     <div>
         <button style="margin-top: 10px;" type="button" class="btn btn-primary btn-lg">Agregar rutina </button>
     </div>
