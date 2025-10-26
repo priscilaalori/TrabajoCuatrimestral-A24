@@ -74,6 +74,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Rutina.aspx" />
+    <Content Include="vistaEntrenadorDeportista.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="Rutina.aspx.designer.cs">
       <DependentUpon>Rutina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistaEntrenadorDeportista.aspx.cs">
+      <DependentUpon>vistaEntrenadorDeportista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistaEntrenadorDeportista.aspx.designer.cs">
+      <DependentUpon>vistaEntrenadorDeportista.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
