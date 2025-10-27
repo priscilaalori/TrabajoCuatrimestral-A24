@@ -11,25 +11,16 @@ namespace tp_webform_equipo_24A
 {
 
 
-    public partial class InicioDeportista1
+    public partial class InicioEntrenador
     {
 
         /// <summary>
-        /// ddlDeporte control.
+        /// chkDias control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeporte;
-
-        /// <summary>
-        /// rfvDeporte control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDeporte;
+        protected global::System.Web.UI.WebControls.CheckBoxList chkDias;
     }
 }

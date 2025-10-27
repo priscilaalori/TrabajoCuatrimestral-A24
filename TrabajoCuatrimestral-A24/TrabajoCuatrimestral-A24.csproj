@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Historial.aspx" />
     <Content Include="InicioDeportista.aspx" />
+    <Content Include="SeleccionDeporte.aspx" />
     <Content Include="InicioEntrenador.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Inicio.aspx" />
@@ -91,6 +92,13 @@
     </Compile>
     <Compile Include="InicioDeportista.aspx.designer.cs">
       <DependentUpon>InicioDeportista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionDeporte.aspx.cs">
+      <DependentUpon>SeleccionDeporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SeleccionDeporte.aspx.designer.cs">
+      <DependentUpon>SeleccionDeporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="InicioEntrenador.aspx.cs">
       <DependentUpon>InicioEntrenador.aspx</DependentUpon>
