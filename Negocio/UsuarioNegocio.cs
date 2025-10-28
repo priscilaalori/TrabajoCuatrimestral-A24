@@ -41,5 +41,40 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<Usuario> ListarUsuarios()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Usuario> usuarios = new List<Usuario>();
+
+            try
+            {
+                datos.setearConsulta("SELECT IdUsuario, Nombre, Apellido, Email, Rol FROM Usuarios WHERE Activo = 1");
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario u = new Usuario
+                    {
+                        IdUsuario = Convert.ToInt32(datos.Lector["IdUsuario"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString(),
+                        Email = datos.Lector["Email"].ToString(),
+                        Rol = datos.Lector["Rol"].ToString()
+                    };
+                    usuarios.Add(u);
+                }
+
+                return usuarios;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
