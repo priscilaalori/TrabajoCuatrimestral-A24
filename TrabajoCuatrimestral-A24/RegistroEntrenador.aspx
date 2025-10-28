@@ -39,7 +39,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="text-center mb-3">
-        <img src="https://w7.pngwing.com/pngs/607/314/png-transparent-dumbbell-computer-icons-weight-training-dumbbell-angle-physical-fitness-text.png" alt="Mancuerna" style="width: 200px;" />
+        <img src="https://c0.klipartz.com/pngpicture/60/141/gratis-png-entrenador-personal-gimnasio-fitness-ejercicio-fisico-iconos-de-computadora-entrenamiento-personal.png" alt="Mancuerna" style="width: 200px;" />
         <h2>Ingresá tus datos</h2>
     </div>
     <div class="row"></div>
