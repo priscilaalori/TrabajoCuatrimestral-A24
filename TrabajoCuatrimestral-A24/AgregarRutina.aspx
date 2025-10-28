@@ -12,12 +12,18 @@
             <input type="text" class="form-control" id="txtNombre">
         </div>
 
-        <div>
+        <div class="mb-3">
             <label class="form-label">Descripción</label>
 
-            <asp:TextBox Rows="3" ID="TxtDescripción" runat="server" CssClass="form-control"></asp:TextBox>
+            <div>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+
         </div>
+
     </div>
+
 
     <div>
         <asp:Button Style="margin-top: 10px;" ID="btnAgregarRutina" runat="server" Text="Agregar" CssClass="btn btn-primary btn-sm" />
