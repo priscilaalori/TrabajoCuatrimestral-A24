@@ -70,6 +70,7 @@
     <Content Include="AgregarRutina.aspx" />
     <Content Include="Historial.aspx" />
     <Content Include="InicioDeportista.aspx" />
+    <Content Include="RegistroEntrenador.aspx" />
     <Content Include="SeleccionDeporte.aspx" />
     <Content Include="InicioEntrenador.aspx" />
     <Content Include="Registro.aspx" />
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="InicioDeportista.aspx.designer.cs">
       <DependentUpon>InicioDeportista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroEntrenador.aspx.cs">
+      <DependentUpon>RegistroEntrenador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroEntrenador.aspx.designer.cs">
+      <DependentUpon>RegistroEntrenador.aspx</DependentUpon>
     </Compile>
     <Compile Include="SeleccionDeporte.aspx.cs">
       <DependentUpon>SeleccionDeporte.aspx</DependentUpon>
