@@ -15,7 +15,7 @@ namespace tp_webform_equipo_24A
         }
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Deportista/InicioDeportista.aspx");
+            Response.Redirect("InicioDeportista.aspx");
         }
        
     }
