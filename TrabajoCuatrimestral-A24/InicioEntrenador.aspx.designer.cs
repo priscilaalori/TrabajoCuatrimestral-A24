@@ -15,13 +15,13 @@ namespace tp_webform_equipo_24A
     {
 
         /// <summary>
-        /// Control listAlumnos.
+        /// Control dgvlistAlumnos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listAlumnos;
+        protected global::System.Web.UI.WebControls.GridView dgvlistAlumnos;
 
         /// <summary>
         /// Control btnVerRutinas.
