@@ -7,16 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace tp_webform_equipo_24A
 {
-    public partial class Rutina : System.Web.UI.Page
+    public partial class AgregarRutina : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnAgregarRutina_Click(object sender, EventArgs e)
+        protected void cancelarRutina_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AgregarRutina.aspx");
+            Response.Redirect("Rutina.aspx");
         }
     }
 }

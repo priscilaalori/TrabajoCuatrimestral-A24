@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarRutina.aspx" />
     <Content Include="Historial.aspx" />
     <Content Include="InicioDeportista.aspx" />
     <Content Include="SeleccionDeporte.aspx" />
@@ -79,6 +80,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarRutina.aspx.cs">
+      <DependentUpon>AgregarRutina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarRutina.aspx.designer.cs">
+      <DependentUpon>AgregarRutina.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Historial.aspx.cs">
       <DependentUpon>Historial.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

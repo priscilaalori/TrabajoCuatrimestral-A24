@@ -5,6 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div>
+        <div>   
+            <h1>Mis rutinas</h1>
+        </div>
         <asp:GridView ID="listAlumnos" runat="server"></asp:GridView>
         <table class="table" border="1">
             <tr>
@@ -30,9 +33,9 @@
         </table>
     </div>
 
-    <div>
-        <button style="margin-top: 10px;" type="button" class="btn btn-primary btn-lg">Agregar rutina </button>
-    </div>
+   <div>
+    <asp:Button style="margin-top: 10px;" ID="btnAgregarRutina" OnClick="btnAgregarRutina_Click" runat="server" Text="Agregar rutina" CssClass="btn btn-primary btn-sm" />
+</div>
 
 
 </asp:Content>

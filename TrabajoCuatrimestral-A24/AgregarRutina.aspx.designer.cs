@@ -11,25 +11,34 @@ namespace tp_webform_equipo_24A
 {
 
 
-    public partial class InicioEntrenador
+    public partial class AgregarRutina
     {
 
         /// <summary>
-        /// Control listAlumnos.
+        /// Control TxtDescripción.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listAlumnos;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripción;
 
         /// <summary>
-        /// Control btnVerRutinas.
+        /// Control btnAgregarRutina.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerRutinas;
+        protected global::System.Web.UI.WebControls.Button btnAgregarRutina;
+
+        /// <summary>
+        /// Control cancelarRutina.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelarRutina;
     }
 }

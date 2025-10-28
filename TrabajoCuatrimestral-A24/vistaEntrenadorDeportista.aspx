@@ -8,7 +8,9 @@
     <p>Acá va el perfil de un alumno, ¿qué carajos verá el entrenador? no lo sé, que lo imagine</p>
 
     <div>
-        <button style="margin-top: 10px;" type="button" class="btn btn-primary btn-lg">Agregar rutina </button>
+
+        <asp:Button ID="btmAgregarRutina" style="margin-top: 10px;" class="btn btn-primary btn-lg" runat="server" Text="Agregar rutina" />
+        
     </div>
 
 

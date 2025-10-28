@@ -38,12 +38,11 @@
         </table>
     </div>
 
+    <%--<div>
+        <asp:Button ID="btnAgregarAlumno" OnClick="btnAgregarAlumno_Click" runat="server" Text="Agregar alumno" CssClass="btn btn-primary btn-lg" />
+    </div> --%>
     <div>
-
-        <button type="button" class="btn btn-primary btn-lg">Agregar Alumno</button>
-    </div> 
-    <div>
-        <button style="margin-top: 10px;" type="button" class="btn btn-primary btn-lg">Ver Rutinas </button>
+        <asp:Button style="margin-top: 10px;" ID="btnVerRutinas" OnClick="btnVerRutinas_Click"  runat="server" Text="Ver rutinas" CssClass="btn btn-primary btn-sm" />
     </div>
 
 
