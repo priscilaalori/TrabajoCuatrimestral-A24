@@ -69,6 +69,8 @@
   <ItemGroup>
     <Content Include="AgregarRutina.aspx" />
     <Content Include="Historial.aspx" />
+    <Content Include="InicioAdmin.aspx" />
+    <Content Include="Principal.aspx" />
     <Content Include="InicioDeportista.aspx" />
     <Content Include="RegistroEntrenador.aspx" />
     <Content Include="SeleccionDeporte.aspx" />
@@ -94,6 +96,20 @@
     </Compile>
     <Compile Include="Historial.aspx.designer.cs">
       <DependentUpon>Historial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InicioAdmin.aspx.cs">
+      <DependentUpon>InicioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioAdmin.aspx.designer.cs">
+      <DependentUpon>InicioAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.aspx.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.aspx.designer.cs">
+      <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="InicioDeportista.aspx.cs">
       <DependentUpon>InicioDeportista.aspx</DependentUpon>
