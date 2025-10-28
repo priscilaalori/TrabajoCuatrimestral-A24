@@ -42,10 +42,10 @@ namespace TrabajoCuatrimestral
                 switch (usuario.Rol)
                 {
                     case "Deportista":
-                        Response.Redirect("InicioDeportista.aspx");
+                        Response.Redirect("Deportista/InicioDeportista.aspx");
                         break;
                     case "Profesor":
-                        Response.Redirect("InicioEntrenador.aspx");
+                        Response.Redirect("Entrenador/InicioEntrenador.aspx");
                         break;
                     case "Administrador":
                         Response.Redirect("InicioAdmin.aspx");

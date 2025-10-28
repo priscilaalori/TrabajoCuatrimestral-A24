@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1> ¿QUE DISCIPLINA VAMOS A ENTRENAR HOY?</h1>
+    <h1> ¿QUE VAMOS A ENTRENAR HOY?</h1>
 
 
 

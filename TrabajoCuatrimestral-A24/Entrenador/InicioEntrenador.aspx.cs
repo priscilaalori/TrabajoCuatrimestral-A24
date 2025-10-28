@@ -15,8 +15,8 @@ namespace tp_webform_equipo_24A
         {
             DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
 
-            dgvlistAlumnos.DataSource = deportistaNegocio.Listar();
-            dgvlistAlumnos.DataBind();  
+           // dgvlistAlumnos.DataSource = deportistaNegocio.Listar();
+            //dgvlistAlumnos.DataBind();  
         }
 
         protected void btnAgregarAlumno_Click(object sender, EventArgs e)

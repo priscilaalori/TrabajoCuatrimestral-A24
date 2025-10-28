@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace tp_webform_equipo_24A
 {
-    public partial class InicioDeportista : System.Web.UI.Page
+    public partial class RutinaDeportista : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
