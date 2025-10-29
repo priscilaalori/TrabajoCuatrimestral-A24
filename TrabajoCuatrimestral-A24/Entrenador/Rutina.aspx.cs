@@ -18,5 +18,10 @@ namespace tp_webform_equipo_24A
         {
             Response.Redirect("AgregarRutina.aspx");
         }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InicioEntrenador.aspx");
+        }
     }
 }

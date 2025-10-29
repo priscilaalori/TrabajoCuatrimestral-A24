@@ -27,5 +27,10 @@ namespace tp_webform_equipo_24A
         {
             Response.Redirect("Rutina.aspx");
         }
+
+        protected void btnPerfilAlumno_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("vistaEntrenadorDeportista.aspx");
+        }
     }
 }

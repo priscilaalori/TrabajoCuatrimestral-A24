@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div>
-        <div>   
+        <div>
             <h1>Mis rutinas</h1>
         </div>
         <asp:GridView ID="listAlumnos" runat="server"></asp:GridView>
@@ -18,24 +18,27 @@
             <tr>
                 <td>Rutina 1</td>
                 <td>Ver detalle </td>
-                <td>Modificar</td> 
+                <td>Modificar</td>
             </tr>
             <tr>
                 <td>Rutina 2</td>
                 <td>Ver detalle</td>
-                <td>Modificar</td> 
+                <td>Modificar</td>
             </tr>
             <tr>
-                <td>Rutima 3</td>
+                <td>Rutina 3</td>
                 <td>Ver detalle</td>
-                <td>Modificar</td> 
+                <td>Modificar</td>
             </tr>
         </table>
     </div>
 
-   <div>
-    <asp:Button style="margin-top: 10px;" ID="btnAgregarRutina" OnClick="btnAgregarRutina_Click" runat="server" Text="Agregar rutina" CssClass="btn btn-primary btn-sm" />
-</div>
+    <div>
+        <asp:Button Style="margin-top: 10px;" ID="btnAgregarRutina" OnClick="btnAgregarRutina_Click" runat="server" Text="Agregar rutina" CssClass="btn btn-primary btn-sm" />
+    </div>
 
+    <div>
+        <asp:Button Style="margin-top: 10px;" ID="btnVolver" OnClick="btnVolver_Click" runat="server" Text="Volver" CssClass="btn btn-primary btn-sm" />
+    </div>
 
 </asp:Content>

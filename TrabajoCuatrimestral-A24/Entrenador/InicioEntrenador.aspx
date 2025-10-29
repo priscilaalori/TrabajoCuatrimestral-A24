@@ -50,5 +50,9 @@
         <asp:Button Style="margin-top: 10px;" ID="btnVerRutinas" OnClick="btnVerRutinas_Click" runat="server" Text="Ver rutinas" CssClass="btn btn-primary btn-sm" />
     </div>
 
+    <div>
+        <asp:Button Style="margin-top: 10px;" ID="btnPerfilAlumno" OnClick="btnPerfilAlumno_Click" runat="server" Text="Ver alumno" CssClass="btn btn-primary btn-sm" />
+    </div>
 
+ 
 </asp:Content>
