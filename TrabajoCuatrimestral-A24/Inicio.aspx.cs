@@ -21,45 +21,27 @@ namespace TrabajoCuatrimestral
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email))
             {
-                lblMensaje.Text = "Debe ingresar email y contraseña.";
+                lblMensaje.Text = "Debe ingresar email ";
                 lblMensaje.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
-            UsuarioNegocio negocio = new UsuarioNegocio();
-            Usuario usuario = negocio.IniciarSesion(email, password);
-
-            if (usuario != null)
+            switch (email)
             {
-                // Guardar datos del usuario en sesión
-                Session["UsuarioLogueado"] = usuario;
-                Session["Nombre"] = usuario.Nombre;
-                Session["Rol"] = usuario.Rol;
-
-                // Redirección según rol
-                switch (usuario.Rol)
-                {
-                    case "Deportista":
-                        Response.Redirect("Deportista/InicioDeportista.aspx");
-                        break;
-                    case "Profesor":
-                        Response.Redirect("Entrenador/InicioEntrenador.aspx");
-                        break;
-                    case "Administrador":
-                        Response.Redirect("InicioAdmin.aspx");
-                        break;
-                    default:
-                        lblMensaje.Text = "Rol desconocido";
-                        break;
-                }
-                //  Response.Redirect("Inicio.aspx");
-            }
-            else
-            {
-                lblMensaje.Text = "Email o contraseña incorrectos.";
-                lblMensaje.ForeColor = System.Drawing.Color.Red;
+                case "Deportista":
+                    Response.Redirect("Deportista/InicioDeportista.aspx");
+                    break;
+                case "Profesor":
+                    Response.Redirect("Entrenador/InicioEntrenador.aspx");
+                    break;
+                case "Administrador":
+                    Response.Redirect("InicioAdmin.aspx");
+                    break;
+                default:
+                    lblMensaje.Text = "Rol desconocido";
+                    break;
             }
         }
     }

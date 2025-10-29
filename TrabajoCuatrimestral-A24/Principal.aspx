@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
+
         .carousel-caption {
             background: rgba(0, 0, 0, 0.55);
             border-radius: 10px;
@@ -18,7 +19,8 @@
         }
 
         .carousel-item img {
-            height: 500px;
+            width: 100%;
+            height: 100vh;
             object-fit: cover;
             filter: brightness(0.8);
         }
@@ -49,20 +51,53 @@
          }
 
         #heroCarousel {
-            width: 100vw;          
+            width: 100vw;        
+            height: 99vh;
             position: relative;
             left: 50%;
             right: 50%;
             margin-left: -50vw;    
             margin-right: -50vw;
+            overflow: hidden;
         }
 
-     .info-section {
-            position: relative;
-            top: -40px; 
-            text-align: center;
+        #heroCarousel {
+            margin-top: -20px;   
+            margin-bottom: -20px; 
         }
-        
+
+        .info-section {
+               position: absolute;           
+               top: 50%;                     
+               left: 50%;
+               transform: translate(-50%, -50%); 
+               z-index: 10;                  
+               width: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+           }
+
+        .info-card {
+               background: rgba(255, 255, 255, 0.9);
+               border-radius: 10px;
+               padding: 40px;
+               max-width: 700px;
+               box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+               text-align: center;
+           }
+
+        .info-card h3 {
+               font-size: 1.8rem;
+               font-weight: 600;
+               margin-bottom: 15px;
+           }
+
+        .info-card p {
+               font-size: 1.1rem;
+               color: #333;
+           }
+           
     </style>
 </asp:Content>
 
@@ -114,6 +149,7 @@
 </div>
 
     <section class="info-section">
+      <div class="info-card">
         <h3>Bienvenido a Net Durance</h3>
         <p>
             Tu plataforma integral de entrenamiento y bienestar. 
@@ -121,6 +157,7 @@
             y reservá clases cuando quieras.
         </p>
         <a href="Inicio.aspx" class="btn btn-primary mt-3">Iniciar sesión</a>
+      </div>
     </section>
 
 </asp:Content>

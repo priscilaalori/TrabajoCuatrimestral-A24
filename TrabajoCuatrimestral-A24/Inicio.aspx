@@ -85,7 +85,7 @@
             <asp:Button ID="btnLogin" runat="server"  Text="Ingresar" CssClass="btn btn-primary w-100" OnClick="btnLogin_Click"/>
 
             <div class="login-footer">
-                <p>¿Sos entrenador?  <a href="RegistroEntrenador.aspx" > Registrate acá</a></p>
+                <p>¿Sos entrenador?  <a href="Entrenador/RegistroEntrenador.aspx" > Registrate acá</a></p>
                 <p>¿Sos deportista? <a href="Registro.aspx">Regístrate</a></p>
             </div>
         </div>

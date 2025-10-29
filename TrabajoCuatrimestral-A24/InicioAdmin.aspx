@@ -26,8 +26,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="admin-container">
-
-        <!-- Sección Usuarios -->
         <div class="table-section">
             <h2>Usuarios registrados</h2>
             <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered">
