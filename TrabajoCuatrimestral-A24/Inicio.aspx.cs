@@ -36,7 +36,13 @@ namespace TrabajoCuatrimestral
                 case "Profesor":
                     Response.Redirect("Entrenador/InicioEntrenador.aspx");
                     break;
+                case "Entrenador":
+                    Response.Redirect("Entrenador/InicioEntrenador.aspx");
+                    break;
                 case "Administrador":
+                    Response.Redirect("InicioAdmin.aspx");
+                    break;
+                case "Admin":
                     Response.Redirect("InicioAdmin.aspx");
                     break;
                 default:

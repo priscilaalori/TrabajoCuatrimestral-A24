@@ -73,6 +73,8 @@
     <Content Include="Entrenador\RegistroEntrenador.aspx" />
     <Content Include="Deportista\SeleccionDeporte.aspx" />
     <Content Include="Entrenador\InicioEntrenador.aspx" />
+    <Content Include="Contacto.aspx" />
+    <Content Include="Planes.aspx" />
     <Content Include="InicioAdmin.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Registro.aspx" />
@@ -125,6 +127,20 @@
     </Compile>
     <Compile Include="Entrenador\InicioEntrenador.aspx.designer.cs">
       <DependentUpon>InicioEntrenador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contacto.aspx.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contacto.aspx.designer.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Planes.aspx.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Planes.aspx.designer.cs">
+      <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="InicioAdmin.aspx.cs">
       <DependentUpon>InicioAdmin.aspx</DependentUpon>
