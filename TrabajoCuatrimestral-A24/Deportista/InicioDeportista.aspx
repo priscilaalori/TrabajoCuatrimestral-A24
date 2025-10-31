@@ -24,6 +24,11 @@
          Display="Dynamic" />
  </div>
 
-    <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='Historial.aspx'">Ver Historial</button>  
 
+     <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='RutinaDeportista.aspx'">Siguiente</button> 
+
+   
+    <br />
+
+    <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='Historial.aspx'">Ver Historial</button>  
 </asp:Content>

@@ -25,6 +25,8 @@
     <h5> Haz un promedio del de ritmo sobre el valor total de kilometros que corriste</h5>
     <asp:TextBox ID="txtNombre" runat="server" />
 
+    <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='InicioDeportista.aspx'">Guardar</button>  
+
 
 
 
