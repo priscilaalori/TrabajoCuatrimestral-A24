@@ -16,14 +16,19 @@
     <div>
         <asp:GridView ID="dgvlistAlumnos" CssClass="container text-center" AutoGenerateColumns ="false" runat="server">
             <Columns>
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+             <%--   <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                <asp:CheckBoxField HeaderText="Rol" DataField="Rol" />
+                <asp:CheckBoxField HeaderText="Rol" DataField="Rol" />--%>
+
+             <%--   <asp:BoundField HeaderText="Id" DataField="IdDeporte" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />--%>
+
+
             </Columns>
   
         </asp:GridView>
 
-                <table class="table" border="1">
+<%--                <table class="table" border="1">
             <tr>
                 <th>Nombre y apellido</th>
                 <th>Perfil</th>
@@ -41,7 +46,7 @@
                 <td>Ver Perfil</td>
             </tr>
         </table>
-    </div>
+    </div>--%>
 
     <%--<div>
         <asp:Button ID="btnAgregarAlumno" OnClick="btnAgregarAlumno_Click" runat="server" Text="Agregar alumno" CssClass="btn btn-primary btn-lg" />

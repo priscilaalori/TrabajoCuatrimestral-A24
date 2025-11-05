@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="DeporteNegocio.cs" />
     <Compile Include="UsuarioNegocio.cs" />
     <Compile Include="DeportistaNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,6 +52,13 @@
       <Project>{9a47dbd1-598b-4726-8678-c24d54c45f86}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="script DB\Creacion BDD Entrenamiento.sql" />
+    <Content Include="script DB\Creacion BDD Entrenamiento_v2.sql" />
+    <Content Include="script DB\Inserts BDD Entrenamiento.sql" />
+    <Content Include="script DB\Inserts BDD Entrenamiento_v2.sql" />
+    <Content Include="script DB\Querys BDD Entrenamiento.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

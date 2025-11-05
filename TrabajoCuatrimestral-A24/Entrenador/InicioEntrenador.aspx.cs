@@ -14,8 +14,12 @@ namespace tp_webform_equipo_24A
         protected void Page_Load(object sender, EventArgs e)
         {
             DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
+            DeporteNegocio deporteNegocio = new DeporteNegocio();
 
-           // dgvlistAlumnos.DataSource = deportistaNegocio.Listar();
+            // dgvlistAlumnos.DataSource = deportistaNegocio.Listar();
+            //dgvlistAlumnos.DataBind();  
+
+            //dgvlistAlumnos.DataSource = deporteNegocio.Listar();
             //dgvlistAlumnos.DataBind();  
         }
 
