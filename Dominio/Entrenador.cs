@@ -11,5 +11,7 @@ namespace Dominio
         public List<Deporte> Deportes { get; set; }
         public List<Deportista> Deportistas { get; set; }
 
+        public List<Rutina> Rutinas { get; set;} //faltaba rutinas del entrenador
+
     }
 }

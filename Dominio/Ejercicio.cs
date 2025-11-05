@@ -13,12 +13,12 @@ namespace Dominio
         public int IdEjercicio { get; set; }
         public int IdRutina { get; set; }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public int Series { get; set; }
-        public int Repeticiones { get; set; }
-        public string Duracion { get; set; } // opcional
+        public string Descripcion { get; set; } //en este campo se describen series, repeticiones según corresponda
+        //public int Series { get; set; }
+        //public int Repeticiones { get; set; }
+        //public string Duracion { get; set; } // opcional
         
-        public string Referencia { get; set; } //a definir porque puede ser un video/ imagen y necesitamos una clase más.
+        public string UrlVideo { get; set; } //lo dejamos en video para que sea más fácil y es opcional
 
     }
 }

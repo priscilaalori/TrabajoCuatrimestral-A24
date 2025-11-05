@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Dominio
 {
     public class Observacion
-    {
+    {//revisar junto con el historial en etapa 3 
             public int IdObservacion { get; set; }
             public int IdRutina { get; set; }
             public int IdProfesor { get; set; } //

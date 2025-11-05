@@ -27,11 +27,11 @@ GO
    3. PROFESORES-DEPORTES
    ============================== */
 -- Juan enseña Natación y Running (IdProfesor=4)
-INSERT INTO ProfesoresDeportes (IdProfesor, IdDeporte)
+INSERT INTO EntrenadoresDeportes (IdEntrenador, IdDeporte)
 VALUES (4, 1), (4, 3);
 
 -- Carla enseña Ciclismo y Running (IdProfesor=5)
-INSERT INTO ProfesoresDeportes (IdProfesor, IdDeporte)
+INSERT INTO EntrenadoresDeportes (IdEntrenador, IdDeporte)
 VALUES (5, 2), (5, 3);
 GO
 
@@ -39,11 +39,11 @@ GO
    4. PROFESOR-DEPORTISTAS
    ============================== */
 -- Juan entrena a Mariano (6) y Lucía (7)
-INSERT INTO ProfesorDeportistas (IdProfesor, IdDeportista)
+INSERT INTO EntrenadoresDeportistas (IdEntrenador, IdDeportista)
 VALUES (4, 6), (4, 7);
 
 -- Carla entrena a Diego (8)
-INSERT INTO ProfesorDeportistas (IdProfesor, IdDeportista)
+INSERT INTO EntrenadoresDeportistas (IdEntrenador, IdDeportista)
 VALUES (5, 8);
 GO
 
@@ -66,29 +66,29 @@ GO
 /* ==============================
    6. RUTINAS
    ============================== */
-INSERT INTO Rutinas (IdDeportista, IdProfesor, Nombre, Nivel, Descripcion)
+INSERT INTO Rutinas (IdEntrenador, Nombre, Nivel, Descripcion)
 VALUES
-(6, 4, 'Natación - Técnica de brazada', 'Intermedio', 'Mejorar eficiencia y resistencia en piscina'),
-(7, 4, 'Running - Fondo', 'Principiante', 'Carreras suaves para mejorar fondo'),
-(8, 5, 'Ciclismo - Potencia y resistencia', 'Avanzado', 'Entrenamiento por intervalos');
+( 4, 'Natación - Técnica de brazada', 'Intermedio', 'Mejorar eficiencia y resistencia en piscina'),
+( 4, 'Running - Fondo', 'Principiante', 'Carreras suaves para mejorar fondo'),
+( 5, 'Ciclismo - Potencia y resistencia', 'Avanzado', 'Entrenamiento por intervalos');
 GO
 
 /* ==============================
    7. EJERCICIOS CON REFERENCIAS (VIDEOS)
    ============================== */
-INSERT INTO Ejercicios (IdRutina, Nombre, Descripcion, Series, Repeticiones, Duracion, Referencia)
+INSERT INTO Ejercicios ( Nombre, Descripcion, UrlVideo)
 VALUES
 -- Rutina 1: Natación
-(1, 'Brazada técnica', '50m con énfasis en técnica', 4, 1, '10 min', 'https://youtu.be/brazada'),
-(1, 'Patada con tabla', 'Patada libre con tabla', 3, 2, '8 min', 'https://youtu.be/patada'),
+('Brazada técnica', '50m con énfasis en técnica', 'https://youtu.be/brazada'),
+( 'Patada con tabla', 'Patada libre con tabla',  'https://youtu.be/patada'),
 
 -- Rutina 2: Running
-(2, 'Trote suave', 'Correr 30 minutos a ritmo cómodo', 1, 1, '30 min', 'https://youtu.be/trote'),
-(2, 'Estiramientos', 'Estiramientos de piernas post-running', 1, 1, '10 min', 'https://youtu.be/estirar'),
+( 'Trote suave', 'Correr 30 minutos a ritmo cómodo',  'https://youtu.be/trote'),
+( 'Estiramientos', 'Estiramientos de piernas post-running', 'https://youtu.be/estirar'),
 
 -- Rutina 3: Ciclismo
-(3, 'Rodillo alta cadencia', '5 min calentamiento + 10x1 min intervalos', 10, 1, '45 min', 'https://youtu.be/rodillo'),
-(3, 'Sprints cortos', '8 sprints de 30 segundos al 90%', 8, 1, '15 min', 'https://youtu.be/sprint');
+( 'Rodillo alta cadencia', '5 min calentamiento + 10x1 min intervalos',  'https://youtu.be/rodillo'),
+( 'Sprints cortos', '8 sprints de 30 segundos al 90%',  'https://youtu.be/sprint');
 GO
 
 /* ==============================

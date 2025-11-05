@@ -8,7 +8,9 @@ namespace Dominio
 {
     public class Deportista: Usuario
     {
-        public int IdProfesor { get; set; }
+        
+        public Entrenador Entrenador { get; set; } //cambio ID por objeto
+        public List<Deporte> Deporte { get; set; } //faltaba deporte
         public List<Rutina> Rutinas { get; set; }
 
     }

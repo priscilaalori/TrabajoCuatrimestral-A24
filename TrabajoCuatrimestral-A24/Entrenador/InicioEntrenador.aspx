@@ -23,7 +23,7 @@
   
         </asp:GridView>
 
-        <%--        <table class="table" border="1">
+                <table class="table" border="1">
             <tr>
                 <th>Nombre y apellido</th>
                 <th>Perfil</th>
@@ -40,7 +40,7 @@
                 <td>Toni</td>
                 <td>Ver Perfil</td>
             </tr>
-        </table>--%>
+        </table>
     </div>
 
     <%--<div>
