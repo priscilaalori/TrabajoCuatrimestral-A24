@@ -27,6 +27,7 @@
             </Columns>
   
         </asp:GridView>
+    </div>
 
 <%--                <table class="table" border="1">
             <tr>

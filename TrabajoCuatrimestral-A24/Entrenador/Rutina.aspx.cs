@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,11 @@ namespace tp_webform_equipo_24A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            RutinaNegocio rutinaNegocio = new RutinaNegocio();
 
+            dgvlistRutinas.DataSource = rutinaNegocio.Listar();
+            dgvlistRutinas.DataBind();
+          
         }
 
         protected void btnAgregarRutina_Click(object sender, EventArgs e)

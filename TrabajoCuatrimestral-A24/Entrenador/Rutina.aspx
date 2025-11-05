@@ -8,8 +8,21 @@
         <div>
             <h1>Mis rutinas</h1>
         </div>
-        <asp:GridView ID="listAlumnos" runat="server"></asp:GridView>
-        <table class="table" border="1">
+        
+   
+        <asp:GridView ID="dgvlistRutinas" CssClass="container text-center" AutoGenerateColumns ="false" runat="server">
+            <Columns>
+               <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
+                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
+
+
+            </Columns>
+  
+        </asp:GridView>
+
+<%--        <table class="table" border="1">
             <tr>
                 <th>Nombre </th>
                 <th>Detalle</th>
@@ -30,7 +43,7 @@
                 <td>Ver detalle</td>
                 <td>Modificar</td>
             </tr>
-        </table>
+        </table>--%>
     </div>
 
     <div>
