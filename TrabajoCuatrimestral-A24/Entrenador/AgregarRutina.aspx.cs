@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,22 @@ namespace tp_webform_equipo_24A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            DeporteNegocio deporteNegocio = new DeporteNegocio();
+
+            try
+            {
+                if (!IsPostBack)
+                {
+                    ddlDeporte.DataSource = deporteNegocio.Listar();
+                    ddlDeporte.DataBind();
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 
