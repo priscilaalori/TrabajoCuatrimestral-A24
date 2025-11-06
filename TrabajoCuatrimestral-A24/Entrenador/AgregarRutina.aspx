@@ -25,14 +25,24 @@
                 ForeColor="Red"
                 Display="Dynamic" />
         </div>
-        
+
 
 
         <div class="mb-3">
             <label class="form-label">Descripción</label>
 
             <div>
-                <asp:TextBox ID="txtDescipcion" cssclass="form-control" Rows="3" runat="server"></asp:TextBox>
+                <asp:TextBox TextMode="MultiLine" ID="txtDescipcion" CssClass="form-control" Rows="3" runat="server"></asp:TextBox>
+            </div>
+
+            <div class="form-group">
+                <label for="txtFechaInicio">Fecha de Inicio</label>
+                <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+            </div>
+
+            <div class="form-group">
+                <label for="txtFechaFin">Fecha de Fin</label>
+                <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             </div>
 
         </div>
@@ -40,12 +50,11 @@
     </div>
 
 
-    <div>
-        <asp:Button Style="margin-top: 10px;" ID="btnAgregarRutina" runat="server" Text="Agregar" CssClass="btn btn-primary btn-sm" />
-    </div>
-    <div>
+    <div class="d-grid gap-2 d-md-block">
+        <asp:Button Style="margin-top: 10px;" ID="btnAgregarRutina" runat="server" Text="Agregar" CssClass="btn btn-primary btn-sm" OnClick="btnAgregarRutina_Click" />
         <asp:Button OnClick="cancelarRutina_Click" Style="margin-top: 10px;" ID="cancelarRutina" runat="server" Text="Cancelar" CssClass="btn btn-primary btn-sm" />
     </div>
+
 
 
 </asp:Content>

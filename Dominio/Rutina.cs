@@ -21,7 +21,7 @@ namespace Dominio
 
         public DateTime FechaInicio { get; set; }
 
-        public DateTime FechaFinizacion { get; set; }
+        public DateTime FechaFin { get; set; }
         public bool Activa { get; set; }
         public List<Ejercicio> Ejercicios { get; set; }
 
