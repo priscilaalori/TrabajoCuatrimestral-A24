@@ -67,9 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Entrenador\AgregarEjercicio.aspx" />
     <Content Include="Entrenador\AgregarRutina.aspx" />
     <Content Include="Deportista\Historial.aspx" />
     <Content Include="Deportista\InicioDeportista.aspx" />
+    <Content Include="Entrenador\MisEjercicios.aspx" />
     <Content Include="Entrenador\RegistroEntrenador.aspx" />
     <Content Include="Deportista\SeleccionDeporte.aspx" />
     <Content Include="Entrenador\InicioEntrenador.aspx" />
@@ -86,6 +88,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entrenador\AgregarEjercicio.aspx.cs">
+      <DependentUpon>AgregarEjercicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrenador\AgregarEjercicio.aspx.designer.cs">
+      <DependentUpon>AgregarEjercicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Entrenador\AgregarRutina.aspx.cs">
       <DependentUpon>AgregarRutina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +115,13 @@
     </Compile>
     <Compile Include="Deportista\InicioDeportista.aspx.designer.cs">
       <DependentUpon>InicioDeportista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrenador\MisEjercicios.aspx.cs">
+      <DependentUpon>MisEjercicios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrenador\MisEjercicios.aspx.designer.cs">
+      <DependentUpon>MisEjercicios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entrenador\RegistroEntrenador.aspx.cs">
       <DependentUpon>RegistroEntrenador.aspx</DependentUpon>
