@@ -32,7 +32,7 @@ namespace tp_webform_equipo_24A
         }
         protected void btnAgregarEjercicio_click(object sender, EventArgs e)
         {
-
+            Response.Redirect("AgregarEjercicio.aspx");
         }
 
 
