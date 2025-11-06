@@ -9,16 +9,13 @@
 
         <div class="mb-3">
             <label class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="txtNombre">
+            <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+
         </div>
 
         <div class="form-group">
             <label for="ddlDeporte">Seleccioná el deporte:</label>
             <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control">
-              <%--  <asp:ListItem Text="--Seleccione un deporte--" Value="" />
-                <asp:ListItem Text="Natación" Value="Natación" />
-                <asp:ListItem Text="Running" Value="Running" />
-                <asp:ListItem Text="Ciclismo" Value="Ciclismo" />--%>
             </asp:DropDownList>
 
             <asp:RequiredFieldValidator ID="rfvDeporte" runat="server"
@@ -28,14 +25,15 @@
                 ForeColor="Red"
                 Display="Dynamic" />
         </div>
+        
+
 
         <div class="mb-3">
             <label class="form-label">Descripción</label>
 
             <div>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <asp:TextBox ID="txtDescipcion" cssclass="form-control" Rows="3" runat="server"></asp:TextBox>
             </div>
-
 
         </div>
 
