@@ -25,16 +25,16 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Ejercicio Ejercicio = new Ejercicio();
-                   Ejercicio.IdEjercicio = (int)datos.Lector["IdEjercicio"];
+                    Ejercicio.IdEjercicio = (int)datos.Lector["IdEjercicio"];
                     // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];//  que es esto?
                     Ejercicio.Nombre = (string)datos.Lector["Nombre"];
                     Ejercicio.Descripcion = (string)datos.Lector["Descripcion"];
                     Ejercicio.UrlVideo = (string)datos.Lector["UrlVideo"];
-                   
 
 
 
-                    
+
+
 
                     listaEjercicios.Add(Ejercicio);
                 }
@@ -50,7 +50,32 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void agregar(Ejercicio nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+
+                datos.setearConsulta("insert into Ejercicios ( Nombre , Descripcion, UrlVideo) values (@Nombre, @Descripcion, @UrlVideo)");
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@UrlVideo", nuevo.UrlVideo);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
 
