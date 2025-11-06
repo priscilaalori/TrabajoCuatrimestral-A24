@@ -24,7 +24,7 @@ namespace Negocio
                 {
                     Rutina rutinaAuxiliar = new Rutina();
                     rutinaAuxiliar.IdRutina = (int)datos.Lector["IdRutina"];
-                    rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
+                   // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
                     rutinaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
                     rutinaAuxiliar.Nivel = (string)datos.Lector["Nivel"];
                     rutinaAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];

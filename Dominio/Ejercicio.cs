@@ -11,7 +11,7 @@ namespace Dominio
     public class Ejercicio
     {
         public int IdEjercicio { get; set; }
-        public int IdRutina { get; set; }
+       
         public string Nombre { get; set; }
         public string Descripcion { get; set; } //en este campo se describen series, repeticiones según corresponda
         //public int Series { get; set; }
