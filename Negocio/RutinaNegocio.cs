@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Dominio;
 
@@ -54,6 +55,35 @@ namespace Negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public void Agregar(Rutina rutina)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearProcedimiento("sp_AgregarRutina");
+                
+                accesoDatos.setearParametro("@IdEntrenador", 1);
+                accesoDatos.setearParametro("@IdDeporte", rutina.Deporte.IdDeporte);
+                accesoDatos.setearParametro("@Nombre", rutina.Nombre);
+                accesoDatos.setearParametro("@Nivel", rutina.Nivel);
+                accesoDatos.setearParametro("@Descripcion", rutina.Descripcion);
+                accesoDatos.setearParametro("@FechaInicio", rutina.FechaInicio);
+                accesoDatos.setearParametro("@FechaFin", rutina.FechaFin);
+
+
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
             }
         }
 

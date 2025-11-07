@@ -13,6 +13,12 @@
 
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">Nivel</label>
+            <asp:TextBox ID="txtNivel" CssClass="form-control" runat="server"></asp:TextBox>
+
+        </div>
+
         <div class="form-group">
             <label for="ddlDeporte">Seleccioná el deporte:</label>
             <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control">

@@ -33,6 +33,15 @@ namespace Negocio
             comando.CommandText = consulta;
         }
 
+        //setea procedimientos almacenados 
+
+        public void setearProcedimiento(string procedimiento)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = procedimiento;
+        }
+
+
         //Lee la bdd. Solo sirve para select
         public void ejecutarLectura()
         {
@@ -65,6 +74,8 @@ namespace Negocio
                 throw ex;
             }
         }
+
+
 
         //Darle variables a la consulta sql 
         public void setearParametro(string nombre, object valor)

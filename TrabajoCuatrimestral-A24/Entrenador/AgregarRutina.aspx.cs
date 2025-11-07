@@ -41,21 +41,23 @@ namespace tp_webform_equipo_24A
 
         protected void btnAgregarRutina_Click(object sender, EventArgs e)
         {
+            RutinaNegocio rutinaNego = new RutinaNegocio();
             try
             {
                 Dominio.Rutina rutinaNueva = new Dominio.Rutina();
                 rutinaNueva.Nombre = txtNombre.Text;
                 rutinaNueva.Descripcion = txtDescipcion.Text;
+                rutinaNueva.Nivel = txtNivel.Text;
                 rutinaNueva.FechaInicio = DateTime.Parse(txtFechaInicio.Text);
                 rutinaNueva.FechaFin = DateTime.Parse(txtFechaFin.Text);    
                 
                 rutinaNueva.Deporte = new Deporte();
 
-                rutinaNueva.Deporte.IdDeporte = 1;
-                rutinaNueva.Deporte.Nombre = ddlDeporte.DataTextField;
+                rutinaNueva.Deporte.IdDeporte = int.Parse(ddlDeporte.SelectedValue);
 
-             
+                rutinaNego.Agregar(rutinaNueva);
 
+                Response.Redirect("Rutina.aspx");
             }
             catch (Exception ex)
             {
