@@ -12,19 +12,9 @@ namespace TrabajoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CargarUsuarios();
-            }
+           
         }
 
 
-
-        private void CargarUsuarios()
-        {
-            UsuarioNegocio negocio = new UsuarioNegocio();
-            gvUsuarios.DataSource = negocio.ListarUsuarios();
-            gvUsuarios.DataBind();
-        }
     }
 }

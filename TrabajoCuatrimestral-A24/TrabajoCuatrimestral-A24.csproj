@@ -67,6 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrador\AdministrarDeportes.aspx" />
+    <Content Include="Administrador\AdministrarUsuarios.aspx" />
+    <Content Include="Administrador\ModificarUsuario.aspx" />
     <Content Include="Entrenador\AgregarEjercicio.aspx" />
     <Content Include="Entrenador\AgregarRutina.aspx" />
     <Content Include="Deportista\Historial.aspx" />
@@ -88,6 +91,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\AdministrarDeportes.aspx.cs">
+      <DependentUpon>AdministrarDeportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\AdministrarDeportes.aspx.designer.cs">
+      <DependentUpon>AdministrarDeportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\AdministrarUsuarios.aspx.cs">
+      <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\AdministrarUsuarios.aspx.designer.cs">
+      <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Entrenador\AgregarEjercicio.aspx.cs">
       <DependentUpon>AgregarEjercicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
