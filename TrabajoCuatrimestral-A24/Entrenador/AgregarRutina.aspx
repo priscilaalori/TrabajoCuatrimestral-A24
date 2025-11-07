@@ -5,32 +5,37 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <style>
-        .color-validaciones{
-            color:indianred;        
+        .color-validaciones {
+            color: indianred;
         }
     </style>
 
     <div>
         <h1>Nueva rutina</h1>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="color-validaciones" ControlToValidate="txtNombre" runat="server" />
-            
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="color-validaciones" ControlToValidate="txtNombre" runat="server" />
+
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nivel</label>
+        <asp:TextBox ID="txtNivel" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ErrorMessage="El nivel es requerido" CssClass="color-validaciones" ControlToValidate="txtNivel" runat="server" />
+
+    </div>
+
+        <div class="form-group">
+            <label for="ddlDNivel">Seleccioná el nivel:</label>
+            <asp:DropDownList ID="ddlNivel" cssclass="form-control" runat="server" >
+                <asp:ListItem Text="Principiante" Value="Principiante"></asp:ListItem>
+                <asp:ListItem Text="Intermedio" Value="Intermedio"></asp:ListItem>
+                <asp:ListItem Text="Avanzado" Value="Avanzado"></asp:ListItem>
+            </asp:DropDownList>
         </div>
-
-        <%--<div class="mb-3">
-            <label class="form-label">Nivel</label>
-            <asp:TextBox ID="txtNivel" CssClass="form-control" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ErrorMessage="El nivel es requerido" CssClass="color-validaciones" ControlToValidate="txtNivel" runat="server" />
-
-        </div>--%>
-
-             <div class="form-group">
-         <label for="ddlDNivel">Seleccioná el nivel:</label>
-         <asp:DropDownList ID="ddlNivel" runat="server" CssClass="form-control">
-         </asp:DropDownList>
 
         <div class="form-group">
             <label for="ddlDeporte">Seleccioná el deporte:</label>
@@ -52,7 +57,7 @@
             <div>
                 <asp:TextBox TextMode="MultiLine" ID="txtDescipcion" CssClass="form-control" Rows="3" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ErrorMessage="La descripción es requerida" CssClass="color-validaciones" ControlToValidate="txtDescipcion" runat="server" />
-                </div>
+            </div>
 
             <div class="form-group">
                 <label for="txtFechaInicio">Fecha de Inicio</label>
@@ -67,8 +72,6 @@
             </div>
 
         </div>
-
-    </div>
 
 
     <div class="d-grid gap-2 d-md-block">

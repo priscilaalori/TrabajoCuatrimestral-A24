@@ -47,7 +47,7 @@ namespace tp_webform_equipo_24A
                 Dominio.Rutina rutinaNueva = new Dominio.Rutina();
                 rutinaNueva.Nombre = txtNombre.Text;
                 rutinaNueva.Descripcion = txtDescipcion.Text;
-                rutinaNueva.Nivel = txtNivel.Text;
+                rutinaNueva.Nivel = ddlNivel.SelectedItem.Text;
                 rutinaNueva.FechaInicio = DateTime.Parse(txtFechaInicio.Text);
                 rutinaNueva.FechaFin = DateTime.Parse(txtFechaFin.Text);    
                 
