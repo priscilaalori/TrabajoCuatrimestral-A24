@@ -10,7 +10,7 @@
         </div>
         
    
-        <asp:GridView ID="dgvlistRutinas" CssClass="container text-center" AutoGenerateColumns ="false" runat="server">
+        <asp:GridView ID="dgvlistRutinas" CssClass="table" AutoGenerateColumns ="false" runat="server">
             <Columns>
                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
