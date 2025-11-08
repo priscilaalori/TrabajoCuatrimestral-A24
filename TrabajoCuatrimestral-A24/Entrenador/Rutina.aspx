@@ -3,47 +3,27 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <style>
+        .oculto{
+            display: none;
+        }
+    </style>
 
     <div>
-        <div>
-            <h1>Mis rutinas</h1>
-        </div>
-        
-   
-        <asp:GridView ID="dgvlistRutinas" CssClass="table" AutoGenerateColumns ="false" runat="server">
+        <h1>Mis rutinas</h1>
+    </div>
+
+    <div>
+        <asp:GridView ID="dgvlistRutinas" CssClass="table" OnSelectedIndexChanged="dgvlistRutinas_SelectedIndexChanged" AutoGenerateColumns="false"  runat="server">
             <Columns>
-               <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="idRutina" DataField="IdRutina" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
-
-
+                <asp:CommandField ShowSelectButton="true"  SelectText="Modificar" HeaderText="Acción" />
             </Columns>
-  
         </asp:GridView>
-
-<%--        <table class="table" border="1">
-            <tr>
-                <th>Nombre </th>
-                <th>Detalle</th>
-                <th>Modificar</th>
-            </tr>
-            <tr>
-                <td>Rutina 1</td>
-                <td>Ver detalle </td>
-                <td>Modificar</td>
-            </tr>
-            <tr>
-                <td>Rutina 2</td>
-                <td>Ver detalle</td>
-                <td>Modificar</td>
-            </tr>
-            <tr>
-                <td>Rutina 3</td>
-                <td>Ver detalle</td>
-                <td>Modificar</td>
-            </tr>
-        </table>--%>
     </div>
 
     <div>
@@ -51,7 +31,7 @@
     </div>
 
     <div>
-        <asp:Button Style="margin-top: 10px;" ID="btnVolver" OnClick="btnVolver_Click" runat="server" Text="Volver" CssClass="btn btn-primary btn-sm" />
+        <asp:Button Style="margin-top: 10px;" ID="btnVolver" OnClick="btnVolver_Click" runat="server" Text="Volver" CssClass="btn btn-primary btn-sm" CausesValidation="false" />
     </div>
 
 </asp:Content>

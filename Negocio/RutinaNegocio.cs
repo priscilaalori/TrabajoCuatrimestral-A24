@@ -30,8 +30,8 @@ namespace Negocio
                     rutinaAuxiliar.Nivel = (string)datos.Lector["Nivel"];
                     rutinaAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
                     rutinaAuxiliar.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
-                    rutinaAuxiliar.FechaCreacion = (DateTime)datos.Lector["FechaInicio"];
-                    rutinaAuxiliar.FechaCreacion = (DateTime)datos.Lector["FechaFin"];
+                    rutinaAuxiliar.FechaInicio = (DateTime)datos.Lector["FechaInicio"];
+                    rutinaAuxiliar.FechaFin = (DateTime)datos.Lector["FechaFin"];
 
                     rutinaAuxiliar.Deporte = new Deporte();
 
@@ -87,6 +87,35 @@ namespace Negocio
             }
         }
 
+        public void ModificarSP(Rutina rutina)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearProcedimiento("sp_ModificarRutina");
+
+                accesoDatos.setearParametro("@IdRutina", rutina.IdRutina);
+                accesoDatos.setearParametro("@IdDeporte", rutina.Deporte.IdDeporte);
+                accesoDatos.setearParametro("@Nombre", rutina.Nombre);
+                accesoDatos.setearParametro("@Nivel", rutina.Nivel);
+                accesoDatos.setearParametro("@Descripcion", rutina.Descripcion);
+                accesoDatos.setearParametro("@FechaInicio", rutina.FechaInicio);
+                accesoDatos.setearParametro("@FechaFin", rutina.FechaFin);
+
+
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
     }
+
+  
 }
 

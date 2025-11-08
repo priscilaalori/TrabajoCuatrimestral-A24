@@ -24,6 +24,26 @@ namespace tp_webform_equipo_24A
                     ddlDeporte.DataTextField = "Nombre";
                     ddlDeporte.DataBind();
 
+
+
+                    //Modificar
+                    if (Request.QueryString["id"] != null)
+                    {
+                        int id = int.Parse(Request.QueryString["id"].ToString());
+
+                        RutinaNegocio rutinaNegocio = new RutinaNegocio();
+                        List<Dominio.Rutina> rutinas = rutinaNegocio.Listar();
+                        Dominio.Rutina rutinaGuardada = rutinas.Find(x => x.IdRutina == id);
+
+                        txtNombre.Text = rutinaGuardada.Nombre;
+                        txtDescipcion.Text = rutinaGuardada.Descripcion;
+                        txtFechaInicio.Text = rutinaGuardada.FechaFin.ToString("yyyy-MM-dd");
+                        txtFechaFin.Text = rutinaGuardada.FechaFin.ToString("yyyy-MM-dd");
+
+                        ddlNivel.SelectedValue = rutinaGuardada.Nivel;
+                        ddlDeporte.SelectedValue = rutinaGuardada.Deporte.IdDeporte.ToString();
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -49,13 +69,20 @@ namespace tp_webform_equipo_24A
                 rutinaNueva.Descripcion = txtDescipcion.Text;
                 rutinaNueva.Nivel = ddlNivel.SelectedItem.Text;
                 rutinaNueva.FechaInicio = DateTime.Parse(txtFechaInicio.Text);
-                rutinaNueva.FechaFin = DateTime.Parse(txtFechaFin.Text);    
-                
+                rutinaNueva.FechaFin = DateTime.Parse(txtFechaFin.Text);
+
                 rutinaNueva.Deporte = new Deporte();
 
                 rutinaNueva.Deporte.IdDeporte = int.Parse(ddlDeporte.SelectedValue);
 
-                rutinaNego.Agregar(rutinaNueva);
+                if (Request.QueryString["id"] != null)
+                {
+                    rutinaNueva.IdRutina = int.Parse(Request.QueryString["id"].ToString());
+                    rutinaNego.ModificarSP(rutinaNueva);
+
+                }
+                else rutinaNego.Agregar(rutinaNueva);
+
 
                 Response.Redirect("Rutina.aspx");
             }

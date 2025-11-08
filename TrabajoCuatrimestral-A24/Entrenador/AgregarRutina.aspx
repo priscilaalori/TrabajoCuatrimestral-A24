@@ -21,12 +21,12 @@
 
     </div>
 
-    <div class="mb-3">
+<%--    <div class="mb-3">
         <label class="form-label">Nivel</label>
         <asp:TextBox ID="txtNivel" CssClass="form-control" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ErrorMessage="El nivel es requerido" CssClass="color-validaciones" ControlToValidate="txtNivel" runat="server" />
 
-    </div>
+    </div>--%>
 
         <div class="form-group">
             <label for="ddlDNivel">Seleccioná el nivel:</label>

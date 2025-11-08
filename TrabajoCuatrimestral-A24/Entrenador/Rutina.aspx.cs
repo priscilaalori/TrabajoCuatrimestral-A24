@@ -26,7 +26,13 @@ namespace tp_webform_equipo_24A
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InicioEntrenador.aspx");
+            Response.Redirect("InicioEntrenador.aspx",false);
+        }
+
+        protected void dgvlistRutinas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvlistRutinas.SelectedRow.Cells[0].Text;
+            Response.Redirect("AgregarRutina.aspx?id=" + id);
         }
     }
 }
