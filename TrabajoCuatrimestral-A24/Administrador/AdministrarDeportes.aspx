@@ -14,16 +14,8 @@
             margin-bottom: 30px;
         }
 
-        .table-section h2 {
-            margin-bottom: 15px;
-        }
-
-        .table {
-            margin-bottom: 0;
-        }
-
         .btn-modificar {
-            background-color: #0d6efd; 
+            background-color: #0d6efd;
             color: #fff;
             border: none;
             padding: 6px 12px;
@@ -46,6 +38,18 @@
             background-color: #bb2d3b;
         }
 
+        .btn-activar {
+            background-color: #198754;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        .btn-activar:hover {
+            background-color: #157347;
+        }
+
         .btn-agregar {
             background-color: #198754;
             color: #fff;
@@ -64,74 +68,53 @@
             text-align: right;
             margin-top: 20px;
         }
-
-        .btn-container {
-            display: flex;
-            justify-content: center;  
-            gap: 20px;                 
-            margin-top: 20px;
-        }
-        
-        .btn-agregar {
-            background-color: #000;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 220px;              
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn-agregar:hover {
-            background-color: #333;
-        }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="admin-container">
         <div class="table-section">
-            <h2>Usuarios registrados</h2>
+            <h2>Deportes registrados</h2>
 
             <asp:Label ID="lblMensaje" runat="server" CssClass="text-success" />
 
-            <asp:GridView ID="gvUsuarios" runat="server" 
-                AutoGenerateColumns="False" 
+            <asp:GridView ID="gvDeportes" runat="server"
+                AutoGenerateColumns="False"
                 CssClass="table table-striped table-bordered text-center"
-                DataKeyNames="IdUsuario"
-                OnRowCommand="gvUsuarios_RowCommand">
-                
+                DataKeyNames="IdDeporte"
+                OnRowCommand="gvDeportes_RowCommand"
+                OnRowDataBound="gvDeportes_RowDataBound">
+
                 <Columns>
-                    <asp:BoundField DataField="IdUsuario" HeaderText="ID" />
+                    <asp:BoundField DataField="IdDeporte" HeaderText="ID" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                    <asp:BoundField DataField="Email" HeaderText="Email" />
-                    <asp:BoundField DataField="Rol" HeaderText="Rol" />
+                    <asp:BoundField DataField="Estado" HeaderText="Activo" />
 
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
-                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" 
-                                CssClass="btn-modificar me-2" 
-                                CommandName="Modificar" 
-                                CommandArgument='<%# Eval("IdUsuario") %>' />
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar"
+                                CssClass="btn-modificar me-2"
+                                CommandName="Modificar"
+                                CommandArgument='<%# Eval("IdDeporte") %>' />
 
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
-                                CssClass="btn-eliminar" 
-                                CommandName="Eliminar" 
-                                CommandArgument='<%# Eval("IdUsuario") %>' 
-                                OnClientClick="return confirm('¿Seguro que deseas eliminar este usuario?');" />
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar"
+                                CssClass="btn-eliminar"
+                                CommandName="Eliminar"
+                                CommandArgument='<%# Eval("IdDeporte") %>'
+                                OnClientClick="return confirm('¿Seguro que deseas dar de baja este deporte?');" />
+
+                            <asp:Button ID="btnActivar" runat="server" Text="Activar"
+                                CssClass="btn-activar"
+                                CommandName="Activar"
+                                CommandArgument='<%# Eval("IdDeporte") %>'
+                                OnClientClick="return confirm('¿Seguro que deseas Activar este deporte?');" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
 
             <div class="btn-container">
-                <asp:Button ID="btnAgregar" runat="server" Text="Agregar nuevo usuario" CssClass="btn-agregar" PostBackUrl="~/Registro.aspx"  />
-
-                <asp:Button ID="btnAgregarEntrenador" runat="server" Text="Agregar nuevo entrenador" CssClass="btn-agregar" PostBackUrl="~/Entrenador/RegistroEntrenador.aspx" />
+                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Deporte Nuevo" CssClass="btn-agregar" OnClick="btnAgregar_Click" />
             </div>
         </div>
     </div>

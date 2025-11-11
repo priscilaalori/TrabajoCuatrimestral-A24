@@ -11,6 +11,8 @@ namespace Dominio
         public int IdDeporte { get; set; }
         public string Nombre { get; set; } // Ej: Natación, Ciclismo, Running
 
+        public bool Estado { get; set; }
+
         public override string ToString()
         {
             return Nombre;

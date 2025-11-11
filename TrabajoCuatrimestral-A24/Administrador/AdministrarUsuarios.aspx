@@ -46,6 +46,18 @@
             background-color: #bb2d3b;
         }
 
+        .btn-activar {
+            background-color: #198754;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        .btn-activar:hover {
+            background-color: #157347;
+        }
+
         .btn-agregar {
             background-color: #198754;
             color: #fff;
@@ -102,7 +114,8 @@
                 AutoGenerateColumns="False" 
                 CssClass="table table-striped table-bordered text-center"
                 DataKeyNames="IdUsuario"
-                OnRowCommand="gvUsuarios_RowCommand">
+                OnRowCommand="gvUsuarios_RowCommand"
+                OnRowDataBound="gvUsuarios_RowDataBound">
                 
                 <Columns>
                     <asp:BoundField DataField="IdUsuario" HeaderText="ID" />
@@ -110,6 +123,7 @@
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                     <asp:BoundField DataField="Email" HeaderText="Email" />
                     <asp:BoundField DataField="Rol" HeaderText="Rol" />
+                    <asp:BoundField DataField="Activo" HeaderText="Activo" />
 
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
@@ -123,6 +137,12 @@
                                 CommandName="Eliminar" 
                                 CommandArgument='<%# Eval("IdUsuario") %>' 
                                 OnClientClick="return confirm('¿Seguro que deseas eliminar este usuario?');" />
+
+                            <asp:Button ID="Button1" runat="server" Text="Activar" 
+                                CssClass="btn-activar" 
+                                CommandName="Activar" 
+                                CommandArgument='<%# Eval("IdUsuario") %>' 
+                                OnClientClick="return confirm('¿Seguro que deseas activar este usuario?');" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

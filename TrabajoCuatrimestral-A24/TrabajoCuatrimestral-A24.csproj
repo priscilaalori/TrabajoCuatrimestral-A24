@@ -69,6 +69,8 @@
   <ItemGroup>
     <Content Include="Administrador\AdministrarDeportes.aspx" />
     <Content Include="Administrador\AdministrarUsuarios.aspx" />
+    <Content Include="Administrador\AgregarDeporte.aspx" />
+    <Content Include="Administrador\ModificarDeporte.aspx" />
     <Content Include="Administrador\ModificarUsuario.aspx" />
     <Content Include="Entrenador\AgregarEjercicio.aspx" />
     <Content Include="Entrenador\AgregarRutina.aspx" />
@@ -105,6 +107,20 @@
     </Compile>
     <Compile Include="Administrador\AdministrarUsuarios.aspx.designer.cs">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\AgregarDeporte.aspx.cs">
+      <DependentUpon>AgregarDeporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\AgregarDeporte.aspx.designer.cs">
+      <DependentUpon>AgregarDeporte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\ModificarDeporte.aspx.cs">
+      <DependentUpon>ModificarDeporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\ModificarDeporte.aspx.designer.cs">
+      <DependentUpon>ModificarDeporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\ModificarUsuario.aspx.cs">
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>

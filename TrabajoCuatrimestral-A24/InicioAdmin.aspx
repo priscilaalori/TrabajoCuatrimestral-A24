@@ -166,9 +166,9 @@
             </div>
 
             <div class="admin-card card-profes">
-                <h4>Otra funcionalidad</h4>
-                <p>¿Que vamos a cambiar acá?.</p>
-                <a href="Profesores.aspx" class="btn-card">Administrar</a>
+                <h4>Asignación automatica</h4>
+                <p>Asigna profesores a alumnos automaticamente.</p>
+                <a href="InicioAdmin.aspx" class="btn-card">Asignar</a>
             </div>
 
             <div class="admin-card card-deportes">
@@ -180,7 +180,7 @@
             <div class="admin-card card-config">
                 <h4>Configuración</h4>
                 <p>Actualizá información del sistema, accesos y parámetros.</p>
-                <a href="Config.aspx" class="btn-card">Configurar</a>
+                <a href="InicioAdmin.aspx" class="btn-card">Configurar</a>
             </div>
 
         </div>

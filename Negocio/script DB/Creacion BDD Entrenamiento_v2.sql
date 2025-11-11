@@ -23,7 +23,8 @@ GO
    ============================== */
 CREATE TABLE Deportes (
     IdDeporte INT IDENTITY(1,1) PRIMARY KEY,
-    Nombre NVARCHAR(50) NOT NULL
+    Nombre NVARCHAR(50) NOT NULL,
+	Estado BIT NOT NULL DEFAULT 1
 );
 GO
 

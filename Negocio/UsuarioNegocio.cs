@@ -49,7 +49,9 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("SELECT IdUsuario, Nombre, Apellido, Email, Rol FROM Usuarios WHERE Activo = 1");
+
+                //datos.setearConsulta("SELECT IdUsuario, Nombre, Apellido, Email, Rol FROM Usuarios WHERE Activo = 1");
+                datos.setearConsulta("SELECT IdUsuario, Nombre, Apellido, Email, Rol, Activo FROM Usuarios ");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -60,7 +62,8 @@ namespace Negocio
                         Nombre = datos.Lector["Nombre"].ToString(),
                         Apellido = datos.Lector["Apellido"].ToString(),
                         Email = datos.Lector["Email"].ToString(),
-                        Rol = datos.Lector["Rol"].ToString()
+                        Rol = datos.Lector["Rol"].ToString(),
+                        Activo = (bool)datos.Lector["Activo"]
                     };
                     usuarios.Add(u);
                 }
@@ -151,6 +154,25 @@ namespace Negocio
             try
             {
                 datos.setearConsulta("UPDATE Usuarios SET Activo = 0 WHERE IdUsuario = @IdUsuario");
+                datos.setearParametro("@IdUsuario", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void ActivarUsuarioLogico(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Usuarios SET Activo = 1 WHERE IdUsuario = @IdUsuario");
                 datos.setearParametro("@IdUsuario", id);
                 datos.ejecutarAccion();
             }

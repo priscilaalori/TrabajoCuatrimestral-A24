@@ -23,42 +23,69 @@ namespace tp_webform_equipo_24A
                 }
 
 
-                CargarUsuarios();
+                cargarDeportes();
             }
         }
-        private void CargarUsuarios()
-        {
-            UsuarioNegocio negocio = new UsuarioNegocio();
-            gvUsuarios.DataSource = negocio.ListarUsuarios();
 
-            gvUsuarios.DataBind();
+        private void cargarDeportes()
+        {
+            DeporteNegocio negocio = new DeporteNegocio();
+            gvDeportes.DataSource = negocio.Listar();
+
+            gvDeportes.DataBind();
         }
 
-        protected void gvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvDeportes_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
+            int id = Convert.ToInt32(e.CommandArgument);
+            DeporteNegocio negocio = new DeporteNegocio();
+
             if (e.CommandName == "Modificar")
             {
-                int idUsuario = Convert.ToInt32(e.CommandArgument);
-                Session["IdUsuarioSeleccionado"] = idUsuario;
-                Response.Redirect("ModificarUsuario.aspx", false);
+                Session["idDeporteSeleccionado"] = id;
+                Response.Redirect("ModificarDeporte.aspx", false);
             }
-
-            if (e.CommandName == "Eliminar")
+            else if (e.CommandName == "Eliminar")
             {
-                int idUsuario = Convert.ToInt32(e.CommandArgument);
-                UsuarioNegocio negocio = new UsuarioNegocio();
-                try
-                {
-                    negocio.EliminarUsuarioLogico(idUsuario);
-                    Session["MensajeExito"] = "Usuario eliminado correctamente.";
-                }
-                catch (Exception ex)
-                {
-                    Session["MensajeExito"] = "Error al eliminar usuario: " + ex.Message;
-                }
-
-                Response.Redirect("AdministrarUsuarios.aspx", false);
+                negocio.EliminarDeporteLogico(id);
+                lblMensaje.Text = "Deporte dado de baja correctamente.";
+                cargarDeportes();
             }
+            else if (e.CommandName == "Activar")
+            {
+                negocio.ActivarDeporteLogico(id);
+                lblMensaje.Text = "Deporte activado correctamente.";
+                cargarDeportes();
+            }
+        }
+
+        protected void gvDeportes_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                bool estado = Convert.ToBoolean(DataBinder.Eval(e.Row.DataItem, "Estado"));
+
+                Button btnEliminar = (Button)e.Row.FindControl("btnEliminar");
+                Button btnActivar = (Button)e.Row.FindControl("btnActivar");
+
+                if (estado)
+                {
+                    btnActivar.Enabled = false;
+                    btnActivar.Text = "Activo";
+                    btnActivar.CssClass = "btn-activar disabled";
+                }
+                else
+                {
+                    btnEliminar.Enabled = false;
+                    btnEliminar.Text = "Inactivo";
+                    btnEliminar.CssClass = "btn-eliminar disabled";
+                }
+            }
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarDeporte.aspx", false);
         }
 
 
