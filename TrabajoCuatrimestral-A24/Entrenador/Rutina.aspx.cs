@@ -34,5 +34,15 @@ namespace tp_webform_equipo_24A
             var id = dgvlistRutinas.SelectedRow.Cells[0].Text;
             Response.Redirect("AgregarRutina.aspx?id=" + id);
         }
+
+        protected void dgvlistRutinas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Eliminar")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect("EliminarRutinaEntrenador.aspx?id=" + id);
+
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace tp_webform_equipo_24A
 
             try
             {
+                //pregunta si es la primera vez que se recarga la pantalla
                 if (!IsPostBack)
                 {
                     ddlDeporte.DataSource = deporteNegocio.Listar();

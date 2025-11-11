@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
-        .oculto{
+        .oculto {
             display: none;
         }
     </style>
@@ -14,14 +14,21 @@
     </div>
 
     <div>
-        <asp:GridView ID="dgvlistRutinas" CssClass="table" OnSelectedIndexChanged="dgvlistRutinas_SelectedIndexChanged" AutoGenerateColumns="false"  runat="server">
+        <asp:GridView ID="dgvlistRutinas" OnRowCommand="dgvlistRutinas_RowCommand" CssClass="table" OnSelectedIndexChanged="dgvlistRutinas_SelectedIndexChanged" AutoGenerateColumns="false" runat="server">
             <Columns>
                 <asp:BoundField HeaderText="idRutina" DataField="IdRutina" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
-                <asp:CommandField ShowSelectButton="true"  SelectText="Modificar" HeaderText="Acción" />
+                <asp:CommandField ShowSelectButton="true" SelectText="Modificar" HeaderText="Acción" />
+                <asp:TemplateField HeaderText="Eliminar" >
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnEliminar" runat="server" Text="Eliminar"
+                            CommandName="Eliminar"
+                            CommandArgument='<%# Eval("IdRutina") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>

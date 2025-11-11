@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select R.IdRutina, R.IdEntrenador, R.IdDeporte, D.Nombre as Deporte, R.Nombre, R.Nivel, R.Descripcion, R.FechaCreacion, R.FechaInicio,R.FechaFin from Rutinas R inner join Deportes D on D.IdDeporte = R.IdDeporte");
+                datos.setearConsulta("select R.IdRutina, R.IdEntrenador, R.IdDeporte, D.Nombre as Deporte, R.Nombre, R.Nivel, R.Descripcion, R.FechaCreacion, R.FechaInicio,R.FechaFin from Rutinas R inner join Deportes D on D.IdDeporte = R.IdDeporte where Activa = 1");
                 datos.ejecutarLectura();
 
 
@@ -114,6 +114,28 @@ namespace Negocio
 
         }
 
+
+
+        public void Eliminar(int idRutina)
+        {
+
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta("Update Rutinas set Activa = 0 where idRutina = @IdRutina");
+
+                accesoDatos.setearParametro("@IdRutina", idRutina);
+               
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 
   

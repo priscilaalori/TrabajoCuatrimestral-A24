@@ -74,6 +74,7 @@
     <Content Include="Entrenador\AgregarRutina.aspx" />
     <Content Include="Deportista\Historial.aspx" />
     <Content Include="Deportista\InicioDeportista.aspx" />
+    <Content Include="Entrenador\EliminarRutinaEntrenador.aspx" />
     <Content Include="Entrenador\MisEjercicios.aspx" />
     <Content Include="Entrenador\RegistroEntrenador.aspx" />
     <Content Include="Deportista\SeleccionDeporte.aspx" />
@@ -139,6 +140,13 @@
     </Compile>
     <Compile Include="Deportista\InicioDeportista.aspx.designer.cs">
       <DependentUpon>InicioDeportista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrenador\EliminarRutinaEntrenador.aspx.cs">
+      <DependentUpon>EliminarRutinaEntrenador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrenador\EliminarRutinaEntrenador.aspx.designer.cs">
+      <DependentUpon>EliminarRutinaEntrenador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entrenador\MisEjercicios.aspx.cs">
       <DependentUpon>MisEjercicios.aspx</DependentUpon>
