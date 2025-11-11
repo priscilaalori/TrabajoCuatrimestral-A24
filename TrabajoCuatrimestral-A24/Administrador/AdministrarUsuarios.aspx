@@ -100,6 +100,10 @@
         .btn-agregar:hover {
             background-color: #333;
         }
+
+        .btn-accion {
+            width: 100px; 
+        }
     </style>
 </asp:Content>
 
@@ -110,35 +114,39 @@
 
             <asp:Label ID="lblMensaje" runat="server" CssClass="text-success" />
 
-            <asp:GridView ID="gvUsuarios" runat="server" 
-                AutoGenerateColumns="False" 
+            <asp:GridView ID="gvUsuarios" runat="server"
+                AutoGenerateColumns="False"
                 CssClass="table table-striped table-bordered text-center"
                 DataKeyNames="IdUsuario"
                 OnRowCommand="gvUsuarios_RowCommand"
                 OnRowDataBound="gvUsuarios_RowDataBound">
-                
+
                 <Columns>
                     <asp:BoundField DataField="IdUsuario" HeaderText="ID" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                     <asp:BoundField DataField="Email" HeaderText="Email" />
                     <asp:BoundField DataField="Rol" HeaderText="Rol" />
-                    <asp:BoundField DataField="Activo" HeaderText="Activo" />
+                    <asp:BoundField DataField="DNI" HeaderText="DNI" />
+                    <asp:BoundField DataField="Titulo" HeaderText="Título" />
+                    <asp:BoundField DataField="FechaNacimiento" HeaderText="Fecha Nacimiento" 
+                                    DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
+                    <asp:CheckBoxField DataField="Activo" HeaderText="Activo" />
 
                     <asp:TemplateField HeaderText="Acciones">
                         <ItemTemplate>
-                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" 
-                                CssClass="btn-modificar me-2" 
-                                CommandName="Modificar" 
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar"
+                                CssClass="btn-modificar me-2 btn-accion"
+                                CommandName="Modificar"
                                 CommandArgument='<%# Eval("IdUsuario") %>' />
 
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
-                                CssClass="btn-eliminar" 
-                                CommandName="Eliminar" 
-                                CommandArgument='<%# Eval("IdUsuario") %>' 
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar"
+                                CssClass="btn-eliminar btn-accion"
+                                CommandName="Eliminar"
+                                CommandArgument='<%# Eval("IdUsuario") %>'
                                 OnClientClick="return confirm('¿Seguro que deseas eliminar este usuario?');" />
 
-                            <asp:Button ID="Button1" runat="server" Text="Activar" 
+                            <asp:Button ID="btnActivar" runat="server" Text="Activar" 
                                 CssClass="btn-activar" 
                                 CommandName="Activar" 
                                 CommandArgument='<%# Eval("IdUsuario") %>' 
@@ -149,8 +157,7 @@
             </asp:GridView>
 
             <div class="btn-container">
-                <asp:Button ID="btnAgregar" runat="server" Text="Agregar nuevo usuario" CssClass="btn-agregar" PostBackUrl="~/Registro.aspx"  />
-
+                <asp:Button ID="btnAgregar" runat="server" Text="Agregar nuevo usuario" CssClass="btn-agregar" PostBackUrl="~/Registro.aspx" />
                 <asp:Button ID="btnAgregarEntrenador" runat="server" Text="Agregar nuevo entrenador" CssClass="btn-agregar" PostBackUrl="~/Entrenador/RegistroEntrenador.aspx" />
             </div>
         </div>

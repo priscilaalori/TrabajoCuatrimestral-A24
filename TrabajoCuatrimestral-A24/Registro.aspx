@@ -64,6 +64,18 @@ ForeColor="Red" Display="Dynamic" />
     </div>
 
     <div class="form-group">
+    <label for="txtDNI">DNI</label>
+    <asp:TextBox ID="txtdni" runat="server" CssClass="form-control" />
+    <asp:RegularExpressionValidator ErrorMessage="Solo números permitidos" ControlToValidate="txtdni" ValidationExpression="^\d{7,8}$" runat="server"
+        ForeColor="Red" Display="Dynamic" />
+</div>
+
+<div class="form-group">
+    <label for="txtFechaDeNacimiento"> Fecha de Nacimiento</label>
+    <asp:TextBox ID="txtFechaDeNacimiento"  runat="server" TextMode="Date" CssClass="form-control" ></asp:TextBox>
+</div>
+
+    <div class="form-group">
         <label for="txtEmail">Email</label>
         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" type="email" />
         <asp:RegularExpressionValidator ErrorMessage="Formato incorrecto" ControlToValidate="txtEmail" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" runat="server" 
@@ -112,7 +124,7 @@ ForeColor="Red" Display="Dynamic" />
     <div class="form-group">
 
     <br>
-    <asp:Button ID="btnAceptar" runat="server" Text="Registrarme" CssClass="btn btn-primary" OnClick="btnAceptar_Click"/>
+    <asp:Button ID="btnAceptar" runat="server" Text="Registrarme" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
     </div>
 
     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />

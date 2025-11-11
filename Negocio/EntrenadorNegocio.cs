@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Negocio
 {
-    public class DeportistaNegocio
+    public class EntrenadorNegocio
     {
 
         public List<Deportista> Listar()
@@ -41,37 +41,38 @@ namespace Negocio
             }
         }
 
-        public void agregar(Deportista nuevoDeportista, string NombreDeporte)
+        public void agregar(Usuario nuevoEntrenador, string nombreDeporte)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-            
+                // 1️⃣ Insertar el nuevo entrenador en la tabla Usuarios
                 datos.setearConsulta(@"
-                      INSERT INTO Usuarios 
-                      (Nombre, Apellido, Email, PasswordHash, Rol, Activo, DNI, FechaNacimiento)
-                      VALUES 
-                      (@Nombre, @Apellido, @Email, @Contrasenia, 'Deportista', 1, @DNI, @FechaNacimiento);
-                      SELECT SCOPE_IDENTITY();");
+                                      INSERT INTO Usuarios 
+                                      (Nombre, Apellido, Email, PasswordHash, Rol, Activo, DNI, TituloHabilitante, FechaNacimiento)
+                                      VALUES 
+                                      (@Nombre, @Apellido, @Email, @PasswordHash, 'Entrenador', 1, @DNI, @TituloHabilitante, @FechaNacimiento);
+                                      SELECT SCOPE_IDENTITY();");
 
-                datos.setearParametro("@Nombre", nuevoDeportista.Nombre);
-                datos.setearParametro("@Apellido", nuevoDeportista.Apellido);
-                datos.setearParametro("@Email", nuevoDeportista.Email);
-                datos.setearParametro("@Contrasenia", nuevoDeportista.Contrasenia);
-                datos.setearParametro("@DNI", nuevoDeportista.DNI ?? (object)DBNull.Value);
-                datos.setearParametro("@FechaNacimiento", nuevoDeportista.FechaNacimiento ?? (object)DBNull.Value);
+                datos.setearParametro("@Nombre", nuevoEntrenador.Nombre);
+                datos.setearParametro("@Apellido", nuevoEntrenador.Apellido);
+                datos.setearParametro("@Email", nuevoEntrenador.Email);
+                datos.setearParametro("@PasswordHash", nuevoEntrenador.Contrasenia);
+                datos.setearParametro("@DNI", (object)nuevoEntrenador.DNI ?? DBNull.Value);
+                datos.setearParametro("@TituloHabilitante", (object)nuevoEntrenador.Titulo ?? DBNull.Value);
+                datos.setearParametro("@FechaNacimiento", (object)nuevoEntrenador.FechaNacimiento ?? DBNull.Value);
 
-                int idUsuario = Convert.ToInt32(datos.ejecutarEscalar());
+                int idEntrenador = Convert.ToInt32(datos.ejecutarEscalar());
 
-           
+        
                 datos.setearConsulta("SELECT IdDeporte FROM Deportes WHERE Nombre = @NombreDeporte");
-                datos.setearParametro("@NombreDeporte", NombreDeporte);
+                datos.setearParametro("@NombreDeporte", nombreDeporte);
                 int idDeporte = Convert.ToInt32(datos.ejecutarEscalar());
 
-               
-                datos.setearConsulta("INSERT INTO DeportistaDeportes (IdDeportista, IdDeporte) VALUES (@IdDeportista, @IdDeporte)");
-                datos.setearParametro("@IdDeportista", idUsuario);
+             
+                datos.setearConsulta("INSERT INTO EntrenadoresDeportes (IdEntrenador, IdDeporte) VALUES (@IdEntrenador, @IdDeporte)");
+                datos.setearParametro("@IdEntrenador", idEntrenador);
                 datos.setearParametro("@IdDeporte", idDeporte);
 
                 datos.ejecutarAccion();

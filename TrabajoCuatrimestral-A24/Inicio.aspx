@@ -65,7 +65,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="login-container">
+        <asp:Label ID="Label1" runat="server" Font-Bold="true"></asp:Label>
         <div class="login-card">
             <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
                  alt="Gym" class="gym-img" />

@@ -16,6 +16,12 @@ namespace Dominio
         public string Contrasenia { get; set; }
         public string Rol { get; set; } // "Administrador", "Profesor", "Deportista"
         public bool Activo { get; set; }
-    }
+        
+        public string DNI { get; set; }
+
+        public string Titulo { get; set; }
+
+        public DateTime? FechaNacimiento { get; set; }
+}
 
 }

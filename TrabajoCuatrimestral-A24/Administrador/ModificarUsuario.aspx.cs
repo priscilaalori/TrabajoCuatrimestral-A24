@@ -27,7 +27,16 @@ namespace TrabajoCuatrimestral
                         txtApellido.Text = usuario.Apellido;
                         txtEmail.Text = usuario.Email;
                         txtRol.Text = usuario.Rol;
+                        txtDNI.Text = usuario.DNI.ToString();
                         //txtPassword.Text = usuario.Contrasenia;
+
+                        if (usuario.FechaNacimiento != null)
+                            txtFechaNacimiento.Text = usuario.FechaNacimiento.Value.ToString("yyyy-MM-dd");
+
+                        txtTitulo.Text = usuario.Titulo;
+
+                        if (usuario.Rol != "Entrenador")
+                            txtTitulo.Visible = false;
                     }
                 }
             }
@@ -44,7 +53,10 @@ namespace TrabajoCuatrimestral
                     Nombre = txtNombre.Text,
                     Apellido = txtApellido.Text,
                     Email = txtEmail.Text,
-                    Rol = txtRol.Text
+                    Rol = txtRol.Text,
+                    DNI = txtDNI.Text,
+                    FechaNacimiento = DateTime.TryParse(txtFechaNacimiento.Text, out DateTime fecha) ? fecha : (DateTime?)null,
+                    Titulo = txtTitulo.Visible ? txtTitulo.Text.Trim() : null
                 };
 
                 if (!string.IsNullOrWhiteSpace(txtPassword.Text))
@@ -63,6 +75,11 @@ namespace TrabajoCuatrimestral
                 lblMensaje.Text = "Error al modificar usuario: " + ex.Message;
             }
 
-}
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdministrarUsuarios.aspx", false);
+        }
     }
 }

@@ -14,7 +14,12 @@ CREATE TABLE Usuarios (
     Email NVARCHAR(100) NOT NULL UNIQUE,
     PasswordHash NVARCHAR(255) NOT NULL,
     Rol NVARCHAR(20) CHECK (Rol IN ('Administrador', 'Entrenador', 'Deportista')) NOT NULL,
-    Activo BIT NOT NULL DEFAULT 1
+    Activo BIT NOT NULL DEFAULT 1,
+    DNI NVARCHAR(20) NULL,
+    TituloHabilitante NVARCHAR(100) NULL,
+    FechaNacimiento DATE NULL,
+    CONSTRAINT CK_TituloHabilitante_Entrenador 
+        CHECK (Rol <> 'Entrenador' OR TituloHabilitante IS NOT NULL)
 );
 GO
 

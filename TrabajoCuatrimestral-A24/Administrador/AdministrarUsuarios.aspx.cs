@@ -83,28 +83,19 @@ namespace tp_webform_equipo_24A
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-               
-                var dataItem = e.Row.DataItem;
-                bool activo = Convert.ToBoolean(DataBinder.Eval(dataItem, "Activo"));
-
-            
+                Button btnActivar = (Button)e.Row.FindControl("btnActivar");
                 Button btnEliminar = (Button)e.Row.FindControl("btnEliminar");
-                Button btnActivar = (Button)e.Row.FindControl("Button1");
 
-                if (activo)
-                {
-                    btnActivar.Enabled = false;
-                    btnActivar.Text = "Activo";
-                    btnActivar.CssClass = "btn-activar disabled";
-                }
-                else
-                {
-                    btnEliminar.Enabled = false;
-                    btnEliminar.Text = "Eliminado";
-                    btnEliminar.CssClass = "btn-eliminar disabled";
-                }
+                bool activo = (bool)DataBinder.Eval(e.Row.DataItem, "Activo");
+
+                if (btnActivar != null)
+                    btnActivar.Visible = !activo;
+
+                if (btnEliminar != null)
+                    btnEliminar.Visible = activo;
             }
         }
+
 
     }
 

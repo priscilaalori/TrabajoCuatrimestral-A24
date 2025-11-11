@@ -4,16 +4,22 @@ GO
 /* ==============================
    1. USUARIOS
    ============================== */
-INSERT INTO Usuarios (Nombre, Apellido, Email, PasswordHash, Rol, Activo)
+INSERT INTO Usuarios 
+(Nombre, Apellido, Email, PasswordHash, Rol, Activo, DNI, TituloHabilitante, FechaNacimiento)
 VALUES
-('Elias', 'Lopez', 'elias.lopez@admin.com', 'admin123', 'Administrador', 1),
-('Priscila', 'Alori', 'priscila.alori@admin.com', 'admin123', 'Administrador', 1),
-('Pamela', 'Vizcarra', 'pamela.vizcarra@admin.com', 'admin123', 'Administrador', 1),
-('Juan', 'Pérez', 'juan.perez@entrenador.com', 'prof123', 'Entrenador', 1),
-('Carla', 'Gómez', 'carla.gomez@entrenador.com', 'prof456', 'Entrenador', 1),
-('Mariano', 'López', 'mariano.lopez@deportista.com', 'dep123', 'Deportista', 1),
-('Lucía', 'Fernández', 'lucia.fernandez@deportista.com', 'dep456', 'Deportista', 1),
-('Diego', 'Santos', 'diego.santos@deportista.com', 'dep789', 'Deportista', 1);
+-- Administradores
+('Elias', 'Lopez', 'elias.lopez@admin.com', 'admin123', 'Administrador', 1, '40123456', NULL, '1997-05-15'),
+('Priscila', 'Alori', 'priscila.alori@admin.com', 'admin123', 'Administrador', 1, '38987654', NULL, '1995-09-20'),
+('Pamela', 'Vizcarra', 'pamela.vizcarra@admin.com', 'admin123', 'Administrador', 1, '37234567', NULL, '1993-11-12'),
+
+-- Entrenadores
+('Juan', 'Pérez', 'juan.perez@entrenador.com', 'prof123', 'Entrenador', 1, '35678901', 'Profesor Nacional de Educación Física', '1988-03-22'),
+('Carla', 'Gómez', 'carla.gomez@entrenador.com', 'prof456', 'Entrenador', 1, '36789432', 'Lic. en Entrenamiento Deportivo', '1990-07-10'),
+
+-- Deportistas
+('Mariano', 'López', 'mariano.lopez@deportista.com', 'dep123', 'Deportista', 1, '40111222', NULL, '2000-02-15'),
+('Lucía', 'Fernández', 'lucia.fernandez@deportista.com', 'dep456', 'Deportista', 1, '40222333', NULL, '1999-06-05'),
+('Diego', 'Santos', 'diego.santos@deportista.com', 'dep789', 'Deportista', 1, '40333444', NULL, '2001-09-12');
 GO
 
 /* ==============================

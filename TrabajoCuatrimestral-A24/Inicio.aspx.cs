@@ -13,6 +13,18 @@ namespace TrabajoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["Mensaje"] != null)
+                {
+                    lblMensaje.Text = Session["Mensaje"].ToString();
+                    lblMensaje.ForeColor = System.Drawing.Color.FromName(Session["ColorMensaje"].ToString());
+
+                    // limpiar para que no se repita al refrescar
+                    Session.Remove("Mensaje");
+                    Session.Remove("ColorMensaje");
+                }
+            }
 
         }
 

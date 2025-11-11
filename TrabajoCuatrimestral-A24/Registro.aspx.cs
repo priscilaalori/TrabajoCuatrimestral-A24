@@ -39,9 +39,24 @@ namespace TrabajoCuatrimestral
             nuevo.Apellido = txtApellido.Text;
             nuevo.Email = txtEmail.Text;
             nuevo.Contrasenia = txtPassword.Text;
+            nuevo.DNI = txtdni.Text;
+            nuevo.FechaNacimiento = DateTime.TryParse(txtFechaDeNacimiento.Text, out DateTime fecha) ? fecha : (DateTime?)null;
+            nuevo.Rol = "Deportista";
+            nuevo.Activo = true;
 
 
-            negocio.agregar(nuevo, ddlDeporte.Text);
+            try
+            {
+                negocio.agregar(nuevo, ddlDeporte.Text);
+                Session["Mensaje"] = "Registro completado con éxito.";
+                Session["ColorMensaje"] = "Green";
+            }
+            catch (Exception)
+            {
+                Session["Mensaje"] = "Ocurrió un error al registrar el usuario.";
+                Session["ColorMensaje"] = "Red";
+            }
+
             Response.Redirect("Inicio.aspx");
         }
 

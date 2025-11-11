@@ -69,8 +69,8 @@
     </div>
 
     <div class="form-group">
-        <label for="txttitulo">Título habilitante</label>
-        <asp:TextBox ID="Txttitulo" runat="server" CssClass="form-control" />
+        <label for="txtTitulo">Título habilitante</label>
+        <asp:TextBox ID="txtTitulo" runat="server" CssClass="form-control" />
         <asp:RegularExpressionValidator ErrorMessage="Solo letras permitidas" ControlToValidate="txttitulo" ValidationExpression="^[a-zA-Z]+$" runat="server"
             ForeColor="Red" Display="Dynamic" />
     </div>
@@ -129,7 +129,7 @@
     <div class="form-group">
 
         <br>
-        <asp:Button ID="btnAceptar" runat="server" Text="Registrarme" CssClass="btn btn-primary" />
+        <asp:Button ID="btnAceptar" runat="server" Text="Registrarme" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
     </div>
 
     <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
