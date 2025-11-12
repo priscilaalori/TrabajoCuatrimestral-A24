@@ -76,6 +76,59 @@ namespace Negocio
             }
 
         }
+
+        public void Modificar(Ejercicio ejercicio)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+
+
+                accesoDatos.setearConsulta("UPDATE Ejercicios SET Nombre = @Nombre, Descripcion = @Descripcion, UrlVideo = @UrlVideo WHERE IdEjercicio = @IdEjercicio");
+                accesoDatos.setearParametro("@Nombre", ejercicio.Nombre);
+                accesoDatos.setearParametro("@Descripcion", ejercicio.Descripcion);
+                accesoDatos.setearParametro("@UrlVideo", ejercicio.UrlVideo);
+                accesoDatos.setearParametro("@IdEjercicio", ejercicio.IdEjercicio);
+                accesoDatos.ejecutarAccion();
+
+                accesoDatos.cerrarConexion();
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+
+        public Ejercicio obtenerPorId(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Ejercicio ejercicio = new Ejercicio();
+
+            datos.setearConsulta("SELECT Nombre, Descripcion, UrlVideo FROM Ejercicios WHERE IdEjercicio = @IdEjercicio");
+            datos.setearParametro("@IdEjercicio", id);
+            datos.ejecutarLectura();
+
+            if (datos.Lector.Read())
+            {
+                ejercicio.IdEjercicio = id;
+                ejercicio.Nombre = datos.Lector["Nombre"].ToString();
+                ejercicio.Descripcion = datos.Lector["Descripcion"].ToString();
+                ejercicio.UrlVideo = datos.Lector["UrlVideo"].ToString();
+            }
+
+            datos.cerrarConexion();
+            return ejercicio;
+        }
     }
 }
+
+
+    
 

@@ -36,5 +36,13 @@ namespace tp_webform_equipo_24A
         }
 
 
+        protected void btnModificar_Click1(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = int.Parse(btn.CommandArgument);
+
+            Session["idEjercicioSeleccionado"] = id;
+            Response.Redirect("ModificarEjercicio.aspx", false);
+        }
     }
 }

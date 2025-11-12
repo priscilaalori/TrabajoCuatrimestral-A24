@@ -1,10 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MisEjercicios.aspx.cs" Inherits="tp_webform_equipo_24A.MisEjercicios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MenuExtra" runat="server">
- 
 </asp:Content>
 
 
@@ -27,7 +25,12 @@
                 <p><%# Eval("Descripcion") %></p>
                 <a href='<%# Eval("UrlVideo") %>' target="_blank">Ver video</a>
                 <br />
+                <asp:Button OnClick="btnModificar_Click1" ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>'/>
+
+
                 <input type="checkbox" name="ejercicioSeleccionado" value='<%# Eval("IdEjercicio") %>' />
+
+
             </div>
         </ItemTemplate>
 

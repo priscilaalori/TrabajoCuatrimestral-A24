@@ -1,0 +1,13 @@
+USE EntrenamientoDB
+GO
+ALTER TABLE Ejercicios
+ADD estado BOOLEAN DEFAULT TRUE;
+
+ALTER TABLE Ejercicios
+ADD estado BIT DEFAULT 1;
+
+SELECT *FROM EJERCICIOS
+
+UPDATE Ejercicios
+SET estado = 1;
+
