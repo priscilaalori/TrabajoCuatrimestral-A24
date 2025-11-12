@@ -57,6 +57,7 @@
             <div>
                 <asp:TextBox TextMode="MultiLine" ID="txtDescipcion" CssClass="form-control" Rows="3" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ErrorMessage="La descripción es requerida" CssClass="color-validaciones" ControlToValidate="txtDescipcion" runat="server" />
+                <a href="MisEjercicios.aspx"target="_blank">Agregar Ejercicios</a>
             </div>
 
             <div class="form-group">
@@ -76,6 +77,7 @@
 
     <div class="d-grid gap-2 d-md-block">
         <asp:Button Style="margin-top: 10px;" ID="btnAgregarRutina" runat="server" Text="Agregar" CssClass="btn btn-primary btn-sm" OnClick="btnAgregarRutina_Click" />
+        
         <asp:Button OnClick="cancelarRutina_Click" Style="margin-top: 10px;" ID="cancelarRutina" runat="server" Text="Cancelar" CssClass="btn btn-primary btn-sm" />
     </div>
 
