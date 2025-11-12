@@ -10,36 +10,38 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Lista de Ejercicios </h1>
 
+    <table class="table">
+        <thead>
+
+            <tr>
+                <th>Nombre </th>
+                <th>Descripcion </th>
+                <th>Video </th>
+                <th>Accion </th>
+                <th>Seleccionar </th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="rptEjercicios" runat="server">
+                <ItemTemplate>
+            <tr>
+                <td><%# Eval("Nombre") %> </td>
+                <td><%# Eval("Descripcion") %></td>
+                <td><a href='<%# Eval("UrlVideo") %>' target="_blank">Ver video</a> </td>
+                <td>
+                    <asp:Button OnClick="btnModificar_Click1" ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>' />
+                    <asp:Button OnClick="BtnEliminar_Click1" ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>' />
+                </td>
+                <td>
+                    <input type="checkbox" name="ejercicioSeleccionado" value='<%# Eval("IdEjercicio") %>' /></td>
+            </tr>
+                     </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+
+    </table>
 
 
-
-    <asp:Repeater ID="rptEjercicios" runat="server">
-
-        <HeaderTemplate>
-            <div class="ejercicios-listado">
-        </HeaderTemplate>
-        <ItemTemplate>
-            <div class="ejercicio-item">
-
-                <h3><%# Eval("Nombre") %></h3>
-                <p><%# Eval("Descripcion") %></p>
-                <a href='<%# Eval("UrlVideo") %>' target="_blank">Ver video</a>
-                <br />
-                <asp:Button OnClick="btnModificar_Click1" ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>'/>
-                 <asp:Button  OnClick="BtnEliminar_Click1" ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>'/>
-
-
-
-                <input type="checkbox" name="ejercicioSeleccionado" value='<%# Eval("IdEjercicio") %>' />
-
-
-            </div>
-        </ItemTemplate>
-
-        <FooterTemplate>
-            </div>
-        </FooterTemplate>
-    </asp:Repeater>
     <br />
     <asp:Button OnClick="btnGuardarSeleccion_click" ID="btnGuardarSeleccion" runat="server" Text="Guardar Seleccion" CssClass="btn btn-dark btn-lg" />
     <br />
