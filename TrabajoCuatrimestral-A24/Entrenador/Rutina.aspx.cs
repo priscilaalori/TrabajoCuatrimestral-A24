@@ -40,7 +40,14 @@ namespace tp_webform_equipo_24A
             if (e.CommandName == "Eliminar")
             {
                 int id = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect("EliminarRutinaEntrenador.aspx?id=" + id);
+                Response.Redirect("EliminarRutinaEntrenador.aspx?id=" + id, false);
+
+            }
+
+            else if (e.CommandName == "AgregarEjercicio")
+            {
+                int id = Convert.ToInt32(e.CommandArgument);
+                Response.Redirect("RutinaAgregarEjercicios.aspx?id=" + id, false);
 
             }
         }

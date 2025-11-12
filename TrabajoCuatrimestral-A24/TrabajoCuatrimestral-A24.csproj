@@ -84,6 +84,7 @@
     <Content Include="Deportista\SeleccionDeporte.aspx" />
     <Content Include="Entrenador\InicioEntrenador.aspx" />
     <Content Include="Contacto.aspx" />
+    <Content Include="Entrenador\RutinaAgregarEjercicios.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="InicioAdmin.aspx" />
     <Content Include="Principal.aspx" />
@@ -214,6 +215,13 @@
     </Compile>
     <Compile Include="Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Entrenador\RutinaAgregarEjercicios.aspx.cs">
+      <DependentUpon>RutinaAgregarEjercicios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrenador\RutinaAgregarEjercicios.aspx.designer.cs">
+      <DependentUpon>RutinaAgregarEjercicios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Planes.aspx.cs">
       <DependentUpon>Planes.aspx</DependentUpon>
