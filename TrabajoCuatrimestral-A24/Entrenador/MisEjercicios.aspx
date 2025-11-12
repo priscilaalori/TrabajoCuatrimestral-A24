@@ -26,6 +26,8 @@
                 <a href='<%# Eval("UrlVideo") %>' target="_blank">Ver video</a>
                 <br />
                 <asp:Button OnClick="btnModificar_Click1" ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>'/>
+                 <asp:Button  OnClick="BtnEliminar_Click1" ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>'/>
+
 
 
                 <input type="checkbox" name="ejercicioSeleccionado" value='<%# Eval("IdEjercicio") %>' />

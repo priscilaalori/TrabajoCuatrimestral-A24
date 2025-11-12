@@ -44,5 +44,18 @@ namespace tp_webform_equipo_24A
             Session["idEjercicioSeleccionado"] = id;
             Response.Redirect("ModificarEjercicio.aspx", false);
         }
+
+       
+
+        protected void BtnEliminar_Click1(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int id = int.Parse(btn.CommandArgument);
+
+            Session["idEjercicioSeleccionado"] = id;
+            Response.Redirect("EliminarEjercicio.aspx", false);
+        }
+
     }
-}
+    }
+

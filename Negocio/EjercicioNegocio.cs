@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select idEjercicio , Nombre , Descripcion, UrlVideo From Ejercicios");
+                datos.setearConsulta("select idEjercicio , Nombre , Descripcion, UrlVideo From Ejercicios WHERE Estado = 1");
                 datos.ejecutarLectura();
 
 
@@ -26,7 +26,7 @@ namespace Negocio
                 {
                     Ejercicio Ejercicio = new Ejercicio();
                     Ejercicio.IdEjercicio = (int)datos.Lector["IdEjercicio"];
-                    // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];//  que es esto?
+                  
                     Ejercicio.Nombre = (string)datos.Lector["Nombre"];
                     Ejercicio.Descripcion = (string)datos.Lector["Descripcion"];
                     Ejercicio.UrlVideo = (string)datos.Lector["UrlVideo"];
@@ -125,6 +125,26 @@ namespace Negocio
 
             datos.cerrarConexion();
             return ejercicio;
+        }
+        public void Eliminar(int id)
+        {
+
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta("Update Ejercicios set Estado = 0 where idEjercicio = @IdEjercicio");
+
+                accesoDatos.setearParametro("@IdEjercicio", id);
+
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
