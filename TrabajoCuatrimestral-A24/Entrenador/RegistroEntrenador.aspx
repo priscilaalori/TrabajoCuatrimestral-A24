@@ -71,7 +71,7 @@
     <div class="form-group">
         <label for="txtTitulo">Título habilitante</label>
         <asp:TextBox ID="txtTitulo" runat="server" CssClass="form-control" />
-        <asp:RegularExpressionValidator ErrorMessage="Solo letras permitidas" ControlToValidate="txttitulo" ValidationExpression="^[a-zA-Z]+$" runat="server"
+        <asp:RegularExpressionValidator ErrorMessage="Solo letras permitidas" ControlToValidate="txttitulo" ValidationExpression="^[a-zA-Z\s]+$" runat="server"
             ForeColor="Red" Display="Dynamic" />
     </div>
 
@@ -105,13 +105,7 @@
 
     <div class="form-group">
         <label for="ddlDeporte">Seleccioná tu deporte principal:</label>
-        <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control">
-            <asp:ListItem Text="--Seleccione un deporte--" Value="" />
-            <asp:ListItem Text="Natación" Value="Natación" />
-            <asp:ListItem Text="Running" Value="Running" />
-            <asp:ListItem Text="Ciclismo" Value="Ciclismo" />
-        </asp:DropDownList>
-
+        <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control"></asp:DropDownList>
         <asp:RequiredFieldValidator ID="rfvDeporte" runat="server"
             ControlToValidate="ddlDeporte"
             InitialValue=""

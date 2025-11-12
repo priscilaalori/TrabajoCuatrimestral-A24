@@ -13,6 +13,10 @@ namespace tp_webform_equipo_24A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                cargarDeportes();
+            }
 
         }
 
@@ -48,7 +52,7 @@ namespace tp_webform_equipo_24A
 
             try
             {
-                negocio.agregar(nuevo, ddlDeporte.Text);
+                negocio.agregar(nuevo, int.Parse(ddlDeporte.SelectedValue));
                 Session["Mensaje"] = "Registro completado con éxito.";
                 Session["ColorMensaje"] = "Green";
             }
@@ -59,6 +63,27 @@ namespace tp_webform_equipo_24A
             }
 
             Response.Redirect("~/Inicio.aspx");
+        }
+
+        private void cargarDeportes()
+        {
+            try
+            {
+                DeporteNegocio negocio = new DeporteNegocio();
+                List<Deporte> lista = negocio.Listar();
+
+                ddlDeporte.DataSource = lista;
+                ddlDeporte.DataTextField = "Nombre";   
+                ddlDeporte.DataValueField = "IdDeporte"; 
+                ddlDeporte.DataBind();
+
+                ddlDeporte.Items.Insert(0, new ListItem("--Seleccione un deporte--", "")); 
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al cargar los deportes: " + ex.Message;
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+            }
         }
     }
 }

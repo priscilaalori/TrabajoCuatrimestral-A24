@@ -73,69 +73,69 @@
         }
 
         .admin-card {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-    padding: 40px 30px;
-    color: #fff; /* ✅ texto blanco */
-    text-align: center; /* ✅ centrado horizontal */
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-    transition: all 0.3s ease;
-    min-height: 300px;
-    display: flex; /* ✅ centrado vertical */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            padding: 40px 30px;
+            color: #fff; 
+            text-align: center; 
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            transition: all 0.3s ease;
+            min-height: 300px;
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-.admin-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6); /* ✅ capa oscura para contraste */
-    border-radius: 12px;
-}
-
-.admin-card h4,
-.admin-card p,
-.admin-card a {
-    position: relative;
-    z-index: 1; /* para estar por encima del overlay */
-}
-
-.admin-card h4 {
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.admin-card p {
-    color: #f0f0f0;
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-.btn-card {
-    background-color: #ff6600;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.btn-card:hover {
-    background-color: #e65c00;
-}
-
-.admin-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
+        .admin-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            border-radius: 12px;
+        }
+        
+        .admin-card h4,
+        .admin-card p,
+        .admin-card a {
+            position: relative;
+            z-index: 1; 
+        }
+        
+        .admin-card h4 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .admin-card p {
+            color: #f0f0f0;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn-card {
+            background-color: #ff6600;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-card:hover {
+            background-color: #e65c00;
+        }
+        
+        .admin-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
 
         
         .card-usuarios {
@@ -166,7 +166,7 @@
             </div>
 
             <div class="admin-card card-profes">
-                <h4>Asignación automatica</h4>
+                <h4>Asignación automatica - SIN BACKEND POR EL MOMENTO</h4>
                 <p>Asigna profesores a alumnos automaticamente.</p>
                 <a href="InicioAdmin.aspx" class="btn-card">Asignar</a>
             </div>

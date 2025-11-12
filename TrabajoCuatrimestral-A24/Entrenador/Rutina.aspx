@@ -22,11 +22,21 @@
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
                 <asp:CommandField ShowSelectButton="true" SelectText="Modificar" HeaderText="Acción" />
+               <asp:TemplateField HeaderText="Ejericios">
+                   <ItemTemplate>
+                       <asp:LinkButton ID="btnAgregarEjercicio" runat="server"  Text="Agregar"
+                           CommandName="AgregarEjercicio" 
+                        CommandArgument='<%# Eval("IdRutina") %>' 
+                          CausesValidation="false"  />
+                   </ItemTemplate>        
+               </asp:TemplateField>
+
                 <asp:TemplateField HeaderText="Eliminar" >
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEliminar" runat="server" Text="Eliminar"
                             CommandName="Eliminar"
-                            CommandArgument='<%# Eval("IdRutina") %>' />
+                            CommandArgument='<%# Eval("IdRutina") %>'
+                             CausesValidation="false"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
