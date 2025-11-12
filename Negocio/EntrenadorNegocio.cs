@@ -41,13 +41,12 @@ namespace Negocio
             }
         }
 
-        public void agregar(Usuario nuevoEntrenador, string nombreDeporte)
+        public void agregar(Usuario nuevoEntrenador, int idDeporte)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                // 1️⃣ Insertar el nuevo entrenador en la tabla Usuarios
                 datos.setearConsulta(@"
                                       INSERT INTO Usuarios 
                                       (Nombre, Apellido, Email, PasswordHash, Rol, Activo, DNI, TituloHabilitante, FechaNacimiento)
@@ -64,12 +63,6 @@ namespace Negocio
                 datos.setearParametro("@FechaNacimiento", (object)nuevoEntrenador.FechaNacimiento ?? DBNull.Value);
 
                 int idEntrenador = Convert.ToInt32(datos.ejecutarEscalar());
-
-        
-                datos.setearConsulta("SELECT IdDeporte FROM Deportes WHERE Nombre = @NombreDeporte");
-                datos.setearParametro("@NombreDeporte", nombreDeporte);
-                int idDeporte = Convert.ToInt32(datos.ejecutarEscalar());
-
              
                 datos.setearConsulta("INSERT INTO EntrenadoresDeportes (IdEntrenador, IdDeporte) VALUES (@IdEntrenador, @IdDeporte)");
                 datos.setearParametro("@IdEntrenador", idEntrenador);

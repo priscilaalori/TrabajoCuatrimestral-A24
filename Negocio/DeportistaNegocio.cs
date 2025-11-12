@@ -41,7 +41,7 @@ namespace Negocio
             }
         }
 
-        public void agregar(Deportista nuevoDeportista, string NombreDeporte)
+        public void agregar(Deportista nuevoDeportista, int idDeporte)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -64,16 +64,10 @@ namespace Negocio
 
                 int idUsuario = Convert.ToInt32(datos.ejecutarEscalar());
 
-           
-                datos.setearConsulta("SELECT IdDeporte FROM Deportes WHERE Nombre = @NombreDeporte");
-                datos.setearParametro("@NombreDeporte", NombreDeporte);
-                int idDeporte = Convert.ToInt32(datos.ejecutarEscalar());
 
-               
                 datos.setearConsulta("INSERT INTO DeportistaDeportes (IdDeportista, IdDeporte) VALUES (@IdDeportista, @IdDeporte)");
                 datos.setearParametro("@IdDeportista", idUsuario);
                 datos.setearParametro("@IdDeporte", idDeporte);
-
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

@@ -13,6 +13,10 @@ namespace TrabajoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                cargarDeportes();
+            }
 
         }
 
@@ -47,7 +51,7 @@ namespace TrabajoCuatrimestral
 
             try
             {
-                negocio.agregar(nuevo, ddlDeporte.Text);
+                negocio.agregar(nuevo, int.Parse(ddlDeporte.SelectedValue));
                 Session["Mensaje"] = "Registro completado con éxito.";
                 Session["ColorMensaje"] = "Green";
             }
@@ -58,6 +62,29 @@ namespace TrabajoCuatrimestral
             }
 
             Response.Redirect("Inicio.aspx");
+        }
+
+
+        //Esta funcion trae el listado de deportes de la base.
+        private void cargarDeportes()
+        {
+            try
+            {
+                DeporteNegocio negocio = new DeporteNegocio();
+                List<Deporte> lista = negocio.Listar();
+
+                ddlDeporte.DataSource = lista;
+                ddlDeporte.DataTextField = "Nombre";   
+                ddlDeporte.DataValueField = "IdDeporte"; 
+                ddlDeporte.DataBind();
+
+                ddlDeporte.Items.Insert(0, new ListItem("--Seleccione un deporte--", "")); 
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Error al cargar los deportes: " + ex.Message;
+                lblMensaje.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
     }

@@ -100,12 +100,13 @@ ForeColor="Red" Display="Dynamic" />
 
     <div class="form-group">
         <label for="ddlDeporte">Seleccioná tu deporte principal:</label>
-        <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control">
-            <asp:ListItem Text="--Seleccione un deporte--" Value="" />
-            <asp:ListItem Text="Natación" Value="Natación" />
-            <asp:ListItem Text="Running" Value="Running" />
-            <asp:ListItem Text="Ciclismo" Value="Ciclismo" />
-        </asp:DropDownList>
+        <asp:DropDownList ID="ddlDeporte" runat="server" CssClass="form-control"></asp:DropDownList>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+            ControlToValidate="ddlDeporte"
+            InitialValue=""
+            ErrorMessage="Debe seleccionar un deporte"
+            ForeColor="Red"
+            Display="Dynamic" />
 
         <asp:RequiredFieldValidator ID="rfvDeporte" runat="server"
             ControlToValidate="ddlDeporte"
