@@ -36,6 +36,8 @@ namespace tp_webform_equipo_24A
             lblMensaje.Text = "✅ ¡Ejercicio agregado con éxito!";
             lblMensaje.ForeColor = System.Drawing.Color.Green;
 
+            Response.Redirect("MisEjercicios.aspx");
+
         }
 
     } 

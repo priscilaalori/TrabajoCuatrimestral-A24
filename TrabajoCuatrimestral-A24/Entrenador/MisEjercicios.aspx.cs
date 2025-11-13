@@ -56,6 +56,10 @@ namespace tp_webform_equipo_24A
             Response.Redirect("EliminarEjercicio.aspx", false);
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarRutina.aspx");
+        }
     }
     }
 

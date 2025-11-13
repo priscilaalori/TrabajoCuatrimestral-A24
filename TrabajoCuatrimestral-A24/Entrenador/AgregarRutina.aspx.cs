@@ -94,5 +94,10 @@ namespace tp_webform_equipo_24A
             }
 
         }
+
+        protected void btnAgregarEjer_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MisEjercicios.aspx");
+        }
     }
 }

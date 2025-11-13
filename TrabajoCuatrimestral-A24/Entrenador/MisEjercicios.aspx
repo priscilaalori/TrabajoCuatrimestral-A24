@@ -45,8 +45,11 @@
     <br />
     <asp:Button OnClick="btnGuardarSeleccion_click" ID="btnGuardarSeleccion" runat="server" Text="Guardar Seleccion" CssClass="btn btn-dark btn-lg" />
     <br />
+    
 
     <asp:Button OnClick="btnAgregarEjercicio_click" ID="btnAgregarEjercicio" runat="server" Text="Agregar Ejercicio" CssClass="btn btn-dark btn-lg" />
+    <br />
+         <asp:Button OnClick="btnVolver_Click"  ID="btnVolver" runat="server" Text="Volver"  CssClass="btn btn-dark btn-lg" />
 
 
 

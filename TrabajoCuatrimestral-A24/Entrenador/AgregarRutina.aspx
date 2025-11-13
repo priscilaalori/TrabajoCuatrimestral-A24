@@ -52,6 +52,8 @@
                 <asp:RequiredFieldValidator ErrorMessage="La descripción es requerida" CssClass="color-validaciones" ControlToValidate="txtDescipcion" runat="server" />
                 <a href="MisEjercicios.aspx"target="_blank">Agregar Ejercicios</a>
             </div>
+   
+            <br />
 
             <div class="form-group">
                 <label for="txtFechaInicio">Fecha de Inicio</label>
@@ -73,7 +75,7 @@
         
         <asp:Button OnClick="cancelarRutina_Click" Style="margin-top: 10px;" ID="cancelarRutina" runat="server" Text="Cancelar" CssClass="btn btn-primary btn-sm" />
     </div>
-
+    
 
 
 </asp:Content>
