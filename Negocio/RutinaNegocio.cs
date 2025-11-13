@@ -58,6 +58,44 @@ namespace Negocio
             }
         }
 
+        public List<Ejercicio> ListarEjericiosRutina( int idRutina)
+        {
+            List<Ejercicio> listaEjercicios = new List<Ejercicio>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearParametro("@IdRutina", idRutina);
+                datos.setearConsulta("select E.IdEjercicio, E.Nombre, E.Descripcion, E.UrlVideo from Ejercicios E inner join RutinaEjercicios RE on E.IdEjercicio = RE.IdEjercicio where RE.IdRutina = @IdRutina");
+                
+                datos.ejecutarLectura();
+
+
+                while (datos.Lector.Read())
+                {
+                    Ejercicio ejercicioAuxiliar = new Ejercicio();
+                    ejercicioAuxiliar.IdEjercicio = (int)datos.Lector["IdEjercicio"];
+                    ejercicioAuxiliar.Nombre = (string)datos.Lector["Nombre"];
+                    ejercicioAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
+                    ejercicioAuxiliar.UrlVideo = (string)datos.Lector["UrlVideo"];
+
+
+
+                    listaEjercicios.Add(ejercicioAuxiliar);
+                }
+
+                return listaEjercicios;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void Agregar(Rutina rutina)
         {
             AccesoDatos accesoDatos = new AccesoDatos();

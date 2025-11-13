@@ -76,7 +76,7 @@
         <asp:Label ID="lblRutina" runat="server" Text="Seleccionar" CssClass="label-rutina" ></asp:Label>
 
         <div class="btn-row" >
-            <asp:Button ID="btnAceptarElimanar" Style="margin-top: 10px" CssClass="btn btn-primary btn-sm" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" />
+            <asp:Button ID="btnAceptarEliminar" Style="margin-top: 10px" CssClass="btn btn-primary btn-sm" runat="server" OnClick="btnAceptar_Click" Text="Aceptar" />
         </div>
 
 

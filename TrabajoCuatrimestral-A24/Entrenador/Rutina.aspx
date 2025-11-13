@@ -19,12 +19,12 @@
                 <asp:BoundField HeaderText="idRutina" DataField="IdRutina" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
-                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
                 <asp:CommandField ShowSelectButton="true" SelectText="Modificar" HeaderText="Acción" />
-               <asp:TemplateField HeaderText="Ejericios">
+               <asp:TemplateField HeaderText="Ejercicios">
                    <ItemTemplate>
-                       <asp:LinkButton ID="btnAgregarEjercicio" runat="server"  Text="Agregar"
+                       <asp:LinkButton ID="btnAgregarEjercicio" runat="server"  Text="Ver"
                            CommandName="AgregarEjercicio" 
                         CommandArgument='<%# Eval("IdRutina") %>' 
                           CausesValidation="false"  />
