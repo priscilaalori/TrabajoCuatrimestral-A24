@@ -152,8 +152,6 @@ namespace Negocio
 
         }
 
-
-
         public void Eliminar(int idRutina)
         {
 
@@ -164,6 +162,27 @@ namespace Negocio
 
                 accesoDatos.setearParametro("@IdRutina", idRutina);
                
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        public void EliminarEjercicioRutina(int idRutina, int idEjercicio)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta("DELETE FROM RutinaEjercicios WHERE IdRutina = @IdRutina AND IdEjercicio = @IdEjercicio;");
+
+                accesoDatos.setearParametro("@IdRutina", idRutina);
+                accesoDatos.setearParametro("@IdEjercicio",idEjercicio);
+
                 accesoDatos.ejecutarAccion();
 
             }
