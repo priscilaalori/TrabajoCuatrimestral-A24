@@ -19,15 +19,15 @@
             <div>
                 <asp:TextBox TextMode="MultiLine" ID="txtDescipcion" CssClass="form-control" Rows="3" runat="server"></asp:TextBox>
             </div>
-            
-    <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
+
+            <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
 
         </div>
-         <div class="mb-3">
-     <label class="form-label">Adjunte Video</label>
-     <asp:TextBox ID="txtVideo" CssClass="form-control" runat="server"></asp:TextBox>
-             <br />
+        <div class="mb-3">
+            <label class="form-label">Adjunte Video</label>
+            <asp:TextBox ID="txtVideo" CssClass="form-control" runat="server"></asp:TextBox>
+            <br />
 
-      <asp:Button OnClick="btnGuardarEjercicio_click" ID="btnGuardarEjercicio" runat="server" Text="Guardar Ejercicio" CssClass="btn btn-dark btn-lg" />
-
+            <asp:Button OnClick="btnGuardarEjercicio_click" ID="btnGuardarEjercicio" runat="server" Text="Guardar Ejercicio" CssClass="btn btn-dark btn-lg" />
+        </div>
 </asp:Content>

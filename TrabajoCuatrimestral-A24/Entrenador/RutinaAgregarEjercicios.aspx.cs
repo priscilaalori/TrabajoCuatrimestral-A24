@@ -13,7 +13,10 @@ namespace tp_webform_equipo_24A.Entrenador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            cargar();
+        }
+        private void cargar()
+        {
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -30,7 +33,7 @@ namespace tp_webform_equipo_24A.Entrenador
                     dgvEjerciciosRutina.DataBind();
 
                     EjercicioNegocio ejercicioNegocio = new EjercicioNegocio();
-                    dgvEjerciciosNuevos.DataSource = ejercicioNegocio.Listar();
+                    dgvEjerciciosNuevos.DataSource = ejercicioNegocio.ListarEjerciciosDisponibles(id);
                     dgvEjerciciosNuevos.DataBind();
 
 
@@ -44,7 +47,6 @@ namespace tp_webform_equipo_24A.Entrenador
             }
 
         }
-
         //Eliminar ejercicio de rutina
         protected void dgvEjerciciosRutina_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -58,6 +60,8 @@ namespace tp_webform_equipo_24A.Entrenador
 
                     RutinaNegocio rutinaNegocio = new RutinaNegocio();
                     rutinaNegocio.EliminarEjercicioRutina(idRutina, idEjercicio);
+                    cargar();
+
 
                     
 
@@ -84,6 +88,7 @@ namespace tp_webform_equipo_24A.Entrenador
 
                     RutinaNegocio rutinaNegocio = new RutinaNegocio();
                     rutinaNegocio.AgregarEjercicioRutina(idRutina, idEjercicio);
+                    cargar();
 
 
 
@@ -94,6 +99,11 @@ namespace tp_webform_equipo_24A.Entrenador
 
                 throw ex;
             }
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Rutina.aspx");
         }
     }
 }

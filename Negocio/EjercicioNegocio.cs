@@ -146,6 +146,44 @@ namespace Negocio
             }
 
         }
+
+        
+        public List<Ejercicio> ListarEjerciciosDisponibles(int idRutina)
+        {
+            List<Ejercicio> listaEjercicios = new List<Ejercicio>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT e.IdEjercicio, e.Nombre, e.Descripcion, e.UrlVideo FROM Ejercicios e WHERE e.Estado = 1 AND e.IdEjercicio NOT IN (SELECT IdEjercicio FROM RutinaEjercicios WHERE idRutina = @idRutina);");
+                datos.setearParametro("@idRutina", idRutina);
+                datos.ejecutarLectura();
+
+
+                while (datos.Lector.Read())
+                {
+                    Ejercicio Ejercicio = new Ejercicio();
+                    Ejercicio.IdEjercicio = (int)datos.Lector["IdEjercicio"];
+
+                    Ejercicio.Nombre = (string)datos.Lector["Nombre"];
+                    Ejercicio.Descripcion = (string)datos.Lector["Descripcion"];
+                    Ejercicio.UrlVideo = (string)datos.Lector["UrlVideo"];
+
+                    listaEjercicios.Add(Ejercicio);
+                }
+
+                return listaEjercicios;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
 

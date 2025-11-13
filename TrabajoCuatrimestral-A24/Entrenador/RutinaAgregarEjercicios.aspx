@@ -49,13 +49,17 @@
                 <asp:TemplateField HeaderText="Acción">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnAgregar" runat="server" Text="Agregar"
-                            CommandName="Eliminar"
+                            CommandName="AgregarEjercicio"
                             CommandArgument='<%# Eval("IdEjercicio") %>'
                             CausesValidation="false" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+    </div>
+
+    <div>
+        <asp:Button Style="margin-top: 10px;" ID="btnVolver" CssClass="btn btn-primary btn-sm" CausesValidation="false" OnClick="btnVolver_Click" runat="server" Text="Volver a mis rutinas" />
     </div>
 
 
