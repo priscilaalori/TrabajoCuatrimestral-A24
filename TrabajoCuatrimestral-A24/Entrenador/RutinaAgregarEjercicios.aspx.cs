@@ -48,13 +48,52 @@ namespace tp_webform_equipo_24A.Entrenador
         //Eliminar ejercicio de rutina
         protected void dgvEjerciciosRutina_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = Convert.ToInt32(e.CommandArgument);
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int idRutina = int.Parse(Request.QueryString["id"].ToString());
+
+                    int idEjercicio = Convert.ToInt32(e.CommandArgument);
+
+                    RutinaNegocio rutinaNegocio = new RutinaNegocio();
+                    rutinaNegocio.EliminarEjercicioRutina(idRutina, idEjercicio);
+
+                    
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
         }
 
         protected void dgvEjerciciosNuevos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = Convert.ToInt32(e.CommandArgument);
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int idRutina = int.Parse(Request.QueryString["id"].ToString());
+
+                    int idEjercicio = Convert.ToInt32(e.CommandArgument);
+
+                    RutinaNegocio rutinaNegocio = new RutinaNegocio();
+                    rutinaNegocio.AgregarEjercicioRutina(idRutina, idEjercicio);
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

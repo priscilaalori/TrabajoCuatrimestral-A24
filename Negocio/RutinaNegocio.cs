@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,7 +103,7 @@ namespace Negocio
             try
             {
                 accesoDatos.setearProcedimiento("sp_AgregarRutina");
-                
+                // Acá se envia como idEntrenador 1 pero se tiene que ajustar a quien esté logueado. 
                 accesoDatos.setearParametro("@IdEntrenador", 1);
                 accesoDatos.setearParametro("@IdDeporte", rutina.Deporte.IdDeporte);
                 accesoDatos.setearParametro("@Nombre", rutina.Nombre);
@@ -192,6 +193,29 @@ namespace Negocio
                 throw ex;
             }
 
+        }
+
+        public void AgregarEjercicioRutina(int idRutina, int idEjercicio)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("Insert into RutinaEjercicios(IdRutina, IdEjercicio) values(@IdRutina, @IdEjercicio)");
+                accesoDatos.setearParametro("@IdRutina", idRutina);
+                accesoDatos.setearParametro("@IdEjercicio", idEjercicio);
+
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
         }
     }
 
