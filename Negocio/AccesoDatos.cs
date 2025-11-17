@@ -112,5 +112,10 @@ namespace Negocio
             }
             return resultado;
         }
+
+        public void limpiarParametros()
+        {
+            comando.Parameters.Clear();
+        }
     }
 }

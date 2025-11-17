@@ -88,6 +88,11 @@ namespace tp_webform_equipo_24A
             Response.Redirect("AgregarDeporte.aspx", false);
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/InicioAdmin.aspx");
+        }
+
 
     }
 }

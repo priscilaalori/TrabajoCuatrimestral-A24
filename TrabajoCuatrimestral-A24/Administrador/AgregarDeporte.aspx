@@ -74,6 +74,11 @@
             display: block;
             margin-top: 15px;
         }
+
+        .volver-container {
+            margin-bottom: 15px;
+        }
+        
     </style>
 </asp:Content>
 

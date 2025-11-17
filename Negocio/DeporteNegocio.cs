@@ -46,6 +46,41 @@ namespace Negocio
             }
         }
 
+        public List<Deporte> ListarActivos()
+        {
+
+            List<Deporte> listaDeportes = new List<Deporte>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("select * from Deportes where Estado = 1");
+                datos.ejecutarLectura();
+
+
+                while (datos.Lector.Read())
+                {
+                    Deporte deporteAuxiliar = new Deporte();
+                    deporteAuxiliar.IdDeporte = (int)datos.Lector["IdDeporte"];
+                    deporteAuxiliar.Nombre = (string)datos.Lector["Nombre"];
+                    deporteAuxiliar.Estado = (bool)datos.Lector["Estado"];
+
+
+                    listaDeportes.Add(deporteAuxiliar);
+                }
+
+                return listaDeportes;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void EliminarDeporteLogico(int id)
         {
             AccesoDatos datos = new AccesoDatos();

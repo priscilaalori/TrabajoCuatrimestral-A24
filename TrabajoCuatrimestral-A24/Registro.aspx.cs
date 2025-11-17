@@ -71,7 +71,7 @@ namespace TrabajoCuatrimestral
             try
             {
                 DeporteNegocio negocio = new DeporteNegocio();
-                List<Deporte> lista = negocio.Listar();
+                List<Deporte> lista = negocio.ListarActivos();
 
                 ddlDeporte.DataSource = lista;
                 ddlDeporte.DataTextField = "Nombre";   

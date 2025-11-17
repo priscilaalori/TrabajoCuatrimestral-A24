@@ -153,10 +153,22 @@
         .card-profes {
             background-image: url('images/admin-profes.jpg');
         }
+
+        .volver-container {
+            margin-bottom: 15px;
+        }
+        
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="volver-container">
+        <asp:Button ID="btnVolver"
+                    runat="server"
+                    Text="Volver"
+                    CssClass="btnVolver"
+                    OnClick="btnVolver_Click" />
+    </div>
     <div class="admin-container">
         <div class="cards-grid">
             <div class="admin-card card-usuarios">
@@ -177,10 +189,10 @@
                 <a href="Administrador/AdministrarDeportes.aspx" class="btn-card">Ver Deportes</a>
             </div>
 
-            <div class="admin-card card-config">
-                <h4>Configuración</h4>
-                <p>Actualizá información del sistema, accesos y parámetros.</p>
-                <a href="InicioAdmin.aspx" class="btn-card">Configurar</a>
+            <div class="admin-card card-profes">
+                <h4>Asignación manual</h4>
+                <p>Asigna profesores a alumnos manualmente. Tambien podes ver que profe tiene cada alumno</p>
+                <a href="Administrador/AsignacionManual.aspx" class="btn-card">Asignar</a>
             </div>
 
         </div>

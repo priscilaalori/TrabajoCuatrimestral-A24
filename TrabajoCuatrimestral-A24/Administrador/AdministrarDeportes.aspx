@@ -68,10 +68,22 @@
             text-align: right;
             margin-top: 20px;
         }
+
+        .volver-container {
+            margin-bottom: 15px;
+        }
+        
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="volver-container">
+        <asp:Button ID="btnVolver"
+                    runat="server"
+                    Text="Volver"
+                    CssClass="btnVolver"
+                    OnClick="btnVolver_Click" />
+    </div>
     <div class="admin-container">
         <div class="table-section">
             <h2>Deportes registrados</h2>

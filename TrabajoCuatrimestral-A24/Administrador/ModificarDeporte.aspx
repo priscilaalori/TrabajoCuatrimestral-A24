@@ -55,7 +55,7 @@
 
             <div class="mt-4 text-center">
                 <asp:Button ID="btnGuardar" runat="server" Text="Guardar Cambios" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
-                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary ms-2" PostBackUrl="~/AdministrarDeportes.aspx" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary ms-2" PostBackUrl="AdministrarDeportes.aspx" />
             </div>
 
             <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" CssClass="mt-3 d-block text-center" />

@@ -96,6 +96,11 @@ namespace tp_webform_equipo_24A
             }
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/InicioAdmin.aspx");
+        }
+
 
     }
 

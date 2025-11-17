@@ -41,6 +41,50 @@ namespace Negocio
             }
         }
 
+        public List<Usuario> ListarPorDeporte(int idDeporte)
+        {
+            List<Usuario> lista = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta(@"
+            SELECT U.IdUsuario, U.Nombre, U.Apellido, U.Email, U.DNI, U.TituloHabilitante
+            FROM Usuarios U
+            INNER JOIN EntrenadoresDeportes ED ON U.IdUsuario = ED.IdEntrenador
+            WHERE U.Rol = 'Entrenador' AND ED.IdDeporte = @IdDeporte
+        ");
+                datos.setearParametro("@IdDeporte", idDeporte);
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario entrenador = new Usuario
+                    {
+                        IdUsuario = (int)datos.Lector["IdUsuario"],
+                        Nombre = (string)datos.Lector["Nombre"],
+                        Apellido = (string)datos.Lector["Apellido"],
+                        Email = (string)datos.Lector["Email"],
+                        DNI = datos.Lector["DNI"] != DBNull.Value ? (string)datos.Lector["DNI"] : null,
+                        Titulo = datos.Lector["TituloHabilitante"] != DBNull.Value ? (string)datos.Lector["TituloHabilitante"] : null
+                    };
+
+                    lista.Add(entrenador);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void agregar(Usuario nuevoEntrenador, int idDeporte)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -79,6 +123,66 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void AsignarProfesorADeportista(int idDeportista, int idEntrenador)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                // Verificar si ya está asignado (para evitar duplicaciones)
+                datos.setearConsulta("SELECT COUNT(*) FROM EntrenadoresDeportistas WHERE IdDeportista = @IdDeportista");
+                datos.setearParametro("@IdDeportista", idDeportista);
+                int count = (int)datos.ejecutarEscalar();
+
+                // Limpio los parámetros para evitar el error
+                datos.limpiarParametros();
+
+                if (count > 0)
+                {
+                    // Actualizamos el profesor asignado si ya había uno
+                    datos.setearConsulta("UPDATE EntrenadoresDeportistas SET IdEntrenador = @IdEntrenador WHERE IdDeportista = @IdDeportista");
+                }
+                else
+                {
+                    // Asignar un profesor nuevo al deportista
+                    datos.setearConsulta("INSERT INTO EntrenadoresDeportistas (IdEntrenador, IdDeportista) VALUES (@IdEntrenador, @IdDeportista)");
+                }
+
+                datos.setearParametro("@IdEntrenador", idEntrenador);
+                datos.setearParametro("@IdDeportista", idDeportista);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void EliminarAsignacionDeDeportista(int idDeportista)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM EntrenadoresDeportistas WHERE IdDeportista = @IdDeportista");
+                datos.setearParametro("@IdDeportista", idDeportista);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
-    
+
 }

@@ -22,6 +22,14 @@ namespace Dominio
         public string Titulo { get; set; }
 
         public DateTime? FechaNacimiento { get; set; }
-}
+
+        public string NombreCompleto
+        {
+            get
+            {
+                return $"{Nombre} {Apellido}";
+            }
+        }
+    }
 
 }

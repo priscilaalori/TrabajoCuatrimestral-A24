@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+  
 }
 
 .register-card {
@@ -88,9 +88,12 @@
                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="SingleLine" />
             </div>
 
-            <div class="form-group text-center mt-4">
-                <asp:Button ID="btnAceptar" runat="server" Text="Guardar cambios" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-secondary ms-2" OnClick="btnVolver_Click" />
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <asp:Button ID="btnAceptar" runat="server"
+                    Text="Guardar cambios" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
+            
+                <asp:Button ID="btnVolver" runat="server"
+                    Text="Volver" CssClass="btn btn-secondary" OnClick="btnVolver_Click" />
             </div>
 
             <asp:Label ID="lblMensaje" runat="server" CssClass="mt-3 d-block text-center fw-bold" />
