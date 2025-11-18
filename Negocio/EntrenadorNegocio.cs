@@ -85,6 +85,40 @@ namespace Negocio
             }
         }
 
+        public List<Deportista> ListarDeportistasPorEntrenador(int idEntrenador)
+        {
+            List<Deportista> listaDeportista = new List<Deportista>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //trae por ahora solo los deportistas del entrenador con ID 4 hasta que esté lo del login 
+                datos.setearConsulta("select  ED.IdEntrenador, U.IdUsuario, U.Nombre, U.Apellido from Usuarios U inner join EntrenadoresDeportistas  ED on U.IdUsuario = ED.IdDeportista where  ED.IdEntrenador = 4");
+                datos.ejecutarLectura();
+
+
+                while (datos.Lector.Read())
+                {
+                    Deportista deportistaAuxiliar = new Deportista();
+                    deportistaAuxiliar.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    deportistaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
+                    deportistaAuxiliar.Apellido = (string)datos.Lector["Apellido"];
+
+                    listaDeportista.Add(deportistaAuxiliar);
+                }
+
+                return listaDeportista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void agregar(Usuario nuevoEntrenador, int idDeporte)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -183,6 +217,8 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
     }
 
 }

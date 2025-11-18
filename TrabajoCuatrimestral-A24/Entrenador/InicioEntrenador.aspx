@@ -10,48 +10,31 @@
 
         <h1>¡Hola Entrenador!</h1>
         <p>Mis estudiantes</p>
+
+
+
     </div>
 
 
     <div>
-        <asp:GridView ID="dgvlistAlumnos" CssClass="container text-center" AutoGenerateColumns ="false" runat="server">
+        <asp:GridView  ID="dgvlistAlumnos" OnRowCommand="dgvlistAlumnos_RowCommand" CssClass="table" AutoGenerateColumns="false" runat="server">
             <Columns>
-             <%--   <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                <asp:CheckBoxField HeaderText="Rol" DataField="Rol" />--%>
+                <asp:TemplateField HeaderText="Rutinas">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnVerPerfil" runat="server" Text="Ver"
+                            CommandName="Rutinas"
+                            CommandArgument='<%# Eval("IdUsuario") %>'
+                            CausesValidation="false" />
+                    </ItemTemplate>
 
-             <%--   <asp:BoundField HeaderText="Id" DataField="IdDeporte" />
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />--%>
-
-
+                </asp:TemplateField>
             </Columns>
-  
+
         </asp:GridView>
     </div>
 
-<%--                <table class="table" border="1">
-            <tr>
-                <th>Nombre y apellido</th>
-                <th>Perfil</th>
-            </tr>
-            <tr>
-                <td>Juan</td>
-                <td>Ver Perfil </td>
-            </tr>
-            <tr>
-                <td>Pedro</td>
-                <td>Ver perfil</td>
-            </tr>
-            <tr>
-                <td>Toni</td>
-                <td>Ver Perfil</td>
-            </tr>
-        </table>
-    </div>--%>
-
-    <%--<div>
-        <asp:Button ID="btnAgregarAlumno" OnClick="btnAgregarAlumno_Click" runat="server" Text="Agregar alumno" CssClass="btn btn-primary btn-lg" />
-    </div> --%>
     <div>
         <asp:Button Style="margin-top: 10px;" ID="btnVerRutinas" OnClick="btnVerRutinas_Click" runat="server" Text="Ver rutinas" CssClass="btn btn-primary btn-sm" />
     </div>
@@ -60,5 +43,5 @@
         <asp:Button Style="margin-top: 10px;" ID="btnPerfilAlumno" OnClick="btnPerfilAlumno_Click" runat="server" Text="Ver alumno" CssClass="btn btn-primary btn-sm" />
     </div>
 
- 
+
 </asp:Content>

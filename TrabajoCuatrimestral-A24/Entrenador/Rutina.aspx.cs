@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,19 +38,29 @@ namespace tp_webform_equipo_24A
 
         protected void dgvlistRutinas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Eliminar")
+
+            try
             {
-                int id = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect("EliminarRutinaEntrenador.aspx?id=" + id, false);
+                if (e.CommandName == "Eliminar")
+                {
+                    int id = Convert.ToInt32(e.CommandArgument);
+                    Response.Redirect("EliminarRutinaEntrenador.aspx?id=" + id, false);
 
+                }
+
+                else if (e.CommandName == "AgregarEjercicio")
+                {
+                    int id = Convert.ToInt32(e.CommandArgument);
+                    Response.Redirect("RutinaAgregarEjercicios.aspx?id=" + id, false);
+
+                }
             }
-
-            else if (e.CommandName == "AgregarEjercicio")
+            catch (Exception ex)
             {
-                int id = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect("RutinaAgregarEjercicios.aspx?id=" + id, false);
 
+                throw ex;
             }
+   
         }
     }
 }
