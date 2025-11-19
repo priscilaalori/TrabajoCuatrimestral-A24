@@ -4,8 +4,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1>Perfil de Alumno  </h1>
+    <h1>
+
+        <asp:Label ID="lblNombre" runat="server"></asp:Label>
+    </h1>
     <p>Acá va el perfil de un alumno y ver el historial de rutinas y puede agregarle una. </p>
+
+    <asp:GridView ID="IdRutinasAlumn" CssClass="table" AutoGenerateColumns="false" runat="server">
+
+        <%--        <Columns>
+            <asp:BoundField HeaderText="idRutina" DataField="IdRutina" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
+            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+            <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
+            <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
+            <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
+        </Columns>--%>
+    </asp:GridView>
 
     <div>
 

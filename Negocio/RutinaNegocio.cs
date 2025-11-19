@@ -97,6 +97,8 @@ namespace Negocio
             }
         }
 
+        
+
         public void Agregar(Rutina rutina)
         {
             AccesoDatos accesoDatos = new AccesoDatos();

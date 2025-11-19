@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
 
 namespace tp_webform_equipo_24A
 {
@@ -12,7 +14,36 @@ namespace tp_webform_equipo_24A
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            //try
+            //{
+            //if (Request.QueryString["id"] != null)
+            //{
+            int idDeportista = int.Parse(Request.QueryString["id"].ToString());
+            DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
+            Deportista deportista = new Deportista();
+            deportista = deportistaNegocio.ObtenerPorId(idDeportista);
+
+
+
+            lblNombre.Text = deportista.Nombre +  " " + deportista.Apellido;
+
+           
+
+            //    RutinaNegocio rutinaNegocio = new RutinaNegocio();
+            //    List<Dominio.Rutina> rutinas = rutinaNegocio.Listar();
+            //    Dominio.Rutina rutinaGuardada = rutinas.Find(x => x.IdRutina == id);
+
+            //    lblNombre.Text = rutinaGuardada.Nombre;
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw ex;
+            //}
         }
+
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
