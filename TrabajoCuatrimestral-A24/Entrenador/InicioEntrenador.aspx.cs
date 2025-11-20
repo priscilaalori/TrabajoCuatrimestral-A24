@@ -15,7 +15,7 @@ namespace tp_webform_equipo_24A
         {
             EntrenadorNegocio entrenadorNegocio = new EntrenadorNegocio();
 
-
+            
             dgvlistAlumnos.DataSource = entrenadorNegocio.ListarDeportistasPorEntrenador(4);
             dgvlistAlumnos.DataBind();
 

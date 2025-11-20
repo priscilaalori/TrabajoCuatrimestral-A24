@@ -11,13 +11,31 @@ namespace tp_webform_equipo_24A
 {
     public partial class Rutina : System.Web.UI.Page
     {
+        public bool MostrarAgregar { get; set; } = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             RutinaNegocio rutinaNegocio = new RutinaNegocio();
 
-            dgvlistRutinas.DataSource = rutinaNegocio.Listar();
-            dgvlistRutinas.DataBind();
-          
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    //si viene con id entonces solo muestra la columna agregar
+                    MostrarAgregar = true;
+
+                }
+                dgvlistRutinas.DataSource = rutinaNegocio.Listar();
+                dgvlistRutinas.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            {
+
+            }
         }
 
         protected void btnAgregarRutina_Click(object sender, EventArgs e)
@@ -27,7 +45,7 @@ namespace tp_webform_equipo_24A
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InicioEntrenador.aspx",false);
+            Response.Redirect("InicioEntrenador.aspx", false);
         }
 
         protected void dgvlistRutinas_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,11 +82,11 @@ namespace tp_webform_equipo_24A
                     {
                         int idDeportista = int.Parse(Request.QueryString["id"].ToString());
 
-                        DeportistaNegocio deportistaNegocio  = new DeportistaNegocio();
+                        DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
                         deportistaNegocio.AsociarRutinaDepostista(idRutina, idDeportista);
 
                         Response.Redirect("vistaEntrenadorDeportista.aspx?id=" + idDeportista);
-                        
+
                     }
                 }
             }
@@ -77,7 +95,32 @@ namespace tp_webform_equipo_24A
 
                 throw ex;
             }
-   
+
+        }
+
+        protected void dgvlistRutinas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    // Buscar el botón
+                    LinkButton btnAgregar = (LinkButton)e.Row.FindControl("btnAgregarRutinaAlumno");
+
+                    // Ver si la URL trae el parámetro "id"
+                    bool vieneId = Request.QueryString["id"] != null;
+
+                    // Si viene id → ocultar el botón
+                    // Si no viene id → mostrar
+                    btnAgregar.Visible = vieneId;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
