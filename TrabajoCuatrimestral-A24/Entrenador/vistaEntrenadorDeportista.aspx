@@ -8,22 +8,21 @@
 
         <asp:Label ID="lblNombre" runat="server"></asp:Label>
     </h1>
-    <p>Acá va el perfil de un alumno y ver el historial de rutinas y puede agregarle una. </p>
+    <p>Rutinas Actuales </p>
+    <asp:GridView ID="dgvRutinasAlumno" CssClass="table" AutoGenerateColumns="false" runat="server">
 
-    <asp:GridView ID="IdRutinasAlumn" CssClass="table" AutoGenerateColumns="false" runat="server">
-
-        <%--        <Columns>
+        <Columns>
             <asp:BoundField HeaderText="idRutina" DataField="IdRutina" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
             <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
             <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
-        </Columns>--%>
+        </Columns>
     </asp:GridView>
 
     <div>
 
-        <asp:Button ID="btmAgregarRutina" Style="margin-top: 10px;" class="btn btn-primary btn-lg" runat="server" Text="Agregar rutina" />
+        <asp:Button ID="btmAgregarRutina" Style="margin-top: 10px;" class="btn btn-primary btn-sm" runat="server" Text="Agregar rutina" />
 
     </div>
 

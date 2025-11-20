@@ -14,34 +14,36 @@ namespace tp_webform_equipo_24A
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //try
-            //{
-            //if (Request.QueryString["id"] != null)
-            //{
-            int idDeportista = int.Parse(Request.QueryString["id"].ToString());
-            DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
-            Deportista deportista = new Deportista();
-            deportista = deportistaNegocio.ObtenerPorId(idDeportista);
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int idDeportista = int.Parse(Request.QueryString["id"].ToString());
+                    DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
+                    Deportista deportista = new Deportista();
+                    deportista = deportistaNegocio.ObtenerPorId(idDeportista);
 
 
 
-            lblNombre.Text = deportista.Nombre +  " " + deportista.Apellido;
+                    lblNombre.Text = deportista.Nombre + " " + deportista.Apellido;
 
-           
 
-            //    RutinaNegocio rutinaNegocio = new RutinaNegocio();
-            //    List<Dominio.Rutina> rutinas = rutinaNegocio.Listar();
-            //    Dominio.Rutina rutinaGuardada = rutinas.Find(x => x.IdRutina == id);
 
-            //    lblNombre.Text = rutinaGuardada.Nombre;
-            //    }
+                    RutinaNegocio rutinaNegocio = new RutinaNegocio();
+                    List<Dominio.Rutina> rutinas = rutinaNegocio.ListarRutinasPorDeportista(idDeportista);
 
-            //}
-            //catch (Exception ex)
-            //{
+                    dgvRutinasAlumno.DataSource = rutinas;
+                    dgvRutinasAlumno.DataBind();
 
-            //    throw ex;
-            //}
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
 

@@ -97,8 +97,52 @@ namespace Negocio
             }
         }
 
-        
+        public List<Rutina> ListarRutinasPorDeportista(int idDeportista)
+        {
 
+            List<Rutina> listaRutinas = new List<Rutina>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Select R.IdRutina, R.IdEntrenador, R.IdDeporte, D.Nombre as Deporte, R.Nombre, R.Nivel, R.Descripcion, R.FechaCreacion, R.FechaInicio,R.FechaFin from Rutinas R inner join Deportes D on D.IdDeporte = R.IdDeporte inner join DeportistaRutinas DR on DR.IdRutina = R.IdRutina where R.Activa = 1 and DR.IdDeportista = @idDeportista");
+                datos.setearParametro("@idDeportista", idDeportista);
+                datos.ejecutarLectura();
+
+
+                while (datos.Lector.Read())
+                {
+                    Rutina rutinaAuxiliar = new Rutina();
+                    rutinaAuxiliar.IdRutina = (int)datos.Lector["IdRutina"];
+                    // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
+                    rutinaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
+                    rutinaAuxiliar.Nivel = (string)datos.Lector["Nivel"];
+                    rutinaAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
+                    rutinaAuxiliar.FechaCreacion = (DateTime)datos.Lector["FechaCreacion"];
+                    rutinaAuxiliar.FechaInicio = (DateTime)datos.Lector["FechaInicio"];
+                    rutinaAuxiliar.FechaFin = (DateTime)datos.Lector["FechaFin"];
+
+                    rutinaAuxiliar.Deporte = new Deporte();
+
+                    rutinaAuxiliar.Deporte.IdDeporte = (int)datos.Lector["IdDeporte"];
+                    rutinaAuxiliar.Deporte.Nombre = (string)datos.Lector["Deporte"];
+
+                    listaRutinas.Add(rutinaAuxiliar);
+                }
+
+                return listaRutinas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+    
+        
         public void Agregar(Rutina rutina)
         {
             AccesoDatos accesoDatos = new AccesoDatos();

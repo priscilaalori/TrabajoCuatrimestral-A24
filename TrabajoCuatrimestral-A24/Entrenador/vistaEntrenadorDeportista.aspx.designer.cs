@@ -24,13 +24,13 @@ namespace tp_webform_equipo_24A
         protected global::System.Web.UI.WebControls.Label lblNombre;
 
         /// <summary>
-        /// Control IdRutinasAlumn.
+        /// Control dgvRutinasAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView IdRutinasAlumn;
+        protected global::System.Web.UI.WebControls.GridView dgvRutinasAlumno;
 
         /// <summary>
         /// Control btmAgregarRutina.
