@@ -51,5 +51,23 @@ namespace tp_webform_equipo_24A
         {
             Response.Redirect("InicioEntrenador.aspx");
         }
+
+        protected void btmAgregarRutina_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int idDeportista = int.Parse(Request.QueryString["id"].ToString());
+                    Response.Redirect("Rutina.aspx?id=" + idDeportista );
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }

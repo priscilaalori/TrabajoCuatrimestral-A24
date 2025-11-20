@@ -62,7 +62,7 @@ namespace Negocio
 
             try
             {
-            
+
                 datos.setearConsulta(@"
                       INSERT INTO Usuarios 
                       (Nombre, Apellido, Email, PasswordHash, Rol, Activo, DNI, FechaNacimiento)
@@ -95,6 +95,27 @@ namespace Negocio
             }
         }
 
+        public void AsociarRutinaDepostista(int IdRutina, int IdDeportista)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO DeportistaRutinas (IdRutina, IdDeportista) VALUES (@IdRutina, @IdDeportista);");
+                accesoDatos.setearParametro("@IdRutina", IdRutina);
+                accesoDatos.setearParametro("@IdDeportista", IdDeportista);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
         public Deportista ObtenerPorId(int id)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -200,5 +221,5 @@ namespace Negocio
 
 
     }
-    
+
 }

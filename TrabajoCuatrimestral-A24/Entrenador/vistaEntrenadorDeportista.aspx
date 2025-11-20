@@ -22,7 +22,7 @@
 
     <div>
 
-        <asp:Button ID="btmAgregarRutina" Style="margin-top: 10px;" class="btn btn-primary btn-sm" runat="server" Text="Agregar rutina" />
+        <asp:Button ID="btmAgregarRutina" Style="margin-top: 10px;" class="btn btn-primary btn-sm" OnClick="btmAgregarRutina_Click" runat="server" Text="Agregar rutina" />
 
     </div>
 

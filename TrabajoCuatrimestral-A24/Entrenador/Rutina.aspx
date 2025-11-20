@@ -39,6 +39,18 @@
                              CausesValidation="false"/>
                     </ItemTemplate>
                 </asp:TemplateField>
+
+                <asp:TemplateField Headertext="Agregar"> 
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnAgregarRutinaAlumno" runat="server" Text="Agregar"
+                            CommandName="AgregarRutinaADeportista"
+                            CommandArgument='<%# Eval("IdRutina") %>'
+                            CausesValidation="false" />
+
+                    </ItemTemplate>
+
+                </asp:TemplateField>      
+
             </Columns>
         </asp:GridView>
     </div>

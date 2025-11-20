@@ -54,6 +54,23 @@ namespace tp_webform_equipo_24A
                     Response.Redirect("RutinaAgregarEjercicios.aspx?id=" + id, false);
 
                 }
+
+                else if (e.CommandName == "AgregarRutinaADeportista")
+                {
+                    int idRutina = Convert.ToInt32(e.CommandArgument);
+
+                    //recupero el id de deportista que viene de la página de deportista
+                    if (Request.QueryString["id"] != null)
+                    {
+                        int idDeportista = int.Parse(Request.QueryString["id"].ToString());
+
+                        DeportistaNegocio deportistaNegocio  = new DeportistaNegocio();
+                        deportistaNegocio.AsociarRutinaDepostista(idRutina, idDeportista);
+
+                        Response.Redirect("vistaEntrenadorDeportista.aspx?id=" + idDeportista);
+                        
+                    }
+                }
             }
             catch (Exception ex)
             {
