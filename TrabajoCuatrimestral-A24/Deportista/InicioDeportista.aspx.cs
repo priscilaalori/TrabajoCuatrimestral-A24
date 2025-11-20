@@ -13,5 +13,22 @@ namespace tp_webform_equipo_24A
         {
 
         }
+
+       
+
+        protected void BtnSiguiente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RutinaDeportista.aspx");
+        }
+
+        protected void btnHistorial_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Historial.aspx");
+        }
+
+        protected void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PerfilDeportista.aspx");
+        }
     }
 }

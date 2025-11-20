@@ -18,7 +18,7 @@
                 <th>Descripcion </th>
                 <th>Video </th>
                 <th>Accion </th>
-                <th>Seleccionar </th>
+            
             </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@
                     <asp:Button OnClick="BtnEliminar_Click1" ID="BtnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-dark btn-lg" CommandArgument='<%# Eval("IdEjercicio") %>' />
                 </td>
                 <td>
-                    <input type="checkbox" name="ejercicioSeleccionado" value='<%# Eval("IdEjercicio") %>' /></td>
+                    
             </tr>
                      </ItemTemplate>
             </asp:Repeater>
@@ -43,7 +43,6 @@
 
 
     <br />
-    <asp:Button OnClick="btnGuardarSeleccion_click" ID="btnGuardarSeleccion" runat="server" Text="Guardar Seleccion" CssClass="btn btn-dark btn-lg" />
     <br />
     
 

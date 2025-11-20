@@ -26,7 +26,7 @@ namespace tp_webform_equipo_24A.Administrador
         private void CargarDatosDeportista(int idDeportista)
         {
             DeportistaNegocio negocio = new DeportistaNegocio();
-            Deportista deportista = negocio.ObtenerPorId(idDeportista);
+            Dominio.Deportista deportista = negocio.ObtenerPorId(idDeportista);
 
             if (deportista != null)
             {
@@ -42,7 +42,7 @@ namespace tp_webform_equipo_24A.Administrador
         {
             EntrenadorNegocio negocio = new EntrenadorNegocio();
             DeportistaNegocio depon = new DeportistaNegocio();
-            Deportista deportista = depon.ObtenerPorIdDatosExtendidos(idDeportista);
+           Dominio.Deportista deportista = depon.ObtenerPorIdDatosExtendidos(idDeportista);
 
             // Obtener deporte del deportista
             var deporte = deportista.Deporte?.Count > 0 ? deportista.Deporte[0] : null;

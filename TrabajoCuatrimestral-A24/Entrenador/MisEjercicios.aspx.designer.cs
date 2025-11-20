@@ -24,15 +24,6 @@ namespace tp_webform_equipo_24A
         protected global::System.Web.UI.WebControls.Repeater rptEjercicios;
 
         /// <summary>
-        /// btnGuardarSeleccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarSeleccion;
-
-        /// <summary>
         /// btnAgregarEjercicio control.
         /// </summary>
         /// <remarks>

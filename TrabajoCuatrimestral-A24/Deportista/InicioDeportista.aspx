@@ -1,9 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="InicioDeportista.aspx.cs" Inherits="tp_webform_equipo_24A.InicioDeportista1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <style>
+    .btn-short {
+      width: 150px !important;
+      display: inline-block !important;
+      white-space: nowrap;
+      text-align: center;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    input.btn-short, button.btn-short { width:150px !important; display:inline-block !important; }
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <h2>HOLA! PEPE </h2>
 
-    <h1> ¿QUE VAMOS A ENTRENAR HOY?</h1>
+    <asp:Button OnClick="btnPerfil_Click" ID="btnPerfil" runat="server" Text="Mi Perfil" CssClass="btn btn-dark btn-short" ValidationGroup=""/>
+
+
+    <h3> ¿Que vamos a entrenador hoy?</h3>
 
 
 
@@ -21,14 +36,15 @@
          InitialValue=""
          ErrorMessage="Debe seleccionar un deporte"
          ForeColor="Red"
-         Display="Dynamic" />
+         Display="Dynamic" 
+         ValidationGroup="GrupoSiguiente"/>
  </div>
 
 
-     <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='RutinaDeportista.aspx'">Siguiente</button> 
+         <asp:Button OnClick="BtnSiguiente_Click" ID="BtnSiguiente" runat="server" Text="Siguiente"  CssClass="btn btn-dark btn-short" ValidationGroup="GrupoSiguiente"  />
 
    
     <br />
 
-    <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href='Historial.aspx'">Ver Historial</button>  
+         <asp:Button OnClick="btnHistorial_Click" ID="btnHistorial" runat="server" Text="Mi Historial"  CssClass="btn btn-dark btn-short" ValidationGroup="" />
 </asp:Content>
