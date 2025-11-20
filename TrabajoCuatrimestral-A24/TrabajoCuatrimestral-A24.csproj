@@ -69,7 +69,7 @@
   <ItemGroup>
     <Content Include="Administrador\AdministrarDeportes.aspx" />
     <Content Include="Administrador\ModificarAsignacion.aspx" />
-    <Content Include="Administrador\AsignacionManual.aspx" />
+    <Content Include="Administrador\Asignacion.aspx" />
     <Content Include="Administrador\AdministrarUsuarios.aspx" />
     <Content Include="Administrador\AgregarDeporte.aspx" />
     <Content Include="Administrador\ModificarDeporte.aspx" />
@@ -113,12 +113,12 @@
     <Compile Include="Administrador\ModificarAsignacion.aspx.designer.cs">
       <DependentUpon>ModificarAsignacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administrador\AsignacionManual.aspx.cs">
-      <DependentUpon>AsignacionManual.aspx</DependentUpon>
+    <Compile Include="Administrador\Asignacion.aspx.cs">
+      <DependentUpon>Asignacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administrador\AsignacionManual.aspx.designer.cs">
-      <DependentUpon>AsignacionManual.aspx</DependentUpon>
+    <Compile Include="Administrador\Asignacion.aspx.designer.cs">
+      <DependentUpon>Asignacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\AdministrarUsuarios.aspx.cs">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
