@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <asp:GridView ID="dgvlistRutinas" OnRowCommand="dgvlistRutinas_RowCommand" CssClass="table" OnSelectedIndexChanged="dgvlistRutinas_SelectedIndexChanged" AutoGenerateColumns="false" runat="server">
+        <asp:GridView ID="dgvlistRutinas" OnRowCommand="dgvlistRutinas_RowCommand" CssClass="table" OnSelectedIndexChanged="dgvlistRutinas_SelectedIndexChanged" OnRowDataBound="dgvlistRutinas_RowDataBound" AutoGenerateColumns="false" runat="server">
             <Columns>
                 <asp:BoundField HeaderText="idRutina" DataField="IdRutina" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -39,6 +39,18 @@
                              CausesValidation="false"/>
                     </ItemTemplate>
                 </asp:TemplateField>
+
+                <asp:TemplateField Headertext="Agregar"> 
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnAgregarRutinaAlumno" runat="server" Text="Agregar"
+                            CommandName="AgregarRutinaADeportista"
+                            CommandArgument='<%# Eval("IdRutina") %>'
+                            CausesValidation="false" />
+
+                    </ItemTemplate>
+
+                </asp:TemplateField>      
+
             </Columns>
         </asp:GridView>
     </div>

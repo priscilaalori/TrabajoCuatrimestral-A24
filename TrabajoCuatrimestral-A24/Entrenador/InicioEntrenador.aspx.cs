@@ -15,7 +15,7 @@ namespace tp_webform_equipo_24A
         {
             EntrenadorNegocio entrenadorNegocio = new EntrenadorNegocio();
 
-
+            
             dgvlistAlumnos.DataSource = entrenadorNegocio.ListarDeportistasPorEntrenador(4);
             dgvlistAlumnos.DataBind();
 
@@ -43,7 +43,7 @@ namespace tp_webform_equipo_24A
         {
             try
             {
-                if (e.CommandName == "Rutinas")
+                if (e.CommandName == "DetalleDeportista")
                 {
                     int id = Convert.ToInt32(e.CommandArgument);
                     Response.Redirect("vistaEntrenadorDeportista.aspx?id=" + id, false);

@@ -1,5 +1,5 @@
 ﻿<%@ Import Namespace="Dominio" %>
-<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="AsignacionManual.aspx.cs" Inherits="tp_webform_equipo_24A.AsignacionManual" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Asignacion.aspx.cs" Inherits="tp_webform_equipo_24A.AsignacionManual" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -106,9 +106,22 @@
             width: 100px; 
         }
 
-.volver-container {
-    margin-bottom: 15px;
-}
+        .volver-container {
+            margin-bottom: 15px;
+        }
+        
+        .btn-asignar {
+            background-color: #f1c40f;  
+            color: #000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .btn-asignar:hover {
+            background-color: #d4ac0d; 
+        }
 
     </style>
 </asp:Content>
@@ -123,7 +136,17 @@
     </div>
     <div class="admin-container">
         <div class="table-section">
-            <h2>Asignación Manual de recursos</h2>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                <h2 style="margin: 0;">Asignación de recursos</h2>
+            
+                <div>
+                    <asp:Button ID="btnAsignarTodo" runat="server" Text="Asignar *"
+                        CssClass="btn-asignar me-2 btn-accion" OnClick="btnAsignarTodo_Click" />
+            
+                    <asp:Button ID="btnEliminarTodo" runat="server" Text="Eliminar *"
+                        CssClass="btn-eliminar me-2 btn-accion" OnClick="btnEliminarTodo_Click" />
+                </div>
+            </div>
 
 
 <asp:GridView ID="gvAlumnos" runat="server" AutoGenerateColumns="false"
@@ -163,6 +186,11 @@
             CssClass="btn-eliminar me-2 btn-accion"
             CommandArgument='<%# Eval("IdUsuario") %>'
             OnClientClick="return confirm('¿Estás seguro de eliminar este profesor asignado?');" />
+
+        <asp:Button ID="btnAsignarAuto" runat="server" Text="Asignar Autom"
+            CommandName="Auto"
+            CssClass="btn-asignar me-2 btn-accion"
+            CommandArgument='<%# Eval("IdUsuario") %>' />
     </ItemTemplate>
 </asp:TemplateField>
 

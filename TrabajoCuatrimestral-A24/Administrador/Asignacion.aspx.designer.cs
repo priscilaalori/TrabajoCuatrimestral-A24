@@ -24,6 +24,24 @@ namespace tp_webform_equipo_24A
         protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
+        /// Control btnAsignarTodo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAsignarTodo;
+
+        /// <summary>
+        /// Control btnEliminarTodo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEliminarTodo;
+
+        /// <summary>
         /// Control gvAlumnos.
         /// </summary>
         /// <remarks>

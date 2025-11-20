@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Negocio
@@ -62,7 +63,7 @@ namespace Negocio
 
             try
             {
-            
+
                 datos.setearConsulta(@"
                       INSERT INTO Usuarios 
                       (Nombre, Apellido, Email, PasswordHash, Rol, Activo, DNI, FechaNacimiento)
@@ -95,6 +96,27 @@ namespace Negocio
             }
         }
 
+        public void AsociarRutinaDepostista(int IdRutina, int IdDeportista)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("INSERT INTO DeportistaRutinas (IdRutina, IdDeportista) VALUES (@IdRutina, @IdDeportista);");
+                accesoDatos.setearParametro("@IdRutina", IdRutina);
+                accesoDatos.setearParametro("@IdDeportista", IdDeportista);
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
         public Deportista ObtenerPorId(int id)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -198,7 +220,119 @@ namespace Negocio
             }
         }
 
+        public Deporte ObtenerDeportePrincipal(int idDeportista)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta(@"
+                                        SELECT TOP 1 D.IdDeporte, D.Nombre
+                                        FROM DeportistaDeportes DD
+                                        INNER JOIN Deportes D ON D.IdDeporte = DD.IdDeporte
+                                        WHERE DD.IdDeportista = @dep");
+
+                datos.setearParametro("@dep", idDeportista);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    return new Deporte
+                    {
+                        IdDeporte = (int)datos.Lector["IdDeporte"],
+                        Nombre = datos.Lector["Nombre"].ToString()
+                    };
+                }
+
+                return null;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Deportista> ListarSinEntrenador()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Deportista> lista = new List<Deportista>();
+
+            try
+            {
+                datos.setearConsulta(
+                    "SELECT u.IdUsuario, u.Nombre, u.Apellido, u.Email, u.DNI, u.FechaNacimiento " +
+                    "FROM Usuarios u " +
+                    "WHERE u.Rol = 'Deportista' AND NOT EXISTS (" +
+                        "SELECT 1 FROM EntrenadoresDeportistas ed " +
+                        "WHERE ed.IdDeportista = u.IdUsuario)"
+                );
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Deportista dep = new Deportista();
+
+                    dep.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    dep.Nombre = datos.Lector["Nombre"].ToString();
+                    dep.Apellido = datos.Lector["Apellido"].ToString();
+                    dep.Email = datos.Lector["Email"].ToString();
+                    dep.DNI = datos.Lector["DNI"] != DBNull.Value ? datos.Lector["DNI"].ToString() : null;
+                    dep.FechaNacimiento = datos.Lector["FechaNacimiento"] != DBNull.Value
+                        ? (DateTime)datos.Lector["FechaNacimiento"]
+                        : (DateTime?)null;
+
+                    lista.Add(dep);
+                }
+
+                return lista;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void AsignarATodosLosDeportistasSinAsignar()
+        {
+            DeportistaNegocio depNeg = new DeportistaNegocio();
+            EntrenadorNegocio entrenadorNegocio = new EntrenadorNegocio();
+            List<Deportista> listaSinEntrenador = depNeg.ListarSinEntrenador();
+
+            foreach (var dep in listaSinEntrenador)
+            {
+                try
+                {
+                    // Obtener datos extendidos del deportista (deporte)
+                    Deportista deportista = depNeg.ObtenerPorIdDatosExtendidos(dep.IdUsuario);
+                    if (deportista == null) continue;
+
+                    var deporte = deportista.Deporte?.FirstOrDefault();
+                    if (deporte == null) continue; 
+
+                    int idDeporte = deporte.IdDeporte;
+
+                    // Obtener el entrenador con menos alumnos para ese deporte
+                    Entrenador entrenador = entrenadorNegocio.ObtenerEntrenadorConMenosAlumnos(idDeporte);
+
+                    if (entrenador == null)
+                        continue; 
+
+                   
+                    entrenadorNegocio.AsignarProfesorADeportista(deportista.IdUsuario, entrenador.IdUsuario);
+                }
+                catch
+                {
+                    
+                    continue;
+                }
+            }
+        }
+
+
+
+
 
     }
-    
+
 }

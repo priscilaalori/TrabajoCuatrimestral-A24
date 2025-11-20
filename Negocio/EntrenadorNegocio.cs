@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Negocio
 {
@@ -217,6 +218,94 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public Entrenador ObtenerEntrenadorConMenosAlumnos(int idDeporte)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta(@"
+                                SELECT TOP 1 U.IdUsuario, U.Nombre, U.Apellido
+                                FROM Usuarios U
+                                INNER JOIN EntrenadoresDeportes ED ON ED.IdEntrenador = U.IdUsuario
+                                LEFT JOIN EntrenadoresDeportistas EDep ON EDep.IdEntrenador = U.IdUsuario
+                                WHERE ED.IdDeporte = @idDeporte
+                                GROUP BY U.IdUsuario, U.Nombre, U.Apellido
+                                ORDER BY COUNT(EDep.IdDeportista) ASC");
+
+                datos.setearParametro("@idDeporte", idDeporte);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    return new Entrenador
+                    {
+                        IdUsuario = (int)datos.Lector["IdUsuario"],
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString()
+                    };
+                }
+
+                return null;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void EliminarTodasLasAsignaciones()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM EntrenadoresDeportistas");
+                datos.ejecutarAccion();
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void AsignarATodosLosDeportistasSinAsignar()
+        {
+            DeportistaNegocio depNeg = new DeportistaNegocio();
+            // Trae deportistas que no tienen entrenador (implementá ListarSinEntrenador en DeportistaNegocio)
+            List<Deportista> listaSinEntrenador = depNeg.ListarSinEntrenador();
+
+            foreach (var dep in listaSinEntrenador)
+            {
+                try
+                {
+                    // Obtener datos extendidos del deportista (deporte)
+                    Deportista deportista = depNeg.ObtenerPorIdDatosExtendidos(dep.IdUsuario);
+                    if (deportista == null) continue;
+
+                    var deporte = deportista.Deporte?.FirstOrDefault();
+                    if (deporte == null) continue; // si no tiene deporte, no se asigna
+
+                    int idDeporte = deporte.IdDeporte;
+
+                    // Obtener el entrenador con menos alumnos para ese deporte
+                    Entrenador entrenador = ObtenerEntrenadorConMenosAlumnos(idDeporte);
+
+                    if (entrenador == null)
+                        continue; // no hay entrenadores para ese deporte
+
+                    // Asignar (tu método ya actualiza o inserta según corresponda)
+                    AsignarProfesorADeportista(deportista.IdUsuario, entrenador.IdUsuario);
+                }
+                catch
+                {
+                    // opcional: loggear y continuar con el siguiente
+                    continue;
+                }
+            }
+        }
+
+
 
 
     }

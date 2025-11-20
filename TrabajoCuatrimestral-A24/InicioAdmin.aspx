@@ -190,9 +190,9 @@
             </div>
 
             <div class="admin-card card-profes">
-                <h4>Asignación manual</h4>
-                <p>Asigna profesores a alumnos manualmente. Tambien podes ver que profe tiene cada alumno</p>
-                <a href="Administrador/AsignacionManual.aspx" class="btn-card">Asignar</a>
+                <h4>Asignación profesores</h4>
+                <p>Asigna profesores a alumnos. Tambien podes ver que profe tiene cada alumno</p>
+                <a href="Administrador/Asignacion.aspx" class="btn-card">Asignar</a>
             </div>
 
         </div>

@@ -79,7 +79,7 @@ namespace tp_webform_equipo_24A.Administrador
                 lblMensaje.Text = "Profesor actualizado correctamente.";
 
                 // Redirigir después de unos segundos o directo
-                Response.Redirect("AsignacionManual.aspx");
+                Response.Redirect("Asignacion.aspx");
             }
             catch (Exception ex)
             {
@@ -89,7 +89,7 @@ namespace tp_webform_equipo_24A.Administrador
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AsignacionManual.aspx");
+            Response.Redirect("Asignacion.aspx");
         }
     }
 }
