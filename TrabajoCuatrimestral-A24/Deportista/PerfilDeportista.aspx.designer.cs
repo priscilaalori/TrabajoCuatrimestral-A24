@@ -7,83 +7,83 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace tp_webform_equipo_24A
+namespace tp_webform_equipo_24A.Deportista
 {
 
 
-    public partial class RutinaDeportista
+    public partial class PerfilDeportista
     {
 
         /// <summary>
-        /// nombreRutina control.
+        /// txtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nombreRutina;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
-        /// descripcionRutina control.
+        /// txtApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descripcionRutina;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
         /// <summary>
-        /// rptEjercicios control.
+        /// txtPeso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEjercicios;
+        protected global::System.Web.UI.WebControls.TextBox txtPeso;
 
         /// <summary>
-        /// chkOpcion1 control.
+        /// txtAltura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkOpcion1;
+        protected global::System.Web.UI.WebControls.TextBox txtAltura;
 
         /// <summary>
-        /// rblEsfuerzo control.
+        /// txtProfesorId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblEsfuerzo;
+        protected global::System.Web.UI.WebControls.TextBox txtProfesorId;
 
         /// <summary>
-        /// slEsfuerzo control.
+        /// txtFechaDeNacimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl slEsfuerzo;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaDeNacimiento;
 
         /// <summary>
-        /// txtComentario control.
+        /// BtnGuardarPerfil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComentario;
+        protected global::System.Web.UI.WebControls.Button BtnGuardarPerfil;
 
         /// <summary>
-        /// btn_guardarHistorial control.
+        /// BtnConfigraciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_guardarHistorial;
+        protected global::System.Web.UI.WebControls.Button BtnConfigraciones;
     }
 }

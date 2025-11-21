@@ -7,38 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace tp_webform_equipo_24A
+namespace tp_webform_equipo_24A.Deportista
 {
 
 
-    public partial class MisEjercicios
+    public partial class RutinasFuturas
     {
 
         /// <summary>
-        /// rptEjercicios control.
+        /// ddlDeporte control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEjercicios;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDeporte;
 
         /// <summary>
-        /// btnAgregarEjercicio control.
+        /// rptRutinas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarEjercicio;
-
-        /// <summary>
-        /// btnVolver control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
+        protected global::System.Web.UI.WebControls.Repeater rptRutinas;
     }
 }

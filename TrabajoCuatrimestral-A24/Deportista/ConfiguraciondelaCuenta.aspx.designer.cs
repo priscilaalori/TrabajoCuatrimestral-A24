@@ -7,65 +7,56 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace tp_webform_equipo_24A
+namespace tp_webform_equipo_24A.Deportista
 {
 
 
-    public partial class InicioDeportista1
+    public partial class ConfiguraciondelaCuenta
     {
 
         /// <summary>
-        /// btnPerfil control.
+        /// txtMail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPerfil;
+        protected global::System.Web.UI.WebControls.TextBox txtMail;
 
         /// <summary>
-        /// ddlDeporte control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDeporte;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// rfvDeporte control.
+        /// txtPasswordNueva control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDeporte;
+        protected global::System.Web.UI.WebControls.TextBox txtPasswordNueva;
 
         /// <summary>
-        /// BtnSiguiente control.
+        /// btnGuardarPerfil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSiguiente;
+        protected global::System.Web.UI.WebControls.Button btnGuardarPerfil;
 
         /// <summary>
-        /// btnHistorial control.
+        /// Btnvolver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHistorial;
-
-        /// <summary>
-        /// btnRutinasFuturas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRutinasFuturas;
+        protected global::System.Web.UI.WebControls.Button Btnvolver;
     }
 }
