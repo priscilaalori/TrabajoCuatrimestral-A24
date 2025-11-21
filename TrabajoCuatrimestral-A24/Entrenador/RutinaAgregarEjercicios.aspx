@@ -9,6 +9,20 @@
         .oculto {
             display: none;
         }
+
+        .btn-short {
+            width: 150px !important;
+            display: inline-block !important;
+            white-space: nowrap;
+            text-align: center;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        input.btn-short, button.btn-short {
+            width: 150px !important;
+            display: inline-block !important;
+        }
     </style>
     <div>
         <h1>
@@ -59,7 +73,7 @@
     </div>
 
     <div>
-        <asp:Button Style="margin-top: 10px;" ID="btnVolver" CssClass="btn btn-primary btn-sm" CausesValidation="false" OnClick="btnVolver_Click" runat="server" Text="Volver a mis rutinas" />
+        <asp:Button Style="margin-top: 10px;" ID="btnVolver" CssClass="btn btn-dark btn-short" CausesValidation="false" OnClick="btnVolver_Click" runat="server" Text="Volver a mis rutinas" />
     </div>
 
 

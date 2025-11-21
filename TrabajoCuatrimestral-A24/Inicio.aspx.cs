@@ -44,10 +44,21 @@ namespace TrabajoCuatrimestral
 
             Usuario usuario;
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-            
-            usuario = usuarioNegocio.IniciarSesion(email,password);
+
+            usuario = usuarioNegocio.IniciarSesion(email, password);
+
+
+            //Cuando es nulo redirige a la pagina de error
+            if (usuario == null)
+            {
+                Session.Add("Error", "Error al loguear. Usuario o contraseña incorrecto");
+                Response.Redirect("Error.aspx");
+
+
+            }
 
             Session.Add("usuarioLogueado", usuario);
+
 
             switch (usuario.Rol)
             {

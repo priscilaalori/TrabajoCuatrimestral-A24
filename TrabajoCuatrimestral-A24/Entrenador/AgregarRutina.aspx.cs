@@ -69,7 +69,7 @@ namespace tp_webform_equipo_24A
 
         protected void cancelarRutina_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Rutina.aspx");
+           // Response.Redirect("Rutina.aspx");
         }
 
         protected void btnAgregarRutina_Click(object sender, EventArgs e)
