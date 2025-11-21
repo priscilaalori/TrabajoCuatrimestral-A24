@@ -11,9 +11,21 @@ namespace tp_webform_equipo_24A
 {
     public partial class AgregarRutina : System.Web.UI.Page
     {
+        private Usuario usuario = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             DeporteNegocio deporteNegocio = new DeporteNegocio();
+
+            //Recupera usuario logueado y valida el rol que sea ENTRENADOR
+            
+            if (Session["usuarioLogueado"] != null)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            if (usuario.Rol != TipoUsuario.ENTRENADOR)
+                Response.Redirect("Error.aspx");
+            //Hasta acá validación usuario.
 
             try
             {
@@ -33,7 +45,7 @@ namespace tp_webform_equipo_24A
                         int id = int.Parse(Request.QueryString["id"].ToString());
 
                         RutinaNegocio rutinaNegocio = new RutinaNegocio();
-                        List<Dominio.Rutina> rutinas = rutinaNegocio.Listar();
+                        List<Dominio.Rutina> rutinas = rutinaNegocio.Listar(usuario.IdUsuario);
                         Dominio.Rutina rutinaGuardada = rutinas.Find(x => x.IdRutina == id);
 
                         txtNombre.Text = rutinaGuardada.Nombre;
@@ -71,6 +83,7 @@ namespace tp_webform_equipo_24A
                 rutinaNueva.Nivel = ddlNivel.SelectedItem.Text;
                 rutinaNueva.FechaInicio = DateTime.Parse(txtFechaInicio.Text);
                 rutinaNueva.FechaFin = DateTime.Parse(txtFechaFin.Text);
+                rutinaNueva.IdEntrenador = usuario.IdUsuario;
 
                 rutinaNueva.Deporte = new Deporte();
 

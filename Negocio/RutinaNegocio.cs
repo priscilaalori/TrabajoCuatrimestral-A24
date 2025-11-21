@@ -11,14 +11,15 @@ namespace Negocio
 {
     public class RutinaNegocio
     {
-        public List<Rutina> Listar()
+        public List<Rutina> Listar(int idEntrenador)
         {
             List<Rutina> listaRutinas = new List<Rutina>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("select R.IdRutina, R.IdEntrenador, R.IdDeporte, D.Nombre as Deporte, R.Nombre, R.Nivel, R.Descripcion, R.FechaCreacion, R.FechaInicio,R.FechaFin from Rutinas R inner join Deportes D on D.IdDeporte = R.IdDeporte where Activa = 1");
+                datos.setearConsulta("select R.IdRutina, R.IdEntrenador, R.IdDeporte, D.Nombre as Deporte, R.Nombre, R.Nivel, R.Descripcion, R.FechaCreacion, R.FechaInicio,R.FechaFin from Rutinas R inner join Deportes D on D.IdDeporte = R.IdDeporte where Activa = 1 AND R.IdEntrenador = @idEntrenador");
+                datos.setearParametro("@idEntrenador", idEntrenador);
                 datos.ejecutarLectura();
 
 
@@ -26,7 +27,7 @@ namespace Negocio
                 {
                     Rutina rutinaAuxiliar = new Rutina();
                     rutinaAuxiliar.IdRutina = (int)datos.Lector["IdRutina"];
-                   // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
+                    rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
                     rutinaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
                     rutinaAuxiliar.Nivel = (string)datos.Lector["Nivel"];
                     rutinaAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
@@ -150,7 +151,7 @@ namespace Negocio
             {
                 accesoDatos.setearProcedimiento("sp_AgregarRutina");
                 // Acá se envia como idEntrenador 1 pero se tiene que ajustar a quien esté logueado. 
-                accesoDatos.setearParametro("@IdEntrenador", 1);
+                accesoDatos.setearParametro("@IdEntrenador", rutina.IdEntrenador);
                 accesoDatos.setearParametro("@IdDeporte", rutina.Deporte.IdDeporte);
                 accesoDatos.setearParametro("@Nombre", rutina.Nombre);
                 accesoDatos.setearParametro("@Nivel", rutina.Nivel);

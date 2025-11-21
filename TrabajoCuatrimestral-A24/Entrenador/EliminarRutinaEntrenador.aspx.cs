@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,17 @@ namespace tp_webform_equipo_24A.Entrenador
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = null;
+
+            if (Session["usuarioLogueado"] != null)
+            {
+                usuario = (Usuario)Session["usuarioLogueado"];
+            }
+            else
+            {
+                Response.Redirect("Error.aspx");
+            }
+
 
             try
             {
@@ -21,7 +33,7 @@ namespace tp_webform_equipo_24A.Entrenador
                     int id = int.Parse(Request.QueryString["id"].ToString());
 
                     RutinaNegocio rutinaNegocio = new RutinaNegocio();
-                    List<Dominio.Rutina> rutinas = rutinaNegocio.Listar();
+                    List<Dominio.Rutina> rutinas = rutinaNegocio.Listar(usuario.IdUsuario);
                     Dominio.Rutina rutinaGuardada = rutinas.Find(x => x.IdRutina == id);
 
                     lblRutina.Text = rutinaGuardada.Nombre;

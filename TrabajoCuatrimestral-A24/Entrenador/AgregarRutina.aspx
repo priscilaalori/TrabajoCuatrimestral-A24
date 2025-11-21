@@ -50,7 +50,7 @@
             <div>
                 <asp:TextBox TextMode="MultiLine" ID="txtDescipcion" CssClass="form-control" Rows="3" runat="server"></asp:TextBox>
                 <asp:RequiredFieldValidator ErrorMessage="La descripción es requerida" CssClass="color-validaciones" ControlToValidate="txtDescipcion" runat="server" />
-                <a href="MisEjercicios.aspx"target="_blank">Agregar Ejercicios</a>
+                <%--<a href="MisEjercicios.aspx"target="_blank">Agregar Ejercicios</a>--%>
             </div>
    
             <br />

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+    public static class TipoUsuario
+    {
+        public const string ENTRENADOR = "Entrenador";
+        public const string DEPORTISTA = "Deportista";
+        public const string ADMIN = "Administrador";
+    }
     public class Usuario
     {
 
@@ -14,7 +20,7 @@ namespace Dominio
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Contrasenia { get; set; }
-        public string Rol { get; set; } // "Administrador", "Profesor", "Deportista"
+        public string Rol { get; set; } // "Administrador", "Entrenador", "Deportista"
         public bool Activo { get; set; }
         
         public string DNI { get; set; }
@@ -30,6 +36,8 @@ namespace Dominio
                 return $"{Nombre} {Apellido}";
             }
         }
+
+
     }
 
 }

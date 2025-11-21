@@ -1,11 +1,12 @@
 ﻿using Negocio;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Negocio;
+
 
 namespace tp_webform_equipo_24A
 {
@@ -14,7 +15,18 @@ namespace tp_webform_equipo_24A
         protected void Page_Load(object sender, EventArgs e)
         {
             EntrenadorNegocio entrenadorNegocio = new EntrenadorNegocio();
+            Usuario usuario = null;
 
+            if (Session["usuarioLogueado"] != null)
+            {
+                 usuario = (Usuario)Session["usuarioLogueado"];
+            }
+            else
+            {
+                Response.Redirect("Error.aspx");
+            }
+
+            lblNombreEntrenador.Text = usuario.Nombre;
             
             dgvlistAlumnos.DataSource = entrenadorNegocio.ListarDeportistasPorEntrenador(4);
             dgvlistAlumnos.DataBind();

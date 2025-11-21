@@ -17,6 +17,16 @@ namespace tp_webform_equipo_24A.Entrenador
         }
         private void cargar()
         {
+            Usuario usuario = null;
+
+            if (Session["usuarioLogueado"] != null)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            if(usuario.Rol != TipoUsuario.ENTRENADOR)
+                Response.Redirect("Error.aspx");
+
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -24,7 +34,7 @@ namespace tp_webform_equipo_24A.Entrenador
                     int id = int.Parse(Request.QueryString["id"].ToString());
 
                     RutinaNegocio rutinaNegocio = new RutinaNegocio();
-                    List<Dominio.Rutina> rutinas = rutinaNegocio.Listar();
+                    List<Dominio.Rutina> rutinas = rutinaNegocio.Listar(usuario.IdUsuario);
                     Dominio.Rutina rutinaGuardada = rutinas.Find(x => x.IdRutina == id);
 
                     lblNombre.Text = rutinaGuardada.Nombre;

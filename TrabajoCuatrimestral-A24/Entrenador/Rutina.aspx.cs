@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,17 @@ namespace tp_webform_equipo_24A
         {
             RutinaNegocio rutinaNegocio = new RutinaNegocio();
 
+            //Recupera usuario logueado y valida el rol que sea ENTRENADOR
+            Usuario usuario = null;
+            if (Session["usuarioLogueado"] != null)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            if (usuario.Rol != TipoUsuario.ENTRENADOR)
+                Response.Redirect("Error.aspx");
+            //Hasta acá validación usuario.
+
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -24,7 +36,7 @@ namespace tp_webform_equipo_24A
                     MostrarAgregar = true;
 
                 }
-                dgvlistRutinas.DataSource = rutinaNegocio.Listar();
+                dgvlistRutinas.DataSource = rutinaNegocio.Listar(usuario.IdUsuario);
                 dgvlistRutinas.DataBind();
 
             }
@@ -114,6 +126,8 @@ namespace tp_webform_equipo_24A
                     // Si no viene id → mostrar
                     btnAgregar.Visible = vieneId;
                 }
+
+
             }
             catch (Exception ex)
             {

@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <h1>¡Hola Entrenador!</h1>
+        <h1>¡Hola <asp:Label ID="lblNombreEntrenador" Text="text" runat="server" /> !</h1>
         <p>Mis estudiantes</p>
     </div>
     <div>

@@ -40,21 +40,24 @@ namespace TrabajoCuatrimestral
                 return;
             }
 
-            switch (email)
+            //Acá se genera el login 
+
+            Usuario usuario;
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            
+            usuario = usuarioNegocio.IniciarSesion(email,password);
+
+            Session.Add("usuarioLogueado", usuario);
+
+            switch (usuario.Rol)
             {
-                case "Deportista":
+                case TipoUsuario.DEPORTISTA:
                     Response.Redirect("Deportista/InicioDeportista.aspx");
                     break;
-                case "Profesor":
+                case TipoUsuario.ENTRENADOR:
                     Response.Redirect("Entrenador/InicioEntrenador.aspx");
                     break;
-                case "Entrenador":
-                    Response.Redirect("Entrenador/InicioEntrenador.aspx");
-                    break;
-                case "Administrador":
-                    Response.Redirect("InicioAdmin.aspx");
-                    break;
-                case "Admin":
+                case TipoUsuario.ADMIN:
                     Response.Redirect("InicioAdmin.aspx");
                     break;
                 default:
