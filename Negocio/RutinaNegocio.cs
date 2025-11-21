@@ -26,7 +26,7 @@ namespace Negocio
                 {
                     Rutina rutinaAuxiliar = new Rutina();
                     rutinaAuxiliar.IdRutina = (int)datos.Lector["IdRutina"];
-                   // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
+                    // rutinaAuxiliar.IdEntrenador = (int)datos.Lector["IdEntrenador"];
                     rutinaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
                     rutinaAuxiliar.Nivel = (string)datos.Lector["Nivel"];
                     rutinaAuxiliar.Descripcion = (string)datos.Lector["Descripcion"];
@@ -44,7 +44,7 @@ namespace Negocio
                     //deportistaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
                     //deportistaAuxiliar.Apellido = (string)datos.Lector["Apellido"];
 
-                   listaRutinas.Add(rutinaAuxiliar);
+                    listaRutinas.Add(rutinaAuxiliar);
                 }
 
                 return listaRutinas;
@@ -59,7 +59,133 @@ namespace Negocio
             }
         }
 
-        public List<Ejercicio> ListarEjericiosRutina( int idRutina)
+        public List<Rutina> ListarRutinasDeUsuarioPorDeporte(int IdDeportista, int IdDeporte)
+        {
+            List<Rutina> Listarutinas = new List<Rutina>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT r.IdRutina, r.Nombre AS NombreRutina, r.Nivel, r.Descripcion AS DescripcionRutina, r.FechaCreacion, r.FechaInicio, r.FechaFin,  " +
+               "e.IdEjercicio, e.Nombre AS NombreEjercicio, e.Descripcion AS DescripcionEjercicio, e.UrlVideo, e.Estado " +
+               "FROM DeportistaRutinas dr " +
+               "INNER JOIN Rutinas r ON dr.IdRutina = r.IdRutina " +
+               "INNER JOIN RutinaEjercicios re ON r.IdRutina = re.IdRutina " +
+               "INNER JOIN Ejercicios e ON re.IdEjercicio = e.IdEjercicio " +
+               "WHERE dr.IdDeportista = @IdDeportista AND r.IdDeporte = @IdDeporte");
+
+                datos.setearParametro("@IdDeportista", IdDeportista);
+                datos.setearParametro("@IdDeporte", IdDeporte);
+                datos.ejecutarLectura();
+
+
+                while (datos.Lector.Read())
+                {
+                    int idRutina = (int)datos.Lector["IdRutina"];
+
+                    Rutina rutina = Listarutinas.FirstOrDefault(r => r.IdRutina == idRutina);
+
+                    if (rutina == null)
+                    {
+                        rutina = new Rutina
+                        {
+                            IdRutina = idRutina,
+                            Nombre = datos.Lector["NombreRutina"].ToString(),
+                            Nivel = datos.Lector["Nivel"].ToString(),
+                            Descripcion = datos.Lector["DescripcionRutina"].ToString(),
+                            FechaCreacion = (DateTime)datos.Lector["FechaCreacion"],
+                            FechaInicio = (DateTime)datos.Lector["FechaInicio"],
+                            FechaFin = (DateTime)datos.Lector["FechaFin"],
+                            Ejercicios = new List<Ejercicio>()
+                        };
+
+                        Listarutinas.Add(rutina);
+                    }
+
+                    Ejercicio ejercicio = new Ejercicio
+                    {
+                        IdEjercicio = (int)datos.Lector["IdEjercicio"],
+                        Nombre = datos.Lector["NombreEjercicio"].ToString(),
+                        Descripcion = datos.Lector["DescripcionEjercicio"].ToString(),
+                        UrlVideo = datos.Lector["UrlVideo"].ToString(),
+
+                    };
+
+                    rutina.Ejercicios.Add(ejercicio);
+                }
+
+                return Listarutinas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Rutina ListarRutinaDelDiaDeUsuarioPorDeporte(int IdDeportista, int IdDeporte, DateTime fechaHoy)
+        {
+            Rutina rutina = null; 
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT r.IdRutina, r.Nombre AS NombreRutina, r.Nivel, r.Descripcion AS DescripcionRutina, r.FechaCreacion, " +
+                   "e.IdEjercicio, e.Nombre AS NombreEjercicio, e.Descripcion AS DescripcionEjercicio, e.UrlVideo, e.Estado " +
+                   "FROM DeportistaRutinas dr " +
+                   "INNER JOIN Rutinas r ON dr.IdRutina = r.IdRutina " +
+                   "INNER JOIN RutinaEjercicios re ON r.IdRutina = re.IdRutina " +
+                   "INNER JOIN Ejercicios e ON re.IdEjercicio = e.IdEjercicio " +
+                   "WHERE dr.IdDeportista = @IdDeportista AND r.IdDeporte = @IdDeporte AND r.FechaInicio = @fechaInicio");
+
+                datos.setearParametro("@IdDeportista", IdDeportista);
+                datos.setearParametro("@IdDeporte", IdDeporte);
+                datos.setearParametro("@fechaInicio", fechaHoy);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    int idRutina = (int)datos.Lector["IdRutina"];
+
+                    if (rutina == null)
+                    {
+                        rutina = new Rutina
+                        {
+                            IdRutina = idRutina,
+                            Nombre = datos.Lector["NombreRutina"].ToString(),
+                            Nivel = datos.Lector["Nivel"].ToString(),
+                            Descripcion = datos.Lector["DescripcionRutina"].ToString(),
+                            FechaCreacion = (DateTime)datos.Lector["FechaCreacion"],
+                            Ejercicios = new List<Ejercicio>()
+                        };
+                    }
+
+                    rutina.Ejercicios.Add(new Ejercicio
+                    {
+                        IdEjercicio = (int)datos.Lector["IdEjercicio"],
+                        Nombre = datos.Lector["NombreEjercicio"].ToString(),
+                        Descripcion = datos.Lector["DescripcionEjercicio"].ToString(),
+                        UrlVideo = datos.Lector["UrlVideo"].ToString()
+                    });
+                }
+
+                return rutina;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public List<Ejercicio> ListarEjericiosRutina(int idRutina)
         {
             List<Ejercicio> listaEjercicios = new List<Ejercicio>();
             AccesoDatos datos = new AccesoDatos();
@@ -68,7 +194,7 @@ namespace Negocio
             {
                 datos.setearParametro("@IdRutina", idRutina);
                 datos.setearConsulta("select E.IdEjercicio, E.Nombre, E.Descripcion, E.UrlVideo from Ejercicios E inner join RutinaEjercicios RE on E.IdEjercicio = RE.IdEjercicio where RE.IdRutina = @IdRutina");
-                
+
                 datos.ejecutarLectura();
 
 
@@ -141,8 +267,8 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-    
-        
+
+
         public void Agregar(Rutina rutina)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
@@ -208,7 +334,7 @@ namespace Negocio
                 accesoDatos.setearConsulta("Update Rutinas set Activa = 0 where idRutina = @IdRutina");
 
                 accesoDatos.setearParametro("@IdRutina", idRutina);
-               
+
                 accesoDatos.ejecutarAccion();
 
             }
@@ -228,7 +354,7 @@ namespace Negocio
                 accesoDatos.setearConsulta("DELETE FROM RutinaEjercicios WHERE IdRutina = @IdRutina AND IdEjercicio = @IdEjercicio;");
 
                 accesoDatos.setearParametro("@IdRutina", idRutina);
-                accesoDatos.setearParametro("@IdEjercicio",idEjercicio);
+                accesoDatos.setearParametro("@IdEjercicio", idEjercicio);
 
                 accesoDatos.ejecutarAccion();
 
@@ -265,6 +391,5 @@ namespace Negocio
         }
     }
 
-  
 }
 

@@ -56,7 +56,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
+        
         public void agregar(Deportista nuevoDeportista, int idDeporte)
         {
             AccesoDatos datos = new AccesoDatos();

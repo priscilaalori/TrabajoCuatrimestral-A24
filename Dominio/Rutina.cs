@@ -25,6 +25,8 @@ namespace Dominio
         public bool Activa { get; set; }
         public List<Ejercicio> Ejercicios { get; set; }
 
+        public Historial Historial { get; set; }
+
         //public List<Observacion> Observaciones { get; set; }
 
     }

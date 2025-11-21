@@ -11,9 +11,9 @@ namespace Dominio
     {
         //Revisar en final de etapa 3 el rol de esta clase y su estructura
         public int IdHistorial { get; set; }
-        public int IdDeportista { get; set; }
-        public List<Observacion> Observaciones{ get; set; }
-        public List<Rutina> Rutinas { get; set; }
+        public bool  Completado {  get; set; }
+        public int  Sensacion { get; set; }
+        public int Esfuerzo { get; set; }
 
     }
 }

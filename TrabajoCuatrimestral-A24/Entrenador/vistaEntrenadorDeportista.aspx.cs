@@ -20,7 +20,7 @@ namespace tp_webform_equipo_24A
                 {
                     int idDeportista = int.Parse(Request.QueryString["id"].ToString());
                     DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
-                    Deportista deportista = new Deportista();
+                    Dominio.Deportista deportista = new Dominio.Deportista();
                     deportista = deportistaNegocio.ObtenerPorId(idDeportista);
 
 

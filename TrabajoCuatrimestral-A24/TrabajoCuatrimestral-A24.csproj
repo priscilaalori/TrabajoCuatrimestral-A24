@@ -76,6 +76,7 @@
     <Content Include="Administrador\ModificarUsuario.aspx" />
     <Content Include="Deportista\ConfiguraciondelaCuenta.aspx" />
     <Content Include="Deportista\PerfilDeportista.aspx" />
+    <Content Include="Deportista\RutinasFuturas.aspx" />
     <Content Include="Entrenador\AgregarEjercicio.aspx" />
     <Content Include="Entrenador\AgregarRutina.aspx" />
     <Content Include="Deportista\Historial.aspx" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="Deportista\PerfilDeportista.aspx.designer.cs">
       <DependentUpon>PerfilDeportista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deportista\RutinasFuturas.aspx.cs">
+      <DependentUpon>RutinasFuturas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deportista\RutinasFuturas.aspx.designer.cs">
+      <DependentUpon>RutinasFuturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Entrenador\AgregarEjercicio.aspx.cs">
       <DependentUpon>AgregarEjercicio.aspx</DependentUpon>
