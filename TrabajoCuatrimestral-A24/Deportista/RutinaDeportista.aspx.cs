@@ -11,6 +11,8 @@ namespace tp_webform_equipo_24A
 {
     public partial class RutinaDeportista : System.Web.UI.Page
     {
+        private int idRutina;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarRutinaDeportista();
@@ -24,6 +26,7 @@ namespace tp_webform_equipo_24A
             Dominio.Rutina rutina = negocio.ListarRutinaDelDiaDeUsuarioPorDeporte(idDeportista , idDeporte, DateTime.Today);
             if(rutina != null)
             {
+                idRutina = rutina.IdRutina;
                 List<Ejercicio> listaEjercicio = rutina.Ejercicios.ToList();
                 rptEjercicios.DataSource = listaEjercicio;
                 descripcionRutina.Text = rutina.Descripcion;
@@ -38,13 +41,17 @@ namespace tp_webform_equipo_24A
 
         protected void btn_guardarHistorial_Click(object sender, EventArgs e)
         {
-            // Si usás runat="server" en el input: slEsfuerzo es control server y tiene Value
-            int nivelEsfuerzoPercibido = 5;
-            if (!string.IsNullOrEmpty(slEsfuerzo.Value))
-                nivelEsfuerzoPercibido = Convert.ToInt32(slEsfuerzo.Value);
+            HistorialNegocio negocio = new HistorialNegocio();
+            Dominio.Historial historial = new Dominio.Historial();
 
-            // ej: guardás en BD
-            // GuardarHistorial(idUsuario, idRutina, nivelEsfuerzoPercibido, chkOpcion1.Checked, txtNombre.Text);
+            historial.Completado = chkOpcion1.Checked;
+            historial.Sensacion = Convert.ToInt32(rblEsfuerzo.SelectedValue);
+            historial.Esfuerzo = Convert.ToInt32(slEsfuerzo.Value);
+            historial.Comentario = txtComentario.Text;
+            historial.FechaRegistro = DateTime.Now;
+
+            negocio.agregar(historial, idRutina);
+
 
             // feedback
             // Response.Redirect("InicioDeportista.aspx");

@@ -144,7 +144,7 @@
         <br />
 
         <h5>Comentarios</h5>
-        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+        <asp:TextBox ID="txtComentario" runat="server" CssClass="form-control" />
 
         <br />
 

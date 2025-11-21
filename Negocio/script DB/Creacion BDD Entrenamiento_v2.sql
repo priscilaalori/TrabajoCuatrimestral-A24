@@ -210,3 +210,41 @@ CREATE TABLE HistorialObservaciones (
     FOREIGN KEY (IdObservacion) REFERENCES Observaciones(IdObservacion)
 );
 GO
+
+
+/* ====================================
+   1. DROPS de tablas intermedias
+   ==================================== */
+DROP TABLE HistorialObservaciones;
+DROP TABLE Observaciones;
+DROP TABLE HistorialRutinas;
+
+/* ====================================
+   2. AGREGAR NUEVAS COLUMNAS EN HISTORIAL
+   ==================================== */
+ALTER TABLE Historial
+ADD Completado BIT CONSTRAINT DF_Historial_Completado DEFAULT 0,
+    Sensacion INT,
+    Esfuerzo INT,
+    Comentario VARCHAR(100),
+    IdRutina INT,
+    CONSTRAINT FK_Historial_Rutina FOREIGN KEY (IdRutina) REFERENCES Rutinas(IdRutina);
+
+/* ====================================
+   3. ELIMINAR FK DE IdDeportista
+   (Buscamos el nombre real de la FK)
+   ==================================== */
+DECLARE @fk NVARCHAR(200);
+
+SELECT @fk = name
+FROM sys.foreign_keys
+WHERE parent_object_id = OBJECT_ID('Historial');
+
+EXEC('ALTER TABLE Historial DROP CONSTRAINT ' + @fk);
+
+/* ====================================
+   4. ELIMINAR COLUMNA IdDeportista
+   ==================================== */
+ALTER TABLE Historial
+DROP COLUMN IdDeportista;
+
