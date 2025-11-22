@@ -23,7 +23,7 @@
         }
 
         form#form1 {
-            flex: 1 0 auto; 
+            flex: 1 0 auto;
             display: flex;
             flex-direction: column;
         }
@@ -35,15 +35,15 @@
         }
 
         footer {
-            flex-shrink: 0; 
+            flex-shrink: 0;
         }
 
         .volver-container {
             margin-bottom: 15px;
         }
-        
+
         .btnVolver {
-            background-color: #6c757d;     
+            background-color: #6c757d;
             color: white;
             padding: 8px 18px;
             font-size: 15px;
@@ -54,22 +54,22 @@
             transition: all 0.25s ease-in-out;
             box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
-        
-        .btnVolver:hover {
-            background-color: #5a6268;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.20);
-        }
-        
-        .btnVolver:active {
-            transform: translateY(0px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.10);
-        }
+
+            .btnVolver:hover {
+                background-color: #5a6268;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.20);
+            }
+
+            .btnVolver:active {
+                transform: translateY(0px);
+                box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+            }
     </style>
 
 </head>
 <body>
-
+    <form id="form1" runat="server">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Net durance</a>
@@ -78,7 +78,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Principal.aspx">Inicio</a></li>
+
+
+                    <%if (Negocio.Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]))
+                        {  %>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/Rutina.aspx">Rutinas</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/MisEjercicios.aspx">Ejercicios</a></li>
+                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/InicioEntrenador.aspx">Panel Entrenador</a></li>
+               <%--     <li class="nav-item"><a class="nav-link" runat="server" href="#">Salir</a></li>--%>
+                    <asp:Button ID="btnSalir" OnClick="btnSalir_Click" Text="Salir" CssClass="btn btn-outline-primary" runat="server" />
+                    <%}
+                    else
+                    { %>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Principal.aspx">Inicio</a></li>
+                    <% }%>
+
                     <asp:ContentPlaceHolder ID="MenuExtra" runat="server" />
                 </ul>
             </div>
@@ -86,12 +100,12 @@
     </nav>
 
 
-    <form id="form1" runat="server">
-     <main class="flex-grow-1">
-            <div class="container my-4 d-flex flex-column justify-content-center" style="flex:1;">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
-        </div>
-      </main>
+
+        <main class="flex-grow-1">
+            <div class="container my-4 d-flex flex-column justify-content-center" style="flex: 1;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+            </div>
+        </main>
     </form>
 
 

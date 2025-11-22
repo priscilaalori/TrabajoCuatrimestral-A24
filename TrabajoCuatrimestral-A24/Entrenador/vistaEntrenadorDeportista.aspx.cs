@@ -13,6 +13,13 @@ namespace tp_webform_equipo_24A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = null;
+
+
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
 
             try
             {
@@ -59,7 +66,7 @@ namespace tp_webform_equipo_24A
                 if (Request.QueryString["id"] != null)
                 {
                     int idDeportista = int.Parse(Request.QueryString["id"].ToString());
-                    Response.Redirect("Rutina.aspx?id=" + idDeportista );
+                    Response.Redirect("Rutina.aspx?id=" + idDeportista);
                 }
             }
             catch (Exception)

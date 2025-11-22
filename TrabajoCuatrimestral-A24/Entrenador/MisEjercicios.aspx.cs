@@ -21,6 +21,17 @@ namespace tp_webform_equipo_24A
 
         private void cargarEjercicios()
         {
+            //Recupera usuario logueado y valida el rol que sea ENTRENADOR
+            Usuario usuario = null;
+
+
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+            //Hasta acá validación usuario.
+
+
             EjercicioNegocio ejercicio = new EjercicioNegocio();
             List<Ejercicio> listaEjercicio = ejercicio.Listar();
             rptEjercicios.DataSource = listaEjercicio;

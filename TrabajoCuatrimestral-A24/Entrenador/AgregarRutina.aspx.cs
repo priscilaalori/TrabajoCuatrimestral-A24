@@ -17,15 +17,11 @@ namespace tp_webform_equipo_24A
             DeporteNegocio deporteNegocio = new DeporteNegocio();
 
             //Recupera usuario logueado y valida el rol que sea ENTRENADOR
-            
-            if (Session["usuarioLogueado"] != null)
-                usuario = (Usuario)Session["usuarioLogueado"];
-            else
-                Response.Redirect("Error.aspx");
 
-            if (usuario.Rol != TipoUsuario.ENTRENADOR)
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else 
                 Response.Redirect("Error.aspx");
-            //Hasta acá validación usuario.
 
             try
             {
@@ -69,7 +65,7 @@ namespace tp_webform_equipo_24A
 
         protected void cancelarRutina_Click(object sender, EventArgs e)
         {
-           // Response.Redirect("Rutina.aspx");
+            // Response.Redirect("Rutina.aspx");
         }
 
         protected void btnAgregarRutina_Click(object sender, EventArgs e)

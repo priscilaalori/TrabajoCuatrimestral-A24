@@ -13,7 +13,12 @@ namespace tp_webform_equipo_24A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = null;
 
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
         }
         protected void btnGuardarEjercicio_click(object sender, EventArgs e)
         {

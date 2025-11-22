@@ -16,6 +16,13 @@ namespace tp_webform_equipo_24A.Entrenador
         {
             Usuario usuario = null;
 
+
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+
             if (Session["usuarioLogueado"] != null)
             {
                 usuario = (Usuario)Session["usuarioLogueado"];

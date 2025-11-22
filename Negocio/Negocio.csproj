@@ -47,6 +47,7 @@
     <Compile Include="EjercicioNegocio.cs" />
     <Compile Include="HistorialNegocio.cs" />
     <Compile Include="RutinaNegocio.cs" />
+    <Compile Include="Seguridad.cs" />
     <Compile Include="UsuarioNegocio.cs" />
     <Compile Include="DeportistaNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

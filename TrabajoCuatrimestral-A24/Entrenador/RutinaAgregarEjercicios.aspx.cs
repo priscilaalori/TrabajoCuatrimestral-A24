@@ -13,19 +13,21 @@ namespace tp_webform_equipo_24A.Entrenador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             cargar();
         }
         private void cargar()
         {
+            //Recupera usuario logueado y valida el rol que sea ENTRENADOR
             Usuario usuario = null;
 
-            if (Session["usuarioLogueado"] != null)
+
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
                 usuario = (Usuario)Session["usuarioLogueado"];
             else
                 Response.Redirect("Error.aspx");
+            //Hasta acá validación usuario.
 
-            if(usuario.Rol != TipoUsuario.ENTRENADOR)
-                Response.Redirect("Error.aspx");
 
             try
             {
@@ -73,7 +75,7 @@ namespace tp_webform_equipo_24A.Entrenador
                     cargar();
 
 
-                    
+
 
                 }
             }

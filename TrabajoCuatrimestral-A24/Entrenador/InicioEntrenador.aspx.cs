@@ -17,14 +17,10 @@ namespace tp_webform_equipo_24A
             EntrenadorNegocio entrenadorNegocio = new EntrenadorNegocio();
             Usuario usuario = null;
 
-            if (Session["usuarioLogueado"] != null)
-            {
-                 usuario = (Usuario)Session["usuarioLogueado"];
-            }
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
             else
-            {
                 Response.Redirect("Error.aspx");
-            }
 
             lblNombreEntrenador.Text = usuario.Nombre;
             

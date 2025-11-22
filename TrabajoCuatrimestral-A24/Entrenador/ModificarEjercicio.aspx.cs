@@ -13,6 +13,16 @@ namespace tp_webform_equipo_24A.Entrenador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+             Usuario usuario = null;
+
+
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+            //Hasta acá validación usuario.
+
             if (!IsPostBack)
             {
                 if (Session["IdEjercicioSeleccionado"] == null)

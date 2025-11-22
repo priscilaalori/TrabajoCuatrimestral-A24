@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
@@ -19,12 +20,11 @@ namespace tp_webform_equipo_24A
 
             //Recupera usuario logueado y valida el rol que sea ENTRENADOR
             Usuario usuario = null;
-            if (Session["usuarioLogueado"] != null)
+
+
+            if (Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
                 usuario = (Usuario)Session["usuarioLogueado"];
             else
-                Response.Redirect("Error.aspx");
-
-            if (usuario.Rol != TipoUsuario.ENTRENADOR)
                 Response.Redirect("Error.aspx");
             //Hasta acá validación usuario.
 
@@ -101,6 +101,11 @@ namespace tp_webform_equipo_24A
 
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                Session.Add("Error", "Esta rutina ya fue agregada");
+                Response.Redirect("Error.aspx");
             }
             catch (Exception ex)
             {

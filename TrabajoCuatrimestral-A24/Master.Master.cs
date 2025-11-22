@@ -13,5 +13,11 @@ namespace TrabajoCuatrimestral
         {
 
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Inicio.aspx");
+        }
     }
 }
