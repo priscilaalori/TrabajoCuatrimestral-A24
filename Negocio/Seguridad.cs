@@ -17,5 +17,13 @@ namespace Negocio
 
             return false;
         }
+
+        public static bool SessionActivaAdmin(object usuario)
+        {
+            if ((Usuario)usuario != null && ((Usuario)usuario).Rol == TipoUsuario.ADMIN)
+                return true;
+
+            return false;
+        }
     }
 }

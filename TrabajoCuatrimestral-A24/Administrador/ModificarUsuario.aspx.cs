@@ -13,6 +13,13 @@ namespace TrabajoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.SessionActivaAdmin(Session["usuarioLogueado"]))
+            {
+                Session["Error"] = "No tenés permiso para acceder a esta sección.";
+                Response.Redirect("~/Error.aspx");
+                return;
+            }
+
             if (!IsPostBack)
             {
                 if (Session["IdUsuarioSeleccionado"] != null)

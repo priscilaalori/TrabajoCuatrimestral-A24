@@ -170,6 +170,7 @@
                     OnClick="btnVolver_Click" />
     </div>
     <div class="admin-container">
+        <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="Green" CssClass="mt-3 d-block" />
         <div class="cards-grid">
             <div class="admin-card card-usuarios">
                 <h4>Usuarios</h4>
@@ -178,10 +179,12 @@
             </div>
 
             <div class="admin-card card-profes">
-                <h4>Asignación automatica - SIN BACKEND POR EL MOMENTO</h4>
-                <p>Asigna profesores a alumnos automaticamente.</p>
-                <a href="InicioAdmin.aspx" class="btn-card">Asignar</a>
+                <h4>Asignación profesores</h4>
+                <p>Asigna profesores a alumnos. Tambien podes ver que profe tiene cada alumno</p>
+                <a href="Administrador/Asignacion.aspx" class="btn-card">Asignar</a>
             </div>
+
+            
 
             <div class="admin-card card-deportes">
                 <h4>Deportes</h4>
@@ -190,10 +193,12 @@
             </div>
 
             <div class="admin-card card-profes">
-                <h4>Asignación profesores</h4>
-                <p>Asigna profesores a alumnos. Tambien podes ver que profe tiene cada alumno</p>
-                <a href="Administrador/Asignacion.aspx" class="btn-card">Asignar</a>
+                <h4>ALGUNA FUNCION NUEVA A FUTURO</h4>
+                <p>FUNCION A FUTURO.</p>
+                <a href="InicioAdmin.aspx" class="btn-card">FUTURO</a>
             </div>
+
+            
 
         </div>
     </div>

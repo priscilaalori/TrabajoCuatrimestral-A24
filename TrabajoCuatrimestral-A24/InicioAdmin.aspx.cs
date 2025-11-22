@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,17 @@ namespace TrabajoCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (!Seguridad.SessionActivaAdmin(Session["usuarioLogueado"]))
+            {
+                Session["Error"] = "No tenés permiso para acceder a esta sección.";
+                Response.Redirect("Error.aspx");
+                return;
+            }
+
+            Usuario usuario = (Usuario)Session["usuarioLogueado"];
+
+            lblMensaje.Text = "Bienvenido " + usuario.Nombre;
+
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {

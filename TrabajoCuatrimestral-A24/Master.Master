@@ -88,10 +88,21 @@
                <%--     <li class="nav-item"><a class="nav-link" runat="server" href="#">Salir</a></li>--%>
                     <asp:Button ID="btnSalir" OnClick="btnSalir_Click" Text="Salir" CssClass="btn btn-outline-primary" runat="server" />
                     <%}
-                    else
+                    else if (Negocio.Seguridad.SessionActivaAdmin(Session["usuarioLogueado"])) { %>
+
+                    
+                        <asp:Button ID="btnSalirAdmin" 
+                                    runat="server" 
+                                    CssClass="btn btn-outline-danger" 
+                                    Text="Salir" 
+                                    OnClick="btnSalir_Click" />
+                    
+                    <% }
                     { %>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Principal.aspx">Inicio</a></li>
                     <% }%>
+
+
 
                     <asp:ContentPlaceHolder ID="MenuExtra" runat="server" />
                 </ul>
