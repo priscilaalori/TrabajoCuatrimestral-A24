@@ -18,7 +18,9 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>HOLA! PEPE </h2>
+            <h1>¡Hola
+            <asp:Label ID="lblNombreDeportista" Text="text" runat="server" />
+            !</h1>
 
     <asp:Button OnClick="btnPerfil_Click" ID="btnPerfil" runat="server" Text="Mi Perfil" CssClass="btn btn-dark btn-short" ValidationGroup="" />
 

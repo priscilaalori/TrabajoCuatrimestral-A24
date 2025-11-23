@@ -15,6 +15,15 @@ namespace tp_webform_equipo_24A
     {
 
         /// <summary>
+        /// lblNombreDeportista control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNombreDeportista;
+
+        /// <summary>
         /// btnPerfil control.
         /// </summary>
         /// <remarks>

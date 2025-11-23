@@ -25,5 +25,12 @@ namespace Negocio
 
             return false;
         }
+        public static bool SessionActivaDeportista(object usuario)
+        {
+            if ((Usuario)usuario != null && ((Usuario)usuario).Rol == TipoUsuario.DEPORTISTA)
+                return true;
+
+            return false;
+        }
     }
 }

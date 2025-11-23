@@ -13,6 +13,21 @@ namespace tp_webform_equipo_24A
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
+            DeportistaNegocio DeportistaNegocio = new DeportistaNegocio();
+            Usuario usuario = null;
+
+            if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            lblNombreDeportista.Text = usuario.Nombre;
+
+            //dgvlistAlumnos.DataSource = entrenadorNegocio.ListarDeportistasPorEntrenador(4);
+            //dgvlistAlumnos.DataBind();
+
             if (!IsPostBack)
             {
                 cargarDeportes();

@@ -75,6 +75,7 @@
     <Content Include="Administrador\ModificarDeporte.aspx" />
     <Content Include="Administrador\ModificarUsuario.aspx" />
     <Content Include="Deportista\ConfiguraciondelaCuenta.aspx" />
+    <Content Include="Deportista\Error.aspx" />
     <Content Include="Deportista\PerfilDeportista.aspx" />
     <Content Include="Deportista\RutinasFuturas.aspx" />
     <Content Include="Entrenador\AgregarEjercicio.aspx" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Deportista\ConfiguraciondelaCuenta.aspx.designer.cs">
       <DependentUpon>ConfiguraciondelaCuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deportista\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deportista\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deportista\PerfilDeportista.aspx.cs">
       <DependentUpon>PerfilDeportista.aspx</DependentUpon>
