@@ -11,11 +11,25 @@ namespace tp_webform_equipo_24A.Deportista
 {
     public partial class RutinasFuturas : System.Web.UI.Page
     {
+         private Usuario usuario = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+            DeportistaNegocio DeportistaNegocio = new DeportistaNegocio();
+           
+
+            if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            if (usuario != null)
             {
-                cargarDeportes();
+
+                if (!IsPostBack)
+                {
+                    cargarDeportes();
+                }
             }
         }
 
@@ -43,7 +57,7 @@ namespace tp_webform_equipo_24A.Deportista
         protected void ddlDeporte_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idDeporte = Convert.ToInt32(ddlDeporte.SelectedValue);
-            int idDeportista = 6; // O tu Session
+            int idDeportista = usuario.IdUsuario;
 
             RutinaNegocio negocio = new RutinaNegocio();
             List<Dominio.Rutina> rutinas = negocio.ListarRutinasDeUsuarioPorDeporte(idDeportista, idDeporte);
@@ -69,6 +83,10 @@ namespace tp_webform_equipo_24A.Deportista
             }
         }
 
+        protected void BtnVolverDeRf_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InicioDeportista.aspx");
 
+        }
     }
 }

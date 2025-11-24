@@ -25,8 +25,7 @@ namespace tp_webform_equipo_24A
 
             lblNombreDeportista.Text = usuario.Nombre;
 
-            //dgvlistAlumnos.DataSource = entrenadorNegocio.ListarDeportistasPorEntrenador(4);
-            //dgvlistAlumnos.DataBind();
+           
 
             if (!IsPostBack)
             {

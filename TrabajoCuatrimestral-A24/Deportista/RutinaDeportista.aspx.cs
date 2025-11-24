@@ -12,16 +12,28 @@ namespace tp_webform_equipo_24A
     public partial class RutinaDeportista : System.Web.UI.Page
     {
         private int idRutina;
-
+        private Usuario usuario = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarRutinaDeportista();
+
+            DeportistaNegocio DeportistaNegocio = new DeportistaNegocio();
+           
+
+            if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            if (usuario != null)
+            {
+                CargarRutinaDeportista();
+            }
         }
 
         private void CargarRutinaDeportista()
         {
             int idDeporte = Convert.ToInt32(Session["idDeporteSeleccionado"]);
-            int idDeportista = 6; // o tomalo desde Session["IdUsuario"] si ya lo tenés guardado 
+            int idDeportista = usuario.IdUsuario;
             RutinaNegocio negocio = new RutinaNegocio();
             Dominio.Rutina rutina = negocio.ListarRutinaDelDiaDeUsuarioPorDeporte(idDeportista , idDeporte, DateTime.Today);
             if(rutina != null)
@@ -45,17 +57,33 @@ namespace tp_webform_equipo_24A
             Dominio.Historial historial = new Dominio.Historial();
 
             historial.Completado = chkOpcion1.Checked;
-            historial.Sensacion = Convert.ToInt32(rblEsfuerzo.SelectedValue);
-            historial.Esfuerzo = Convert.ToInt32(slEsfuerzo.Value);
+
+            // Esfuerzo emocional (RadioButtonList)
+            int esfuerzoEmocional;
+            if (int.TryParse(rblEsfuerzo.SelectedValue, out esfuerzoEmocional))
+                historial.Sensacion = esfuerzoEmocional;
+            else
+                historial.Sensacion = 0;
+
+            // Esfuerzo físico percibido (Slider)
+            int esfuerzoPercibido;
+            if (int.TryParse(slEsfuerzo.Value, out esfuerzoPercibido))
+                historial.Esfuerzo = esfuerzoPercibido;
+            else
+                historial.Esfuerzo = 0;
+
+            // Comentario
             historial.Comentario = txtComentario.Text;
             historial.FechaRegistro = DateTime.Now;
 
-            negocio.agregar(historial, idRutina);
+            negocio.agregar(historial, idRutina, usuario.IdUsuario);
 
-
-            // feedback
-            // Response.Redirect("InicioDeportista.aspx");
+            Response.Redirect("InicioDeportista.aspx");
         }
 
+        protected void BtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InicioDeportista.aspx");
+        }
     }
 }

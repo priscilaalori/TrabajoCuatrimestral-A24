@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -73,7 +74,7 @@ namespace Negocio
                "INNER JOIN Rutinas r ON dr.IdRutina = r.IdRutina " +
                "INNER JOIN RutinaEjercicios re ON r.IdRutina = re.IdRutina " +
                "INNER JOIN Ejercicios e ON re.IdEjercicio = e.IdEjercicio " +
-               "WHERE dr.IdDeportista = @IdDeportista AND r.IdDeporte = @IdDeporte");
+               "WHERE dr.IdDeportista = @IdDeportista AND r.IdDeporte = @IdDeporte ORDER BY r.IdRutina, e.IdEjercicio;");
 
                 datos.setearParametro("@IdDeportista", IdDeportista);
                 datos.setearParametro("@IdDeporte", IdDeporte);
@@ -112,7 +113,10 @@ namespace Negocio
 
                     };
 
-                    rutina.Ejercicios.Add(ejercicio);
+                    if (!rutina.Ejercicios.Any(x => x.IdEjercicio == ejercicio.IdEjercicio))
+                    {
+                        rutina.Ejercicios.Add(ejercicio);
+                    }
                 }
 
                 return Listarutinas;
@@ -185,6 +189,96 @@ namespace Negocio
             }
         }
 
+        public List<Rutina> listarHistorial(int idDeportista)
+        {
+            List<Rutina> Listarutinas = new List<Rutina>();
+            AccesoDatos datos = new AccesoDatos();
+           
+
+            try
+            {
+                datos.setearConsulta(
+                    "SELECT r.IdRutina, r.Nombre AS NombreRutina, r.Nivel, r.Descripcion AS DescripcionRutina, r.FechaCreacion, " +
+                    "h.IdHistorial, h.FechaRegistro, h.Completado, h.Sensacion, h.Esfuerzo, h.Comentario, " +
+                    "e.IdEjercicio, e.Nombre AS NombreEjercicio, e.Descripcion AS DescripcionEjercicio, e.UrlVideo, e.Estado " +
+                    "FROM DeportistaRutinas dr " +
+                    "INNER JOIN Rutinas r ON dr.IdRutina = r.IdRutina " +
+                    "INNER JOIN RutinaEjercicios re ON r.IdRutina = re.IdRutina " +
+                    "INNER JOIN Ejercicios e ON re.IdEjercicio = e.IdEjercicio " +
+                    "INNER JOIN Historial h ON h.IdRutina = r.IdRutina " +
+                    "WHERE dr.IdDeportista = @IdDeportista and h.IdUsuario = @IdDeportista"
+                );
+
+                datos.setearParametro("@IdDeportista", idDeportista);
+                
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    int idRutinaDB = (int)datos.Lector["IdRutina"];  
+
+                    Rutina rutina = Listarutinas.FirstOrDefault(r => r.IdRutina == idRutinaDB);
+
+                    if (rutina == null)
+                    {
+                        rutina = new Rutina
+                        {
+                            IdRutina = idRutinaDB,
+                            Nombre = datos.Lector["NombreRutina"].ToString(),
+                            Nivel = datos.Lector["Nivel"].ToString(),
+                            Descripcion = datos.Lector["DescripcionRutina"].ToString(),
+                            FechaCreacion = (DateTime)datos.Lector["FechaCreacion"],
+                            Ejercicios = new List<Ejercicio>(),
+                            Historial = new List<Historial>()
+                        };
+
+                        Listarutinas.Add(rutina);
+                    }
+
+                    Ejercicio ejercicio = new Ejercicio
+                    {
+                        IdEjercicio = (int)datos.Lector["IdEjercicio"],
+                        Nombre = datos.Lector["NombreEjercicio"].ToString(),
+                        Descripcion = datos.Lector["DescripcionEjercicio"].ToString(),
+                        UrlVideo = datos.Lector["UrlVideo"].ToString(),
+                    };
+
+                    rutina.Ejercicios.Add(ejercicio);
+
+                    Historial hist = new Historial
+                    {
+                        IdHistorial = (int)datos.Lector["IdHistorial"],
+                        FechaRegistro = (DateTime)datos.Lector["FechaRegistro"],
+                        Completado = (bool)datos.Lector["Completado"],
+                        Sensacion = Convert.ToInt32(datos.Lector["Sensacion"]),
+                        Esfuerzo = Convert.ToInt32(datos.Lector["Esfuerzo"]),
+                        Comentario = datos.Lector["Comentario"].ToString()
+                    };
+                    if (!rutina.Historial.Any(h => h.IdHistorial == hist.IdHistorial))
+                    {
+                        rutina.Historial.Add(hist);
+
+                    }
+
+
+                        
+
+
+                }
+
+                return Listarutinas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        
 
         public List<Ejercicio> ListarEjericiosRutina(int idRutina)
         {
@@ -229,6 +323,7 @@ namespace Negocio
 
             List<Rutina> listaRutinas = new List<Rutina>();
             AccesoDatos datos = new AccesoDatos();
+
 
             try
             {

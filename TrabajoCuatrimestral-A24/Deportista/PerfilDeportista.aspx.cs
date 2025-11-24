@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +13,21 @@ namespace tp_webform_equipo_24A.Deportista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            DeportistaNegocio DeportistaNegocio = new DeportistaNegocio();
+            Usuario usuario = null;
+
+            if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]) == true)
+                usuario = (Usuario)Session["usuarioLogueado"];
+            else
+                Response.Redirect("Error.aspx");
+
+            if(usuario != null)
+            {
+
+            }
+
+            
 
         }
 

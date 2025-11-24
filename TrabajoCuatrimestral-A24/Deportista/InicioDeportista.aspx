@@ -44,7 +44,8 @@
     </div>
     <asp:Button OnClick="BtnSiguiente_Click" ID="BtnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-dark btn-short" ValidationGroup="GrupoSiguiente" />
     <br />
-    <asp:Button OnClick="btnHistorial_Click" ID="btnHistorial" runat="server" Text="Mi Historial" CssClass="btn btn-dark btn-short" ValidationGroup="" />
+    <asp:Button OnClick="btnHistorial_Click" ID="btnHistorial" runat="server" Text="Mi Historial" CssClass="btn btn-dark btn-short" ValidationGroup="" CommandName="VerHistorial"
+    CommandArgument='<%# Eval("IdDeportista") %>' />
     <br />
     <asp:Button OnClick="btnRutinasFuturas_Click" ID="btnRutinasFuturas" runat="server" Text="Rutinas futuras" CssClass="btn btn-dark btn-short" ValidationGroup="" />
 </asp:Content>

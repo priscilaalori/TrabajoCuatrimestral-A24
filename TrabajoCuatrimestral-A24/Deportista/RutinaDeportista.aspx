@@ -150,6 +150,7 @@
 
         <asp:Button ID="btn_guardarHistorial" runat="server" CssClass="btn btn-dark btn-lg"
             OnClick="btn_guardarHistorial_Click" Text="Guardar" />
+        <asp:Button OnClick="BtnVolver_Click" ID="BtnVolver" runat="server" CssClass="btn btn-dark btn-lg" Text="Volver" />
     </div>
 
     <script type="text/javascript">

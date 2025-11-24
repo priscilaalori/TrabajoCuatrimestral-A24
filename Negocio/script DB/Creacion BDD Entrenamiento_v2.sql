@@ -248,3 +248,9 @@ EXEC('ALTER TABLE Historial DROP CONSTRAINT ' + @fk);
 ALTER TABLE Historial
 DROP COLUMN IdDeportista;
 
+/* ====================================
+   AGREGAR NUEVA COLUMNAS EN HISTORIAL
+   ==================================== */
+ALTER TABLE Historial
+ADD IdUsuario INT,
+    CONSTRAINT FK_Historial_Usuario FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario);

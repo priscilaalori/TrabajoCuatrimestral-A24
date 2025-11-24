@@ -1,5 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RutinasFuturas.aspx.cs" Inherits="tp_webform_equipo_24A.Deportista.RutinasFuturas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <style>
+      .btn-short {
+          width: 150px !important;
+          display: inline-block !important;
+          white-space: nowrap;
+          text-align: center;
+          padding-left: 12px;
+          padding-right: 12px;
+      }
+
+      input.btn-short, button.btn-short {
+          width: 150px !important;
+          display: inline-block !important;
+      }
+  </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MenuExtra" runat="server">
 </asp:Content>
@@ -60,5 +75,6 @@
         </ul>
     </FooterTemplate>
 </asp:Repeater>
+    <asp:Button OnClick="BtnVolverDeRf_Click" ID="BtnVolverDeRf" runat="server" CssClass="btn btn-dark btn-short" Text="Volver" />
 
 </asp:Content>
