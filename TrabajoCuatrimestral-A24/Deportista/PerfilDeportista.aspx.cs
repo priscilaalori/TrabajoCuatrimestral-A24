@@ -13,7 +13,7 @@ namespace tp_webform_equipo_24A.Deportista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             DeportistaNegocio DeportistaNegocio = new DeportistaNegocio();
             Usuario usuario = null;
 
@@ -24,6 +24,14 @@ namespace tp_webform_equipo_24A.Deportista
 
             if(usuario != null)
             {
+                Usuario datos = usuarioNegocio.ObtenerPorId(usuario.IdUsuario);
+                txtNombre.Text = datos.Nombre;
+                txtApellido.Text = datos.Apellido;
+                txtPeso.Text = datos.DNI;
+                txtProfesorId.Text = datos.Rol.ToString();
+
+                if (datos.FechaNacimiento != null)
+                    txtFechaDeNacimiento.Text = datos.FechaNacimiento.Value.ToString("yyyy-MM-dd");
 
             }
 
@@ -33,7 +41,7 @@ namespace tp_webform_equipo_24A.Deportista
 
         protected void BtnGuardarPerfil_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("InicioDeportista.aspx"); 
         }
 
         protected void BtnConfigraciones_Click(object sender, EventArgs e)

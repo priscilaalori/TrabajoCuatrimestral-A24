@@ -12,36 +12,35 @@
     <div class="form-group">
 
         <asp:Label Text="Nombre:" runat="server" />
-        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox><br />
+        <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true" />
 
         <asp:Label Text="Apellido:" runat="server" />
-        <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox><br />
+       <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true" />
 
-        <asp:Label Text="Peso (kg):" runat="server" />
-        <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control"></asp:TextBox><br />
+        <asp:Label Text="DNI (kg):" runat="server" />
+        <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control" ReadOnly="true" />
 
-        <asp:Label Text="Altura (cm):" runat="server" />
-        <asp:TextBox ID="txtAltura" runat="server" CssClass="form-control"></asp:TextBox><br />
+        <asp:Label Text="Rol asignado:" runat="server" />
+             <asp:TextBox ID="txtProfesorId" runat="server" CssClass="form-control" ReadOnly="true" />
 
-        <asp:Label Text="Profesor asignado:" runat="server" />
-        <asp:TextBox ID="txtProfesorId" runat="server" CssClass="form-control"></asp:TextBox><br />
-
+            </div>
         <div class="form-group">
             <label for="txtFechaDeNacimiento">Fecha de Nacimiento</label>
-            <asp:TextBox ID="txtFechaDeNacimiento" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtFechaDeNacimiento" runat="server" CssClass="form-control" TextMode="Date" ReadOnly="true" />
+
         </div>
 
-
+        <div>
        
         <br />
 
         <br />
 
-        <asp:Button OnClick="BtnGuardarPerfil_Click" ID="BtnGuardarPerfil" runat="server" Text="Guardar" CssClass="btn btn-dark btn-short" />
+        <asp:Button OnClick="BtnGuardarPerfil_Click" ID="BtnGuardarPerfil" runat="server" Text="Volver" CssClass="btn btn-dark btn-short" />
          <asp:Button OnClick="BtnConfigraciones_Click"  ID="BtnConfigraciones" runat="server" Text="Configuraciones" CssClass="btn btn-dark btn-short" />
+            </div>
 
 
 
-    </div>
 
 </asp:Content>
