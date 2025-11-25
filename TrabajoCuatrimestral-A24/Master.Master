@@ -79,28 +79,44 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
 
+<% 
+    var user = Session["usuarioLogueado"];
+%>
 
-                    <%if (Negocio.Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]))
-                        {  %>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/Rutina.aspx">Rutinas</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/MisEjercicios.aspx">Ejercicios</a></li>
-                    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/InicioEntrenador.aspx">Panel Entrenador</a></li>
-               <%--     <li class="nav-item"><a class="nav-link" runat="server" href="#">Salir</a></li>--%>
-                    <asp:Button ID="btnSalir" OnClick="btnSalir_Click" Text="Salir" CssClass="btn btn-outline-primary" runat="server" />
-                    <%}
-                    else if (Negocio.Seguridad.SessionActivaAdmin(Session["usuarioLogueado"])) { %>
+<% if (Negocio.Seguridad.SessionActivaEntrenador(user)) { %>
 
-                    
-                        <asp:Button ID="btnSalirAdmin" 
-                                    runat="server" 
-                                    CssClass="btn btn-outline-danger" 
-                                    Text="Salir" 
-                                    OnClick="btnSalir_Click" />
-                    
-                    <% }
-                    { %>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Principal.aspx">Inicio</a></li>
-                    <% }%>
+    <!-- NAV ENTRENADOR -->
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/Rutina.aspx">Rutinas</a></li>
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/MisEjercicios.aspx">Ejercicios</a></li>
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/InicioEntrenador.aspx">Panel Entrenador</a></li>
+
+    <asp:Button ID="btnSalir" OnClick="btnSalir_Click" 
+                Text="Salir" CssClass="btn btn-outline-primary" runat="server" />
+
+<% } else if (Negocio.Seguridad.SessionActivaAdmin(user)) { %>
+
+    <!-- NAV ADMIN -->
+    <asp:Button ID="btnSalirAdmin" runat="server" CssClass="btn btn-outline-danger"
+                Text="Salir" OnClick="btnSalir_Click" />
+
+<% } else if (Negocio.Seguridad.SessionActivaDeportista(user)) { %>
+
+    <!-- NAV DEPORTISTA -->
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Deportista/Historial.aspx">Historial</a></li>
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Deportista/PerfilDeportista.aspx">Perfil</a></li>
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Deportista/RutinasFuturas.aspx">Próximas Rutinas</a></li>
+
+    <asp:Button ID="btnSalirDeportista" OnClick="btnSalir_Click" 
+                Text="Salir" CssClass="btn btn-outline-secondary" runat="server" />
+
+<% } else { %>
+
+    <!-- SIN SESIÓN -->
+    <li class="nav-item"><a class="nav-link" runat="server" href="~/Principal.aspx">Inicio</a></li>
+
+<% } %>
+
+                        
 
 
 
@@ -123,7 +139,7 @@
 
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
-            <p class="mb-0">&copy; 2025 Proyecto Gimnasio - Desarrolado con ASP.NET </p>
+            <p class="mb-0">&copy; 2025 Proyecto NETDurence - Desarrolado con ASP.NET </p>
             <p>
                 Integrantes: Alori, Priscila  - López, Elías - Vizcarra, Pamela           
             </p>

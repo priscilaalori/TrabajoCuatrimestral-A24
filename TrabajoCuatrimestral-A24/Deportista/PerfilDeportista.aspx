@@ -17,7 +17,7 @@
         <asp:Label Text="Apellido:" runat="server" />
        <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true" />
 
-        <asp:Label Text="DNI (kg):" runat="server" />
+        <asp:Label Text="DNI :" runat="server" />
         <asp:TextBox ID="txtPeso" runat="server" CssClass="form-control" ReadOnly="true" />
 
         <asp:Label Text="Rol asignado:" runat="server" />
