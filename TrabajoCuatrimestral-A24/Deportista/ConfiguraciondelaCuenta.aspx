@@ -22,11 +22,11 @@
         <asp:TextBox ID="txtMail" runat="server" CssClass="form-control"></asp:TextBox><br />
 
         <asp:Label Text="Contraseña actual:" runat="server" />
-        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox><br />
+        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="••••••••" ReadOnly="true"></asp:TextBox><br />
+                    
 
-        <asp:Label Text="Nueva contraseña (opcional):" runat="server" />
-        <asp:TextBox ID="txtPasswordNueva" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox><br />
-        <asp:Button  OnClick="btnGuardarPerfil_Click"  ID="btnGuardarPerfil" runat="server" Text="Guardar" CssClass="btn btn-dark btn-short"/> 
+       
+        <asp:Button  OnClick="btnGuardarPerfil_Click"  ID="btnGuardarPerfil" runat="server" Text="¿Desea cambiar la contraseña?" CssClass="btn btn-dark btn-lg"/> 
     <br />
         <asp:Button  OnClick="Btnvolver_Click"  ID="Btnvolver" runat="server" Text="Volver" CssClass="btn btn-dark btn-short"/>
 

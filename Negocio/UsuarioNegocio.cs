@@ -168,6 +168,23 @@ namespace Negocio
 
 
         }
+        public void ActualizarContraseña(int id, string nuevaContrasenia)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Usuarios SET PasswordHash = @pass WHERE IdUsuario = @id");
+                datos.setearParametro("@pass", nuevaContrasenia);
+                datos.setearParametro("@id", id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void EliminarUsuarioLogico(int id)
         {

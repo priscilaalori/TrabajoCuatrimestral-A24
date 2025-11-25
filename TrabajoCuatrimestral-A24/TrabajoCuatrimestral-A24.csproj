@@ -74,6 +74,7 @@
     <Content Include="Administrador\AgregarDeporte.aspx" />
     <Content Include="Administrador\ModificarDeporte.aspx" />
     <Content Include="Administrador\ModificarUsuario.aspx" />
+    <Content Include="Deportista\CambiarContraseña.aspx" />
     <Content Include="Deportista\ConfiguraciondelaCuenta.aspx" />
     <Content Include="Deportista\Error.aspx" />
     <Content Include="Deportista\PerfilDeportista.aspx" />
@@ -153,6 +154,13 @@
     </Compile>
     <Compile Include="Administrador\ModificarUsuario.aspx.designer.cs">
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deportista\CambiarContraseña.aspx.cs">
+      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deportista\CambiarContraseña.aspx.designer.cs">
+      <DependentUpon>CambiarContraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="Deportista\ConfiguraciondelaCuenta.aspx.cs">
       <DependentUpon>ConfiguraciondelaCuenta.aspx</DependentUpon>

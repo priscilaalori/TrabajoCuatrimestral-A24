@@ -33,15 +33,6 @@ namespace tp_webform_equipo_24A.Deportista
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// txtPasswordNueva control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPasswordNueva;
-
-        /// <summary>
         /// btnGuardarPerfil control.
         /// </summary>
         /// <remarks>

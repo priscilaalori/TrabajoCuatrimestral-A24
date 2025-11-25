@@ -25,7 +25,7 @@ namespace tp_webform_equipo_24A.Deportista
             {
                 Usuario datos = usuarioNegocio.ObtenerPorId(usuario.IdUsuario);
                 txtMail.Text = datos.Email;
-                txtPassword.Text = datos.Contrasenia.ToString();
+               
 
 
 
@@ -44,7 +44,7 @@ namespace tp_webform_equipo_24A.Deportista
 
         protected void btnGuardarPerfil_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CambiarContraseña.aspx");
         }
     }
 }
