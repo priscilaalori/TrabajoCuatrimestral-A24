@@ -25,8 +25,11 @@
         <h1>¡Hola
             <asp:Label ID="lblNombreEntrenador" Text="text" runat="server" />
             !</h1>
-        <p>Mis estudiantes</p>
-    </div>
+        <div>
+            <asp:Button Style="margin-top: 10px;" CssClass="btn btn-dark btn-short" ID="btnMiPerfil" runat="server" Text="Mi perfil" />
+        </div>
+        <p  style="margin-top:10px;">Mis estudiantes </p>
+    </div> 
     <div>
         <asp:GridView ID="dgvlistAlumnos" OnRowCommand="dgvlistAlumnos_RowCommand" CssClass="table" AutoGenerateColumns="false" runat="server">
             <Columns>

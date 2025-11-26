@@ -32,12 +32,26 @@ namespace tp_webform_equipo_24A
             {
                 if (Request.QueryString["id"] != null)
                 {
-                    //si viene con id entonces solo muestra la columna agregar
+                    //si viene con id de deportista entonces solo muestra la columna agregar
                     MostrarAgregar = true;
+                    DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
+                    Deporte deporte = new Deporte();
+
+                    int idDeportista = int.Parse(Request.QueryString["id"].ToString());
+
+                    deporte = deportistaNegocio.ObtenerDeportePrincipal(idDeportista);
+                    List<Dominio.Rutina> listaRutina = rutinaNegocio.Listar(usuario.IdUsuario);
+                    listaRutina = listaRutina.FindAll(x => x.Deporte.IdDeporte == deporte.IdDeporte);
+                    
+                    dgvlistRutinas.DataSource = listaRutina;
+                    dgvlistRutinas.DataBind();
+                }
+                else
+                {
+                    dgvlistRutinas.DataSource = rutinaNegocio.Listar(usuario.IdUsuario);
+                    dgvlistRutinas.DataBind();
 
                 }
-                dgvlistRutinas.DataSource = rutinaNegocio.Listar(usuario.IdUsuario);
-                dgvlistRutinas.DataBind();
 
             }
             catch (Exception ex)
