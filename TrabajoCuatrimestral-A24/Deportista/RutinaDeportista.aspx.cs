@@ -35,6 +35,7 @@ namespace tp_webform_equipo_24A
         {
             int idDeporte = Convert.ToInt32(Session["idDeporteSeleccionado"]);
             int idDeportista = usuario.IdUsuario;
+            HistorialNegocio historialnegocio = new HistorialNegocio(); 
             RutinaNegocio negocio = new RutinaNegocio();
             Dominio.Rutina rutina = negocio.ListarRutinaDelDiaDeUsuarioPorDeporte(idDeportista , idDeporte, DateTime.Today);
             if(rutina != null)
@@ -45,11 +46,25 @@ namespace tp_webform_equipo_24A
                 descripcionRutina.Text = rutina.Descripcion;
                 nombreRutina.Text = rutina.Nombre;
                 rptEjercicios.DataBind();
+
+                rutina.Historial = historialnegocio.ObtenerHistorial(idDeportista, idRutina);
+                if(rutina.Historial != null)
+                {
+                    chkOpcion1.Checked = rutina.Historial.Completado;
+                    rblEsfuerzo.SelectedValue = rutina.Historial.Sensacion.ToString();
+                    slEsfuerzo.Value = rutina.Historial.Esfuerzo.ToString();
+                    txtComentario.Text = rutina.Historial.Comentario;
+                    btn_guardarHistorial.Enabled = false; 
+                }
+                
             }
             else
             {
-
+                btn_guardarHistorial.Enabled = false;
+                rblEsfuerzo.Visible = false; 
             }
+
+            
         }
 
         protected void btn_guardarHistorial_Click(object sender, EventArgs e)

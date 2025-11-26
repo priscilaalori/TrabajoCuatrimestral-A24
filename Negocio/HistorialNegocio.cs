@@ -49,5 +49,48 @@ namespace Negocio
             }
         }
 
+        public Dominio.Historial ObtenerHistorial(int idUsuario, int idRutina)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Dominio.Historial nuevoHistorial= null;
+
+
+            try
+            {
+                datos.setearConsulta("  select Completado, Sensacion, Esfuerzo, Comentario, FechaRegistro from Historial " +
+                    "where IdRutina = @IdRutina and IdUsuario = @IdUsuario;");
+                datos.setearParametro("@IdRutina", idRutina);
+                datos.setearParametro("@IdUsuario", idUsuario);
+
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    nuevoHistorial = new Dominio.Historial
+                    {
+                        Completado = Convert.ToBoolean(datos.Lector["Completado"]),
+                        Sensacion = Convert.ToInt32(datos.Lector["Sensacion"]),
+                        Esfuerzo = Convert.ToInt32(datos.Lector["Esfuerzo"]),
+                        Comentario = datos.Lector["Comentario"].ToString()
+                    };
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+
+            return nuevoHistorial;
+        }
+
+        
     }
 }

@@ -21,13 +21,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:Label Text="Contraseña actual:" runat="server" />
-<asp:TextBox ID="txtContraseñaActual" runat="server" CssClass="form-control"></asp:TextBox><br />
+<asp:TextBox ID="txtContraseñaActual" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox><br />
 
     <asp:Label Text="Nueva Contraseña:" runat="server" />
-<asp:TextBox ID="txtContraseñaNueva" runat="server" CssClass="form-control"></asp:TextBox><br />
+<asp:TextBox ID="txtContraseñaNueva" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox><br />
 
     <asp:Label Text="Repetir nueva contraseña:" runat="server" />
-<asp:TextBox ID="txtRepetir" runat="server" CssClass="form-control"></asp:TextBox><br />
+<asp:TextBox ID="txtRepetir" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox><br />
 
     <asp:Label ID="lblExito" runat="server" ForeColor="Green" Visible="false"></asp:Label><br />
     <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="false"></asp:Label>

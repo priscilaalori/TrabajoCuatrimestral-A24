@@ -230,7 +230,7 @@ namespace Negocio
                             Descripcion = datos.Lector["DescripcionRutina"].ToString(),
                             FechaCreacion = (DateTime)datos.Lector["FechaCreacion"],
                             Ejercicios = new List<Ejercicio>(),
-                            Historial = new List<Historial>()
+                            Historial = new Historial()
                         };
 
                         Listarutinas.Add(rutina);
@@ -255,11 +255,10 @@ namespace Negocio
                         Esfuerzo = Convert.ToInt32(datos.Lector["Esfuerzo"]),
                         Comentario = datos.Lector["Comentario"].ToString()
                     };
-                    if (!rutina.Historial.Any(h => h.IdHistorial == hist.IdHistorial))
-                    {
-                        rutina.Historial.Add(hist);
+                    
+                        rutina.Historial = hist;
 
-                    }
+                    
 
 
                         
