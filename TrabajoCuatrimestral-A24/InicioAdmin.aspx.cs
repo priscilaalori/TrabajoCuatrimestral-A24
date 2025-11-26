@@ -27,6 +27,7 @@ namespace TrabajoCuatrimestral
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
+            Session.Clear();
             Response.Redirect("~/Inicio.aspx");
         }
 

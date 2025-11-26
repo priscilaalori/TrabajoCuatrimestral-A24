@@ -153,6 +153,8 @@
         <asp:Button OnClick="BtnVolver_Click" ID="BtnVolver" runat="server" CssClass="btn btn-dark btn-lg" Text="Volver" />
     </div>
 
+    <asp:Label ID="LblMsg" runat="server"></asp:Label><br />
+
     <script type="text/javascript">
         (function () {
             // Obtener el slider usando su ClientID (porque tiene runat="server")

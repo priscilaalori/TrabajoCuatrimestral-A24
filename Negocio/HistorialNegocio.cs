@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,15 +27,27 @@ namespace Negocio
                 datos.ejecutarAccion();
                 datos.cerrarConexion();
             }
+            catch (SqlException sqlEx)
+            {
+                throw new HistorialException("Error al registrar el historial. Verifica que la rutina y el usuario existan.", sqlEx);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                throw new HistorialException("Ocurrió un error inesperado al guardar el historial.", ex);
             }
             finally
             {
                 datos.cerrarConexion();
             }
-
         }
+
+        public class HistorialException : Exception
+        {
+            public HistorialException(string mensaje, Exception inner = null)
+                : base(mensaje, inner)
+            {
+            }
+        }
+
     }
 }

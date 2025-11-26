@@ -1,11 +1,12 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Dominio;
+using static Negocio.HistorialNegocio;
 
 namespace tp_webform_equipo_24A
 {
@@ -76,9 +77,16 @@ namespace tp_webform_equipo_24A
             historial.Comentario = txtComentario.Text;
             historial.FechaRegistro = DateTime.Now;
 
-            negocio.agregar(historial, idRutina, usuario.IdUsuario);
-
-            Response.Redirect("InicioDeportista.aspx");
+            try
+            {
+                negocio.agregar(historial, idRutina, usuario.IdUsuario);
+                LblMsg.Text = "Historial registrado correctamente.";
+            }
+            catch (HistorialException hex)
+            {
+                Session["Error"] = hex.Message;
+                Response.Redirect("~/Error.aspx");
+            }
         }
 
         protected void BtnVolver_Click(object sender, EventArgs e)

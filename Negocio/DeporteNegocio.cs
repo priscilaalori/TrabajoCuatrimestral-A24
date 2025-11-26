@@ -1,10 +1,11 @@
 ﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Negocio;
 
 namespace Negocio
 {
@@ -36,9 +37,17 @@ namespace Negocio
 
                 return listaDeportes;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw ex;
+                throw new Exception("Error SQL al listar los deportes.", ex);
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new Exception("Error de conversión al leer datos de la tabla Deportes.", ex);
+            }
+            catch
+            {
+                throw;
             }
             finally
             {
@@ -71,9 +80,17 @@ namespace Negocio
 
                 return listaDeportes;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw ex;
+                throw new Exception("Error SQL al listar los deportes activos.", ex);
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new Exception("Error de conversión al leer los deportes activos.", ex);
+            }
+            catch
+            {
+                throw;
             }
             finally
             {
@@ -90,9 +107,13 @@ namespace Negocio
                 datos.setearParametro("@IdDeporte", id);
                 datos.ejecutarAccion();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw ex;
+                throw new Exception($"Error SQL al desactivar el deporte con ID {id}.", ex);
+            }
+            catch
+            {
+                throw;
             }
             finally
             {
@@ -108,9 +129,13 @@ namespace Negocio
                 datos.setearParametro("@IdDeporte", id);
                 datos.ejecutarAccion();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                throw ex;
+                throw new Exception($"Error SQL al activar el deporte con ID {id}.", ex);
+            }
+            catch
+            {
+                throw;
             }
             finally
             {
@@ -139,6 +164,18 @@ namespace Negocio
 
                 return null;
             }
+            catch (SqlException ex)
+            {
+                throw new Exception($"Error SQL al obtener el deporte con ID {id}.", ex);
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new Exception("Error de conversión al obtener el deporte por ID.", ex);
+            }
+            catch
+            {
+                throw;
+            }
             finally
             {
                 datos.cerrarConexion();
@@ -156,6 +193,14 @@ namespace Negocio
                 datos.setearParametro("@id", d.IdDeporte);
                 datos.ejecutarAccion();
             }
+            catch (SqlException ex)
+            {
+                throw new Exception($"Error SQL al modificar el deporte con ID {d.IdDeporte}.", ex);
+            }
+            catch
+            {
+                throw;
+            }
             finally
             {
                 datos.cerrarConexion();
@@ -171,6 +216,14 @@ namespace Negocio
                 datos.setearParametro("@nombre", deporte.Nombre);
                 datos.setearParametro("@estado", deporte.Estado);
                 datos.ejecutarAccion();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error SQL al agregar un nuevo deporte.", ex);
+            }
+            catch
+            {
+                throw;
             }
             finally
             {

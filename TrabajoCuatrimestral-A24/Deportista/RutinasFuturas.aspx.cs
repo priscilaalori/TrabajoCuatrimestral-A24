@@ -28,22 +28,26 @@ namespace tp_webform_equipo_24A.Deportista
 
                 if (!IsPostBack)
                 {
-                    cargarDeportes();
+                    cargarDeportes(usuario.IdUsuario);
                 }
             }
         }
 
-        private void cargarDeportes()
+        private void cargarDeportes(int idDeportista)
         {
             try
             {
-                DeporteNegocio negocio = new DeporteNegocio();
-                List<Deporte> lista = negocio.ListarActivos();
+                DeportistaNegocio negocio = new DeportistaNegocio();
 
-                ddlDeporte.DataSource = lista;
-                ddlDeporte.DataTextField = "Nombre";
-                ddlDeporte.DataValueField = "IdDeporte";
-                ddlDeporte.DataBind();
+                var deporte = negocio.ObtenerDeportePrincipal(idDeportista);
+
+                if (deporte != null)
+                {
+                    ddlDeporte.DataSource = new List<Deporte> { deporte };
+                    ddlDeporte.DataTextField = "Nombre";
+                    ddlDeporte.DataValueField = "IdDeporte";
+                    ddlDeporte.DataBind();
+                }
 
                 ddlDeporte.Items.Insert(0, new ListItem("--Seleccione un deporte--", ""));
             }
