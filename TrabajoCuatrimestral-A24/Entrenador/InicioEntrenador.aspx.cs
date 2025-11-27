@@ -60,5 +60,10 @@ namespace tp_webform_equipo_24A
                 throw ex;
             }
         }
+
+        protected void btnMiPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Deportista/ConfiguraciondelaCuenta.aspx");
+        }
     }
 }

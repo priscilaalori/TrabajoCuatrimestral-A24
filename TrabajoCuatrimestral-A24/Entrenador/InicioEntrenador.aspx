@@ -26,7 +26,7 @@
             <asp:Label ID="lblNombreEntrenador" Text="text" runat="server" />
             !</h1>
         <div>
-            <asp:Button Style="margin-top: 10px;" CssClass="btn btn-dark btn-short" ID="btnMiPerfil" runat="server" Text="Mi perfil" />
+            <asp:Button Style="margin-top: 10px;" CssClass="btn btn-dark btn-short" ID="btnMiPerfil" runat="server"  OnClick="btnMiPerfil_Click" Text="Mi perfil" />
         </div>
         <p  style="margin-top:10px;">Mis estudiantes </p>
     </div> 

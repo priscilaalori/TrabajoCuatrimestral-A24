@@ -16,7 +16,9 @@ namespace tp_webform_equipo_24A.Deportista
         {
             UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 
-            if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]) == true)
+            //Acá debería preguntar si es deportista o entrenador para que traiga datos distinos. 
+
+            if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]) == true || Seguridad.SessionActivaEntrenador(Session["usuarioLogueado"]) == true)
                 usuario = (Usuario)Session["usuarioLogueado"];
             else
                 Response.Redirect("Error.aspx");
@@ -25,9 +27,6 @@ namespace tp_webform_equipo_24A.Deportista
             {
                 Usuario datos = usuarioNegocio.ObtenerPorId(usuario.IdUsuario);
                 txtMail.Text = datos.Email;
-               
-
-
 
             }
         }
@@ -38,7 +37,26 @@ namespace tp_webform_equipo_24A.Deportista
         }
 
         protected void Btnvolver_Click(object sender, EventArgs e)
-        { Response.Redirect("PerfilDeportista.aspx");
+        {
+            //Acá deberá preguntar quien tiene la sesión abierta
+
+            var usuario = Session["usuarioLogueado"] as Usuario;
+            if (usuario == null)
+            {
+                Response.Redirect("Error.aspx");
+
+                return;
+            }
+
+            if (usuario.Rol == "Deportista")
+            {
+                Response.Redirect("PerfilDeportista.aspx");
+
+            }
+            else if (usuario.Rol  == "Entrenador")
+            {
+                Response.Redirect("~/Entrenador/InicioEntrenador.aspx");
+            }
 
         }
 
