@@ -11,6 +11,13 @@ namespace Negocio
 {
     public  class DeporteNegocio
     {
+        public class DeporteException : Exception
+        {
+            public DeporteException() { }
+            public DeporteException(string message) : base(message) { }
+            public DeporteException(string message, Exception inner) : base(message, inner) { }
+        }
+
 
         public List<Deporte> Listar()
         {
@@ -39,15 +46,11 @@ namespace Negocio
             }
             catch (SqlException ex)
             {
-                throw new Exception("Error SQL al listar los deportes.", ex);
+                throw new DeporteException("Error SQL al listar deportes.", ex);
             }
-            catch (InvalidCastException ex)
+            catch (Exception ex)
             {
-                throw new Exception("Error de conversión al leer datos de la tabla Deportes.", ex);
-            }
-            catch
-            {
-                throw;
+                throw new DeporteException("Error inesperado al listar deportes.", ex);
             }
             finally
             {
@@ -82,15 +85,11 @@ namespace Negocio
             }
             catch (SqlException ex)
             {
-                throw new Exception("Error SQL al listar los deportes activos.", ex);
+                throw new DeporteException("Error SQL al listar deportes activos.", ex);
             }
-            catch (InvalidCastException ex)
+            catch (Exception ex)
             {
-                throw new Exception("Error de conversión al leer los deportes activos.", ex);
-            }
-            catch
-            {
-                throw;
+                throw new DeporteException("Error inesperado al listar deportes activos.", ex);
             }
             finally
             {
@@ -109,11 +108,11 @@ namespace Negocio
             }
             catch (SqlException ex)
             {
-                throw new Exception($"Error SQL al desactivar el deporte con ID {id}.", ex);
+                throw new DeporteException("Error SQL al eliminar lógicamente el deporte.", ex);
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                throw new DeporteException("Error inesperado al eliminar lógicamente el deporte.", ex);
             }
             finally
             {
@@ -129,16 +128,18 @@ namespace Negocio
                 datos.setearParametro("@IdDeporte", id);
                 datos.ejecutarAccion();
             }
+       
+
             catch (SqlException ex)
-            {
-                throw new Exception($"Error SQL al activar el deporte con ID {id}.", ex);
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
+             {
+                         throw new DeporteException("Error SQL al activar lógicamente el deporte.", ex);
+                     }
+             catch (Exception ex)
+             {
+                         throw new DeporteException("Error inesperado al activar lógicamente el deporte.", ex);
+                     }
+             finally
+             {
                 datos.cerrarConexion();
             }
         }

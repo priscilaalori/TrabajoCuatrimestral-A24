@@ -34,7 +34,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException("Error al iniciar sesión.", ex);
             }
             finally
             {
@@ -78,7 +78,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException("Error al listar los usuarios.", ex);
             }
             finally
             {
@@ -120,7 +120,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException($"Error al obtener el usuario con ID {id}.", ex);
             }
             finally
             {
@@ -161,6 +161,10 @@ namespace Negocio
 
                 datos.ejecutarAccion();
             }
+            catch (Exception ex)
+            {
+                throw new UsuarioException("Error al modificar el usuario.", ex);
+            }
             finally
             {
                 datos.cerrarConexion();
@@ -182,7 +186,11 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException("Error al actualizar la contraseña del usuario.", ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 
@@ -197,7 +205,7 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException("Error al desactivar el usuario.", ex);
             }
             finally
             {
@@ -216,12 +224,13 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException("Error al activar el usuario.", ex);
             }
             finally
             {
                 datos.cerrarConexion();
             }
+
         }
 
         public void RegistrarUsuario(Usuario usuario)
@@ -250,12 +259,19 @@ namespace Negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new UsuarioException("Error al registrar el usuario.", ex);
             }
             finally
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public class UsuarioException : Exception
+        {
+            public UsuarioException() { }
+            public UsuarioException(string message) : base(message) { }
+            public UsuarioException(string message, Exception inner) : base(message, inner) { }
         }
 
 
