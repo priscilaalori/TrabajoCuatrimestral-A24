@@ -2,8 +2,6 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -17,16 +15,13 @@ namespace tp_webform_equipo_24A
         {
             if (!IsPostBack)
             {
-
                 if (Seguridad.SessionActivaDeportista(Session["usuarioLogueado"]))
                 {
                     usuario = (Usuario)Session["usuarioLogueado"];
                     CargarHistorial();
                 }
                 else
-                {
                     Response.Redirect("Error.aspx");
-                }
             }
         }
 
@@ -34,10 +29,32 @@ namespace tp_webform_equipo_24A
         {
             RutinaNegocio negocio = new RutinaNegocio();
             int idDeportista = usuario.IdUsuario;
+
             List<Dominio.Rutina> lista = negocio.listarHistorial(idDeportista);
 
             repHistorial.DataSource = lista;
             repHistorial.DataBind();
+        }
+
+        protected void repHistorial_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var rutina = (Dominio.Rutina)e.Item.DataItem;
+
+                Literal litFecha = (Literal)e.Item.FindControl("litFecha");
+                Literal litEsfuerzo = (Literal)e.Item.FindControl("litEsfuerzo");
+                Literal litSensacion = (Literal)e.Item.FindControl("litSensacion");
+                Literal litComentario = (Literal)e.Item.FindControl("litComentario");
+
+                if (rutina.Historial != null)
+                {
+                    litFecha.Text = rutina.Historial.FechaRegistro.ToString("dd/MM/yyyy");
+                    litEsfuerzo.Text = GetTextoEsfuerzo(rutina.Historial.Esfuerzo);
+                    litSensacion.Text = GetTextoSensacion(rutina.Historial.Sensacion);
+                    litComentario.Text = rutina.Historial.Comentario;
+                }
+            }
         }
 
         private string GetTextoEsfuerzo(int valor)
@@ -71,29 +88,9 @@ namespace tp_webform_equipo_24A
             }
         }
 
-        protected void repHistorialDetalle_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            {
-                dynamic registro = e.Item.DataItem;
-
-                int esfuerzo = Convert.ToInt32(registro.Esfuerzo);
-                int sensacion = Convert.ToInt32(registro.Sensacion);
-
-                // Buscar literal controls dentro del item
-                Literal litEsfuerzo = (Literal)e.Item.FindControl("litEsfuerzo");
-                Literal litSensacion = (Literal)e.Item.FindControl("litSensacion");
-
-                // Asignar valores convertidos
-                litEsfuerzo.Text = GetTextoEsfuerzo(esfuerzo);
-                litSensacion.Text = GetTextoSensacion(sensacion);
-            }
-        }
-
         protected void BtnVolverDeHistorial_Click(object sender, EventArgs e)
         {
             Response.Redirect("InicioDeportista.aspx");
         }
     }
 }
-
