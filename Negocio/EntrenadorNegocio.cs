@@ -94,7 +94,8 @@ namespace Negocio
             try
             {
                 //trae por ahora solo los deportistas del entrenador con ID 4 hasta que esté lo del login 
-                datos.setearConsulta("select  ED.IdEntrenador, U.IdUsuario, U.Nombre, U.Apellido from Usuarios U inner join EntrenadoresDeportistas  ED on U.IdUsuario = ED.IdDeportista where  ED.IdEntrenador = 4");
+                datos.setearConsulta("select  ED.IdEntrenador, U.IdUsuario, U.Nombre, U.Apellido from Usuarios U inner join EntrenadoresDeportistas  ED on U.IdUsuario = ED.IdDeportista where  ED.IdEntrenador = @IdEntrenador");
+                datos.setearParametro("@IdEntrenador", idEntrenador);
                 datos.ejecutarLectura();
 
 
