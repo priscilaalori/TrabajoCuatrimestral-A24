@@ -91,13 +91,13 @@
     <li class="nav-item"><a class="nav-link" runat="server" href="~/Entrenador/InicioEntrenador.aspx">Panel Entrenador</a></li>
 
     <asp:Button ID="btnSalir" OnClick="btnSalir_Click" 
-                Text="Salir" CssClass="btn btn-outline-primary" runat="server" />
+                Text="Salir" CssClass="btn btn-outline-primary" runat="server" CausesValidation="false" />
 
 <% } else if (Negocio.Seguridad.SessionActivaAdmin(user)) { %>
 
     <!-- NAV ADMIN -->
     <asp:Button ID="btnSalirAdmin" runat="server" CssClass="btn btn-outline-danger"
-                Text="Salir" OnClick="btnSalir_Click" />
+                Text="Salir" OnClick="btnSalir_Click" CausesValidation="false" />
 
 <% } else if (Negocio.Seguridad.SessionActivaDeportista(user)) { %>
 
@@ -107,7 +107,7 @@
     <li class="nav-item"><a class="nav-link" runat="server" href="~/Deportista/RutinasFuturas.aspx">Próximas Rutinas</a></li>
 
     <asp:Button ID="btnSalirDeportista" OnClick="btnSalir_Click" 
-                Text="Salir" CssClass="btn btn-outline-secondary" runat="server" />
+                Text="Salir" CssClass="btn btn-outline-secondary" runat="server" CausesValidation="false" />
 
 <% } else { %>
 
