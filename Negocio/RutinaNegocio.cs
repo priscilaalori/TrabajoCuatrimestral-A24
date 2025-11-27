@@ -144,11 +144,11 @@ namespace Negocio
                    "INNER JOIN Rutinas r ON dr.IdRutina = r.IdRutina " +
                    "INNER JOIN RutinaEjercicios re ON r.IdRutina = re.IdRutina " +
                    "INNER JOIN Ejercicios e ON re.IdEjercicio = e.IdEjercicio " +
-                   "WHERE dr.IdDeportista = @IdDeportista AND r.IdDeporte = @IdDeporte AND r.FechaInicio = @fechaInicio");
+                   "WHERE dr.IdDeportista = @IdDeportista AND r.IdDeporte = @IdDeporte AND @fechaActual BETWEEN r.FechaInicio AND r.FechaFin");
 
                 datos.setearParametro("@IdDeportista", IdDeportista);
                 datos.setearParametro("@IdDeporte", IdDeporte);
-                datos.setearParametro("@fechaInicio", fechaHoy);
+                datos.setearParametro("@fechaActual", fechaHoy);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
