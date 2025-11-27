@@ -12,6 +12,7 @@ namespace Dominio
         public Entrenador Entrenador { get; set; } //cambio ID por objeto
         public List<Deporte> Deporte { get; set; } //faltaba deporte
         public List<Rutina> Rutinas { get; set; }
+        public Deporte DeportePrincipal { get; set; }
 
     }
 }

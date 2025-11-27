@@ -33,8 +33,11 @@
     <div>
         <asp:GridView ID="dgvlistAlumnos" OnRowCommand="dgvlistAlumnos_RowCommand" CssClass="table" AutoGenerateColumns="false" runat="server">
             <Columns>
+
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField HeaderText="Deporte" DataField="DeportePrincipal.Nombre" />
+
                 <asp:TemplateField HeaderText="Detalle">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnVerPerfil" runat="server" Text="Ver"

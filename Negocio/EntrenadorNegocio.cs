@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Negocio
 {
@@ -94,7 +95,7 @@ namespace Negocio
             try
             {
                 //trae por ahora solo los deportistas del entrenador con ID 4 hasta que esté lo del login 
-                datos.setearConsulta("select  ED.IdEntrenador, U.IdUsuario, U.Nombre, U.Apellido from Usuarios U inner join EntrenadoresDeportistas  ED on U.IdUsuario = ED.IdDeportista where  ED.IdEntrenador = @IdEntrenador");
+                datos.setearConsulta("SELECT ED.IdEntrenador,U.IdUsuario,U.Nombre,U.Apellido,D.Nombre AS NombreDeporte FROM Usuarios U INNER JOIN EntrenadoresDeportistas ED ON U.IdUsuario = ED.IdDeportista INNER JOIN DeportistaDeportes DD ON DD.IdDeportista = U.IdUsuario INNER JOIN Deportes D ON DD.IdDeporte = D.IdDeporte WHERE ED.IdEntrenador = @IdEntrenador");
                 datos.setearParametro("@IdEntrenador", idEntrenador);
                 datos.ejecutarLectura();
 
@@ -102,9 +103,18 @@ namespace Negocio
                 while (datos.Lector.Read())
                 {
                     Deportista deportistaAuxiliar = new Deportista();
+                    Deporte deporteAuxiliar = new Deporte();
                     deportistaAuxiliar.IdUsuario = (int)datos.Lector["IdUsuario"];
                     deportistaAuxiliar.Nombre = (string)datos.Lector["Nombre"];
                     deportistaAuxiliar.Apellido = (string)datos.Lector["Apellido"];
+
+                    // Llenar deporte
+                    //deporteAuxiliar.IdDeporte = (int)datos.Lector["IdDeporte"];
+                    deporteAuxiliar.Nombre = (string)datos.Lector["NombreDeporte"];
+
+                    // Agregar deporte a la lista del deportista
+                    deportistaAuxiliar.Deporte = new List<Deporte> { deporteAuxiliar };
+                    deportistaAuxiliar.DeportePrincipal = deporteAuxiliar;
 
                     listaDeportista.Add(deportistaAuxiliar);
                 }
