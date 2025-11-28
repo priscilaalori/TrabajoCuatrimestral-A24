@@ -32,6 +32,8 @@ namespace tp_webform_equipo_24A
             {
                 if (Request.QueryString["id"] != null)
                 {
+                    // Si la URL trae un ID oculto para agregar rutinas de entrenador
+                    btnAgregarRutina.Visible = false; 
                     //si viene con id de deportista entonces solo muestra la columna agregar
                     MostrarAgregar = true;
                     DeportistaNegocio deportistaNegocio = new DeportistaNegocio();
