@@ -21,11 +21,43 @@
             width: 150px !important;
             display: inline-block !important;
         }
+
+         .banner-container {
+             position: relative;
+             width: 100%;
+             height: 220px; 
+             border-radius: 10px;
+             overflow: hidden;
+             margin-bottom: 20px;
+         }
+
+         .banner-img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             filter: brightness(70%); 
+         }
+
+         .banner-text {
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             color: white;
+             font-size: 32px;
+             font-weight: 600;
+             text-shadow: 0 0 8px rgba(0,0,0,0.7);
+         }
     </style>
 
-    <div>
-        <h1>Mis rutinas</h1>
+
+    <div class="banner-container">
+        <img class="banner-img" src="/Images/banner-gym.jpg" alt="Banner">
+        <div class="banner-text">
+            <h1>Mis rutinas</h1>
+        </div>
     </div>
+
 
     <div>
         <asp:GridView ID="dgvlistRutinas" OnRowCommand="dgvlistRutinas_RowCommand" CssClass="table" OnSelectedIndexChanged="dgvlistRutinas_SelectedIndexChanged" OnRowDataBound="dgvlistRutinas_RowDataBound" AutoGenerateColumns="false" runat="server">
@@ -35,11 +67,23 @@
                 <asp:BoundField HeaderText="Nivel" DataField="Nivel" />
                 <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
                 <asp:BoundField HeaderText="Deporte" DataField="Deporte" />
-                <asp:CommandField ShowSelectButton="true" SelectText="Modificar" HeaderText="Acción" />
+
+
+                <asp:TemplateField HeaderText="Acción">
+                    <ItemTemplate>
+                        <asp:LinkButton 
+                            ID="btnModificar" 
+                            runat="server" 
+                            Text="Modificar" 
+                            CommandName="Select"
+                            CssClass="btn btn-modificar" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Ejercicios">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnAgregarEjercicio" runat="server" Text="Ver"
                             CommandName="AgregarEjercicio"
+                            CssClass="btn btn-ver"
                             CommandArgument='<%# Eval("IdRutina") %>'
                             CausesValidation="false" />
                     </ItemTemplate>
@@ -49,6 +93,7 @@
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEliminar" runat="server" Text="Eliminar"
                             CommandName="Eliminar"
+                            CssClass="btn btn-eliminar"
                             CommandArgument='<%# Eval("IdRutina") %>'
                             CausesValidation="false" />
                     </ItemTemplate>
@@ -59,6 +104,7 @@
                         <asp:LinkButton ID="btnAgregarRutinaAlumno" runat="server" Text="Agregar"
                             CommandName="AgregarRutinaADeportista"
                             CommandArgument='<%# Eval("IdRutina") %>'
+                            CssClass="btn btn-agregar"
                             CausesValidation="false" />
 
                     </ItemTemplate>

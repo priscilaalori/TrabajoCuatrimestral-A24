@@ -23,8 +23,42 @@
             width: 150px !important;
             display: inline-block !important;
         }
+
+            .banner-container {
+            position: relative;
+            width: 100%;
+            height: 220px; 
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%); 
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0,0,0,0.7);
+        }
     </style>
     <div>
+
+    <div class="banner-container">
+        <img class="banner-img" src="/Images/banner-gym.jpg" alt="Banner">
+        <div class="banner-text">
+            
+        </div>
+    </div>
         <h1>
             <asp:Label ID="lblNombre" runat="server"></asp:Label>
         </h1>
@@ -41,6 +75,7 @@
                 <asp:TemplateField HeaderText="Acción">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEliminar" runat="server" Text="Eliminar"
+                            CssClass="btn btn-eliminar"
                             CommandName="Eliminar"
                             CommandArgument='<%# Eval("IdEjercicio") %>'
                             CausesValidation="false" />
@@ -64,6 +99,7 @@
                     <ItemTemplate>
                         <asp:LinkButton ID="btnAgregar" runat="server" Text="Agregar"
                             CommandName="AgregarEjercicio"
+                            CssClass="btn btn-agregar"
                             CommandArgument='<%# Eval("IdEjercicio") %>'
                             CausesValidation="false" />
                     </ItemTemplate>

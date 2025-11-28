@@ -15,16 +15,47 @@
         input.btn-short, button.btn-short {
             width: 150px !important;
             display: inline-block !important;
+             }
+
+        .banner-container {
+        position: relative;
+        width: 100%;
+        height: 220px; 
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
         }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(70%); 
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(0,0,0,0.7);
+        }
+        
     </style>
 </asp:Content>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <h1>¡Hola
-            <asp:Label ID="lblNombreEntrenador" Text="text" runat="server" />
-            !</h1>
+        <div class="banner-container">
+            <img class="banner-img" src="/Images/banner-gym.jpg" alt="Banner">
+            <div class="banner-text">
+                ¡Hola <asp:Label ID="lblNombreEntrenador" Text="Entrenador" runat="server" />!
+            </div>
+        </div>
         <div>
             <asp:Button Style="margin-top: 10px;" CssClass="btn btn-dark btn-short" ID="btnMiPerfil" runat="server"  OnClick="btnMiPerfil_Click" Text="Mi perfil" />
         </div>
@@ -41,6 +72,7 @@
                 <asp:TemplateField HeaderText="Detalle">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnVerPerfil" runat="server" Text="Ver"
+                            CssClass="btn btn-ver"
                             CommandName="DetalleDeportista"
                             CommandArgument='<%# Eval("IdUsuario") %>'
                             CausesValidation="false" />
