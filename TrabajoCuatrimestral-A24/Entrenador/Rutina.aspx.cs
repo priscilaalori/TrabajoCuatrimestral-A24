@@ -32,6 +32,7 @@ namespace tp_webform_equipo_24A
             {
                 if (Request.QueryString["id"] != null)
                 {
+                    OcultarAccionesColumnas();
                     // Si la URL trae un ID oculto para agregar rutinas de entrenador
                     btnAgregarRutina.Visible = false; 
                     //si viene con id de deportista entonces solo muestra la columna agregar
@@ -50,6 +51,7 @@ namespace tp_webform_equipo_24A
                 }
                 else
                 {
+                    MostrarAccionesColumnas();
                     dgvlistRutinas.DataSource = rutinaNegocio.Listar(usuario.IdUsuario);
                     dgvlistRutinas.DataBind();
 
@@ -157,5 +159,38 @@ namespace tp_webform_equipo_24A
             }
 
         }
+
+        protected void OcultarAccionesColumnas()
+        {
+            bool modoAlumno = !string.IsNullOrEmpty(Request.QueryString["id"]);
+            ViewState["ModoAlumno"] = modoAlumno;
+
+            btnAgregarRutina.Visible = !modoAlumno;
+
+            if (modoAlumno)
+            {
+                // oculto modificar elminar y ejercicios
+                dgvlistRutinas.Columns[5].Visible = false;
+                dgvlistRutinas.Columns[6].Visible = false;
+                dgvlistRutinas.Columns[7].Visible = false;
+
+                // mostrar agregar
+                dgvlistRutinas.Columns[8].Visible = true;
+            }
+
+        }
+
+        protected void MostrarAccionesColumnas()
+        {
+
+                // mostrar todo menos el agregar
+                dgvlistRutinas.Columns[5].Visible = true;
+                dgvlistRutinas.Columns[6].Visible = true;
+                dgvlistRutinas.Columns[7].Visible = true;
+                dgvlistRutinas.Columns[8].Visible = false;
+            
+
+        }
+
     }
 }
