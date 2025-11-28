@@ -5,8 +5,14 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
- 
-    <h2>Modificar Ejercicio</h2>
+ <div class="banner-container">
+    <img class="banner-img" src="/Images/banner-gym.jpg" alt="Banner">
+    <div class="banner-text">
+        <h2>Modificar Ejercicio</h2>
+    </div>
+</div>
+
+    >
 
 <asp:Label ID="lblMensaje" runat="server" ForeColor="Red"></asp:Label><br /><br />
 

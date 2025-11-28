@@ -20,6 +20,13 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+<div class="banner-container">
+    <img class="banner-img" src="/Images/banner-rutinas.jpg" alt="Banner">
+    <div class="banner-text">
+        ¡Estas son tus rutinas futuras!
+    </div>
+</div>
+
 
 <asp:DropDownList 
     ID="ddlDeporte" 

@@ -30,8 +30,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="historial-wrapper">
-
+        <div class="banner-container">
+    <img class="banner-img" src="/Images/banner-tiempo.jpg" alt="Banner">
+    <div class="banner-text">
         <div class="historial-title">Historial de Rutinas</div>
+    </div>
+</div>
+
+        
 
         <asp:Repeater ID="repHistorial" runat="server" OnItemDataBound="repHistorial_ItemDataBound">
             <ItemTemplate>

@@ -15,12 +15,46 @@
             width: 150px !important;
             display: inline-block !important;
         }
+
+            .banner-container {
+        position: relative;
+        width: 100%;
+        height: 220px; 
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .banner-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(70%); 
+    }
+
+    .banner-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 32px;
+        font-weight: 600;
+        text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-            <h1>¡Hola
-            <asp:Label ID="lblNombreDeportista" Text="text" runat="server" />
-            !</h1>
+
+    <div class="banner-container">
+    <img class="banner-img" src="/Images/banner-rutinas.jpg" alt="Banner">
+    <div class="banner-text">
+        <h1>¡Hola
+<asp:Label ID="lblNombreDeportista" Text="text" runat="server" />
+!</h1>
+    </div>
+</div>
+            
 
     <asp:Button OnClick="btnPerfil_Click" ID="btnPerfil" runat="server" Text="Mi Perfil" CssClass="btn btn-dark btn-short" ValidationGroup="" />
 

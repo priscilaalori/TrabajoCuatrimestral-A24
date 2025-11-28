@@ -78,8 +78,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1>Trabajo de hoy</h1>
-    <h3>Hola! estos son los ejercicios a realizar el día de hoy</h3>
+
+    <div class="banner-container">
+    <img class="banner-img" src="/Images/banner-rutinas.jpg" alt="Banner">
+    <div class="banner-text">
+        <h1>Trabajo de hoy</h1>
+        <h3>Hola! estos son los ejercicios a realizar el día de hoy</h3>
+    </div>
+</div>
+
+    
     <br />
 
     <asp:Label ID="nombreRutina" runat="server"></asp:Label><br />

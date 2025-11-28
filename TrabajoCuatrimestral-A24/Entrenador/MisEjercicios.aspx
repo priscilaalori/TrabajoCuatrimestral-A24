@@ -8,7 +8,15 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Lista de Ejercicios </h1>
+
+    <div class="banner-container">
+    <img class="banner-img" src="/Images/banner-gym.jpg" alt="Banner">
+    <div class="banner-text">
+         <h1>Lista de Ejercicios </h1>
+    </div>
+</div>
+
+   
 
     <table class="table">
         <thead>
