@@ -108,5 +108,39 @@ namespace tp_webform_equipo_24A
         {
             Response.Redirect("InicioDeportista.aspx");
         }
+
+        protected void btnExportarTxt_Click(object sender, EventArgs e)
+        {
+            
+            string texto = "";
+            texto += nombreRutina.Text + Environment.NewLine + Environment.NewLine;
+            texto += descripcionRutina.Text + Environment.NewLine + Environment.NewLine;
+
+            texto += "Ejercicios:" + Environment.NewLine;
+            texto += "------------------------------" + Environment.NewLine;
+
+            foreach (RepeaterItem item in rptEjercicios.Items)
+            {
+                var lblNombre = item.FindControl("Nombre") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                var lblDesc = item.FindControl("Descripcion") as System.Web.UI.HtmlControls.HtmlGenericControl;
+                var lblVideo = item.FindControl("UrlVideo") as System.Web.UI.HtmlControls.HtmlGenericControl;
+
+                string nombre = ((Literal)item.FindControl("LiteralNombre")).Text;
+                string descripcion = ((Literal)item.FindControl("LiteralDescripcion")).Text;
+                string urlVideo = ((Literal)item.FindControl("LiteralUrl")).Text;
+
+                texto += nombre + Environment.NewLine;
+                texto += descripcion + Environment.NewLine;
+                texto += "Video: " + urlVideo + Environment.NewLine;
+                texto += Environment.NewLine;
+            }
+
+            Response.Clear();
+            Response.ContentType = "text/plain";
+            Response.AddHeader("Content-Disposition", "attachment; filename=Rutina.txt");
+            Response.Write(texto);
+            Response.End();
+        }
+
     }
 }

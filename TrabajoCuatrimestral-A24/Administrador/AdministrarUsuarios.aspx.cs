@@ -1,7 +1,9 @@
 ﻿using Negocio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -107,6 +109,72 @@ namespace tp_webform_equipo_24A
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/InicioAdmin.aspx");
+        }
+
+        protected void btnExportarTxt_Click(object sender, EventArgs e)
+        {
+            CargarUsuarios(); 
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Listado de Usuarios");
+            sb.AppendLine("------------------------------");
+            sb.AppendLine();
+
+            gvUsuarios.AllowPaging = false;
+            gvUsuarios.DataBind();
+
+            foreach (GridViewRow row in gvUsuarios.Rows)
+            {
+                for (int i = 0; i < gvUsuarios.Columns.Count; i++)
+                {
+                    string header = gvUsuarios.Columns[i].HeaderText;
+                    string value = ObtenerTextoCelda(row.Cells[i]);
+                    sb.AppendLine(header + ": " + value);
+                }
+
+                sb.AppendLine("------------------------------");
+            }
+
+            Response.Clear();
+            Response.ContentType = "text/plain";
+            Response.AddHeader("content-disposition", "attachment;filename=Usuarios.txt");
+            Response.Write(sb.ToString());
+            Response.End();
+        }
+
+        private string ObtenerTextoCelda(TableCell celda)
+        {
+           
+            string texto = celda.Text.Replace("&nbsp;", "").Trim();
+            if (!string.IsNullOrEmpty(texto))
+                return texto;
+
+           
+            foreach (Control control in celda.Controls)
+            {
+                if (control is Label lbl)
+                    return lbl.Text;
+
+                if (control is Literal lit)
+                    return lit.Text;
+
+                if (control is LinkButton lbtn)
+                    return lbtn.Text;
+
+                if (control is Button btn)
+                    return btn.Text;
+
+                if (control is CheckBox chk)
+                    return chk.Checked ? "Sí" : "No";
+            }
+
+            return "";
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            
         }
 
 

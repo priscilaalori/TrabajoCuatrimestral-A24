@@ -168,9 +168,10 @@
                     Text="Volver"
                     CssClass="btnVolver"
                     OnClick="btnVolver_Click" />
+        <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="Green" CssClass="mt-3 d-block" />
     </div>
     <div class="admin-container">
-        <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="Green" CssClass="mt-3 d-block" />
+        
         <div class="cards-grid">
             <div class="admin-card card-usuarios">
                 <h4>Usuarios</h4>

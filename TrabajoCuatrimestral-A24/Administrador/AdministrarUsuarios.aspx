@@ -119,8 +119,13 @@
                     Text="Volver"
                     CssClass="btnVolver"
                     OnClick="btnVolver_Click" />
+     
+        <asp:Button ID="btnExportarTxt" runat="server" Text="Exportar TXT"
+            CssClass="btn-agregar" OnClick="btnExportarTxt_Click" />
     </div>
     <div class="admin-container">
+        
+
         <div class="table-section">
             <h2>Usuarios registrados</h2>
 

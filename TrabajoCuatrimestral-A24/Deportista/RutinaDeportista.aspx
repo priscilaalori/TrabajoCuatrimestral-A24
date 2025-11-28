@@ -90,6 +90,9 @@
     
     <br />
 
+    <asp:Button ID="btnExportarTxt" runat="server" Text="Descargar TXT"
+    CssClass="btn btn-agregar btn-lg" OnClick="btnExportarTxt_Click" />
+
     <asp:Label ID="nombreRutina" runat="server"></asp:Label><br />
     <asp:Label ID="descripcionRutina" runat="server"></asp:Label>
 
@@ -100,9 +103,10 @@
 
         <ItemTemplate>
             <li class="list-group-item">
-                <strong><%# Eval("Nombre") %></strong><br />
-                <%# Eval("Descripcion") %><br />
-                <a href='<%# Eval("UrlVideo") %>' target="_blank">Ver video</a><br />
+                <strong><asp:Literal ID="LiteralNombre" runat="server" Text='<%# Eval("Nombre") %>' /></strong><br />
+                <asp:Literal ID="LiteralDescripcion" runat="server" Text='<%# Eval("Descripcion") %>' /><br />
+                <asp:Literal ID="LiteralUrl" runat="server" Text='<%# Eval("UrlVideo") %>' />
+                <br />
             </li>
         </ItemTemplate>
 
