@@ -46,6 +46,7 @@
     <Compile Include="EntrenadorNegocio.cs" />
     <Compile Include="EjercicioNegocio.cs" />
     <Compile Include="HistorialNegocio.cs" />
+    <Compile Include="ProcesoNegocio.cs" />
     <Compile Include="RutinaNegocio.cs" />
     <Compile Include="Seguridad.cs" />
     <Compile Include="UsuarioNegocio.cs" />
